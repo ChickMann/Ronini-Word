@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Suoi nuoc nong
   m_EditorClassIdentifier: Assembly-CSharp::VocabData
   Meaning: "Su\u1ED1i n\u01B0\u1EDBc n\xF3ng"
-  Kanji: "\u6E29\u6CC9"
-  Hiragana: "\u304A\u3093\u305B\u3093"
-  Katakana: "\u30AA\u30F3\u30BB\u30F3"
+  Answer: "\u304A\u3093\u305B\u3093"
+  StateVobcab: 0

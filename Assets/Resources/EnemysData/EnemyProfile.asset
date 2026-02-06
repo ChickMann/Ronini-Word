@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ce703ddf02f5049bafa76f2e84e243, type: 3}
   m_Name: EnemyProfile
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProfile
-  Name: 
-  AttackSpeed: 2
-  SlashCount: 1
-  RequiredSuccesses: 1
-  speed: 3
+  enemyType: 0
+  FuelGauge: 5
   prefabEnemy: {fileID: 7908500367811722163, guid: c750bb6bbfce1c7479ffc654d494372c, type: 3}
+  spawnDistanceX: 16

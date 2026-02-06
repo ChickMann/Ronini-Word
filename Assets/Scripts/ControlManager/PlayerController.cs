@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ControlManager
 {
@@ -8,7 +9,8 @@ namespace ControlManager
     {
         [Header("Player Stats")]
         [SerializeField] private int maxHealth=3;
-        [SerializeField] private int maxLife = 2;
+
+        [SerializeField] private bool hasShield;
 
         [Header("setting")]
         [SerializeField] private float delayTakeDamage;
@@ -18,63 +20,87 @@ namespace ControlManager
 
         [SerializeField] private ParticleSystem runParticle;
         [SerializeField] private ParticleSystem finisherParticle;
+        
+        [Header("UI/UX")]
+        [SerializeField] private GameObject uiContainer;
+        [SerializeField] private GameObject[] heartUI;
+        [SerializeField] private GameObject shieldUI;
+        [SerializeField] private Sprite heartBreak;
+        [SerializeField] private Sprite heartAdd;
+        [SerializeField] private Sprite shieldBreak;
+        [SerializeField] private Sprite shieldAdd;
+        
 
         [Header("Runtime Stats (Debug)")]
         [SerializeField] private int currentHealth;
-        [SerializeField] private int currentLife;
+        [SerializeField] private bool isBrokenStand;
+        [SerializeField] private bool isMoving;
+
+        private CombatManager _combatManager;
+       
         
-        private CinemachineImpulseSource _myImpulse;
+       
 
         public int CurrentHealth 
         { 
             get => currentHealth; 
             private set => currentHealth = value; 
         }
-    
-        public int CurrentLife 
-        { 
-            get => currentLife; 
-            private set => currentLife = value; 
-        }
-        
-        
-    
+
         protected override void Start()
         {
-            _myImpulse = GetComponent<CinemachineImpulseSource>();
             base.Start();
-            ResetLife();
-            ResetHealth();
-        }
-
-        private void OnEnable()
-        {
-            GameEvents.OnLevelStart += OnLevelStartHandler;
-
-        }
-
-        private void OnDisable()
-        {
-            GameEvents.OnLevelStart -= OnLevelStartHandler;
-        
+            SetActiveUI(false);
+            currentHealth = maxHealth;
+            isMoving = false;
+            isBrokenStand = false;
+            _combatManager = GameManager.Instance.combatManager;
         }
 
         private void Update()
         {
-            Attack();
-        }
-
-        private void OnLevelStartHandler(LevelData data)
-        {
-            StartLevel();
-        }
-
-        public void StartLevel()
-        {
-            Running();
+            if (_combatManager.combatState == CombatState.Running)
+            { 
+                BrokenStand(false);
+                Moving(true);
+            }
+            else
+            {
+                if(isBrokenStand) BrokenStand(true);
+                Moving(false);
+                Attack();
+            }
         }
 
         #region Action
+
+
+        private void ActiveBrokenStand()
+        {
+            ResetTrigger();
+            isBrokenStand = true;
+            BrokenStand(true);
+        }
+
+        private void DeactiveBrokenStand()
+        {
+            isBrokenStand = false;
+            BrokenStand(false);
+        }
+
+        private void Moving(bool isMoving)
+        {
+            if(this.isMoving == isMoving) return;
+            if (isMoving)
+            {
+                Running();
+            }
+            else
+            {
+                Stopping();
+            }
+            this.isMoving = isMoving;
+        }
         public override void Running()
         {
             base.Running();
@@ -87,10 +113,11 @@ namespace ControlManager
             ToggleFootStepEffect(false);
         }
 
-        public void ReadyToFight(float timeDelayReady)
+        public void ReadyToFight()
         {
             Stopping();
-            this.DelayAction(timeDelayReady, () => FightStand());
+           FightStand();
+           SetActiveUI(true);
         }
 
         public void DoParry()
@@ -98,15 +125,14 @@ namespace ControlManager
             base.NextAttack();
             PlayerEffectSword();
         }
-        public void DoFinisher()
-        {
 
-            base.OnFinisher();
-            if(finisherParticle) finisherParticle.Play();
+        public override void OnFocus()
+        {
+            base.OnFocus();
+            PlayerEffectSword();
         }
 
 
-    
         #endregion
     
         #region Sound Effect And Particle
@@ -116,13 +142,10 @@ namespace ControlManager
             if (attackParticle) 
                 attackParticle.Play();
           
-            PlaySwordSound();
-        }
-        private void PlaySwordSound()
-        {
             GameManager.Instance.PlayerSwordEffect();
-        }
 
+        }
+        
         private void ToggleFootStepEffect(bool isPlay)
         {
             GameManager.Instance.PlayerFootStepEffect(isPlay);
@@ -132,61 +155,82 @@ namespace ControlManager
 
         #endregion
     
-        #region Health and life
+        #region Health
         public void DecreaseHealth()
         {
-            LockAttack(delayTakeDamage);
-            this.DelayAction( delayTakeDamage, TakeDamage);
+            if (hasShield)
+            {
+                OnFocus();
+                hasShield = false;
+                return;
+            }
+            TakeDamage();
             CurrentHealth--;
-        
+            UpdateHealthUI(false);
+            if(currentHealth==1) ActiveBrokenStand();
             if (CurrentHealth <= 0)
             {
-              
-                DecreaseLife();
-                ResetHealth();
-            
-                GameEvents.OnPlayerBroken?.Invoke(true);
-            }
-        }
-        public void ResetHealth()
-        {
-            CurrentHealth = maxHealth;
-        }
-
-        public void ResetLife()
-        {
-            CurrentLife = maxLife;
-            ResetHealth(); 
-        }
-
-        public void DecreaseLife()
-        {
-            CurrentLife--;
-            if (CurrentLife <= 0)  this.DelayAction( delayTakeDamage,()=>
-            {
-                CancelNextAttack();
+                ResetTrigger();
+                DeactiveBrokenStand();
                 Die();
-                GameEvents.OnEndGame?.Invoke();
-            });
+                GameManager.Instance.EndLevel();
+            }
+            if(currentState == ActorState.Focusing) OnFocusing();
+            
+        }
       
+
+        public void AddHealth()
+        {
+            if (currentHealth < maxHealth)
+            {
+                UpdateHealthUI(true);
+                currentHealth++;
+            }
+            else SetShield(true);
+            DeactiveBrokenStand();
         }
 
-        public void LockAttack(float time)
+        public void SetShield(bool isShield)
         {
-            CancelNextAttack();
-            if (CurrentLife <= 0)  this.DelayAction( time+0.1f,()=>
-            {
-                if(currentState == ActorState.BrokenStand || currentState == ActorState.Dead) return;
-                NextAttack();
-            });
+            hasShield = isShield;
+            UpdateShieldUI(isShield);
         }
-        
-        public void DoCinematicShake()
+
+        private void UpdateHealthUI(bool isIncrease)
         {
-            if (_myImpulse != null)
-            {
-                _myImpulse.GenerateImpulse(Vector3.one * 0.1f);
-            }
+            if(currentHealth <0) return;
+            Debug.Log(heartUI[currentHealth]);
+            Image heart = heartUI[currentHealth].GetComponent<Image>();
+            if (!isIncrease) heart.sprite = heartBreak;
+            else heart.sprite = heartAdd;
+        }
+
+        private void UpdateShieldUI(bool isIncrease)
+        {
+            Image shield = shieldUI.GetComponent<Image>();
+            if (!isIncrease) shield.sprite = shieldBreak;
+            else shield.sprite = shieldAdd;
+        }
+
+        public void SetActiveUI(bool isActive)
+        {
+            uiContainer.SetActive(isActive);
+        }
+        [ContextMenu( "Add Health Test")]
+        public void AddHealthTest()
+        {
+            AddHealth();
+        }
+        [ContextMenu( "Add Shield Test")]
+        public void AddShieldTest()
+        {
+           SetShield(true);
+        }
+        [ContextMenu( "remove Shield Test")]
+        public void RemoveShieldTest()
+        {
+            SetShield(false);
         }
         #endregion
     

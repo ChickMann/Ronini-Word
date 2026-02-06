@@ -19,8 +19,8 @@ public class InputDisplayManager : MonoBehaviour
     [SerializeField] private List<GameObject> panels;
 
     [Header("Runtime State")]
-    public bool IsReadyNextVocab { get; private set; }
-    public bool IsLockedButton { get; private set; }
+
+    
    
 
     // Data
@@ -31,6 +31,10 @@ public class InputDisplayManager : MonoBehaviour
     
     // Cache
     private List<TextMeshProUGUI> _buttonTextComponents ;
+    
+    //flag
+    private bool _isWrongInWave;
+    [SerializeField] private bool isLockedButton;
 
     private float _lastInputTime;        // Anti-spam
     private void Awake()
@@ -41,6 +45,7 @@ public class InputDisplayManager : MonoBehaviour
     private void Start()
     {
         ResetFeedbackText();
+        LockButton(true);
     }
 
     private void CacheButtonComponents()
@@ -65,23 +70,22 @@ public class InputDisplayManager : MonoBehaviour
     /// </summary>
     public void GetVocabData(VocabData vocabData)
     {
-        IsReadyNextVocab = false;
-        
+        _isWrongInWave = false;
         _currentVocabData = vocabData;
-        _answerHira = _currentVocabData.Hiragana;
+        _answerHira = _currentVocabData.Answer;
         
         ParseTargetAnswer(_answerHira);
         SetVocabQuestionText(_currentVocabData.Meaning);
         
         SetupButtons();
 
-        IsReadyNextVocab = true;
     }
 
-    public void NextVocab()
+    public void InputNextVocab()
     {
+        _isWrongInWave = false;
         ResetFeedbackText();
-        ActivePanel();
+       this.DelayAction(0.2f,() => LockButton(false));
     }
 
     #region Text Handling
@@ -112,7 +116,7 @@ public class InputDisplayManager : MonoBehaviour
 
     private void CheckAnswer(string inputVal)
     {
-        if(IsLockedButton) return;
+        if(isLockedButton) return;
         if (Time.time - _lastInputTime < 0.2f) return;
         _lastInputTime = Time.time;
         // Điều kiện thoát sớm
@@ -145,29 +149,21 @@ public class InputDisplayManager : MonoBehaviour
         bool isLastChar = _currentIndexAnswer >= _targetCharList.Count;
         GameEvents.OnCharCorrect?.Invoke();
         
-
         // Kiểm tra hoàn thành từ
         if (isLastChar)
         {
-            _currentVocabData.isCorrect = true; // Gán đúng trước khi bắn sự kiện
-            GameEvents.OnSubmitAnswer?.Invoke();
+            if (!_isWrongInWave && _currentVocabData.StateVobcab != StateVobcab.Perfect) {_currentVocabData.StateVobcab = StateVobcab.Perfect;}
+            else if(!_isWrongInWave && _currentVocabData.StateVobcab != StateVobcab.notPerfect) {_currentVocabData.StateVobcab = StateVobcab.notPerfect;}
+            GameEvents.OnSubmitAnswer?.Invoke(_isWrongInWave);
+            
         }
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
     private void HandleWrongInput()
     {
-       
-        bool isLastChar = _currentIndexAnswer >= _targetCharList.Count;
          GameEvents.OnCharWrong?.Invoke();
-        
-
-        // Kiểm tra hoàn thành từ
-        if (isLastChar)
-        {
-            _currentVocabData.isCorrect = false;
-            GameEvents.OnSubmitAnswer?.Invoke();
-        }
+        _isWrongInWave = true;
     }
 
     #endregion
@@ -178,7 +174,7 @@ public class InputDisplayManager : MonoBehaviour
     public void LockButton(bool isLocked)
     {
         SetPanelActive(!isLocked);
-        IsLockedButton = isLocked;
+        isLockedButton = isLocked;
     }
     private void SetupButtons()
     {
@@ -254,16 +250,12 @@ public class InputDisplayManager : MonoBehaviour
 
     private void SetPanelActive(bool isActive)
     {
-        if (isActive && !IsReadyNextVocab) return;
-
         foreach (GameObject p in panels)
         {
-            if(p) p.SetActive(isActive);
+            p.SetActive(isActive);
         }
     }
     
-    public void DeActivePanel() => SetPanelActive(false);
-    public void ActivePanel() => SetPanelActive(true);
 
     public void SetInteractable(bool isInteractable)
     {

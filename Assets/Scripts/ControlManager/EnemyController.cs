@@ -8,141 +8,82 @@ namespace ControlManager
         [Header("Enemy Config")]
         public EnemyProfile enemyData;
     
-        [Header("Detection Settings")]
-        [SerializeField] private float rayDistance = 5f; 
-        [SerializeField] private LayerMask detectionLayer; 
-        [SerializeField] private Vector2 rayOffset = new Vector2(0, 0.5f);
-        [SerializeField] private float brokenDuration;
-        [SerializeField] private bool IsFuelGausePause;
+        [Header("Fuel Gause Settings")]
+        [SerializeField] private bool isFuelGausePause;
+        [SerializeField] private float fuelGauseFirstChar;
+
 
         [Header("UI References")]
-        [SerializeField] private Slider _fuelGaugeSlider;
+        [SerializeField] private Slider fuelGaugeSlider;
         
         [Header("Debug")]
         [SerializeField] private float currentFuelGauge;
    
-        
-    
         // State
-        public bool HasPlayerDetected { get; private set; }
+        public bool hasPlayerDetected { get; private set; }
 
         // Components & Cache
-        public Rigidbody2D _rb2d;
+        public Rigidbody2D rb2d;
         private BackGroundManager _backgroundManager;
         private CombatManager _combatManager;
         
-        private readonly RaycastHit2D[] _rayResults = new RaycastHit2D[1];
 
         protected override void Awake()
         {
             base.Awake();
-            _rb2d = GetComponent<Rigidbody2D>();
+            rb2d = GetComponent<Rigidbody2D>();
+            _combatManager = GameManager.Instance.combatManager;
         }
 
         protected override void Start()
         {
-            
-           
             base.Start();
-            currentFuelGauge = enemyData.FuelGauge;
-            if (_fuelGaugeSlider)
+            currentFuelGauge = enemyData.FuelGauge + fuelGauseFirstChar;
+            if (fuelGaugeSlider)
             {
-                _fuelGaugeSlider.maxValue = enemyData.FuelGauge;
-                _fuelGaugeSlider.value = currentFuelGauge;
+                fuelGaugeSlider.maxValue = enemyData.FuelGauge;
+                fuelGaugeSlider.value = currentFuelGauge;
             }
 
             SetActiveFuelSlider(false);
 
-            // Cache reference ngay từ đầu, tránh gọi FindObject mỗi frame
             if (GameManager.Instance != null)
             {
                 _backgroundManager = GameManager.Instance.backGroundManager;
-                _combatManager = GameManager.Instance.combatManager;
             }
         }
-    
-        // Knockback Physics variables
-        private float _knockbackVelocity;
-        private float _currentKnockbackForce; // Lực gốc ban đầu
-        private float _knockbackTimer;
-        private bool _isKnockingBack;
-
-        [Header("Knockback Settings")]
-        [Tooltip("Biểu đồ vận tốc theo thời gian. Trục Y: 1->0. Trục X: Time.")]
-        [SerializeField] private AnimationCurve knockbackCurve = AnimationCurve.EaseInOut(0, 1, 1, 0); 
-        [SerializeField] private float knockbackDuration = 0.3f; // Thời gian hiệu ứng đẩy lùi
-
+        
 
         private void Update()
         {
-            CheckForPlayer();
-            FuelGaugeDercease();
-            // Xử lý hiệu ứng đẩy lùi bằng Animation Curve
-            if (_isKnockingBack)
-            {
-                _knockbackTimer += Time.deltaTime;
-                float progress = _knockbackTimer / knockbackDuration;
-
-                if (progress >= 1f)
-                {
-                    // Kết thúc Knockback
-                    _isKnockingBack = false;
-                    _knockbackVelocity = 0f;
-                }
-                else
-                {
-                    // Tính vận tốc dựa trên Curve: Lực gốc * Giá trị Curve tại thời điểm t
-                    float curveValue = knockbackCurve.Evaluate(progress);
-                    _knockbackVelocity = _currentKnockbackForce * curveValue;
-
-                    // Di chuyển
-                    transform.position += Vector3.right * (_knockbackVelocity * Time.deltaTime);
-
-                    // Kiểm tra player qua xa 
-                    if (!HasPlayerDetected)
-                    {
-                        _isKnockingBack = false;
-                        _knockbackVelocity = 0f;
-                    }
-                }
-            }
-
-            if (!HasPlayerDetected && currentState != ActorState.Focusing && currentState != ActorState.BrokenStand && currentState != ActorState.FightStand)
+            if (!isFuelGausePause) FuelGaugeDercease();
+            if (_combatManager.combatState == CombatState.Running)
             {
                 Moving(true);
             }
             else
             {
                 Moving(false);
-                Attack();
+                 Attack();
             }
-            
         }
-
-        public void TriggerKnockback(float force)
-        {
-            // Khởi động quá trình Knockback theo Curve
-            _currentKnockbackForce = force;
-            _knockbackTimer = 0f;
-            _isKnockingBack = true;
-        }
+        public void SetHasPlayerDetected(bool hasPlayerDetected) => this.hasPlayerDetected = hasPlayerDetected;
+     
 
         public void SetupEnemyData(EnemyProfile data)
         {
             enemyData = data;
-            // Khi setup enemy mới, tạm dừng background cho đến khi nó bắt đầu chạy
             if (_backgroundManager) _backgroundManager.SetRunState(false);
 
         }
 
-        public void Moving(bool isMoving,float speed =0)
+        private void Moving(bool isMoving,float speed =0)
         {
             if (isMoving)
             {
                 if (!enemyData) return;
-                speed = speed==0? enemyData.speed : speed;
-                _rb2d.linearVelocity = new Vector2(speed* -1f, _rb2d.linearVelocity.y);
-                Running();
+                speed = speed==0? 3f: speed;
+                rb2d.linearVelocity = new Vector2(speed* -1f, rb2d.linearVelocity.y);
                 if (_backgroundManager)  _backgroundManager.SetRunState(true);
             }
             else
@@ -151,18 +92,16 @@ namespace ControlManager
             }
         }
 
-       
-
+        #region Fuel_Gauge
         // ReSharper disable Unity.PerformanceAnalysis
-        public void FuelGaugeDercease()
+        private void FuelGaugeDercease()
         {
-            if(IsFuelGausePause) return;
             currentFuelGauge -= Time.deltaTime;
-            if(_fuelGaugeSlider){ _fuelGaugeSlider.value = currentFuelGauge;} 
+            
+            UpdateFuelSlider(currentFuelGauge);
             if (currentFuelGauge <= 0)
             {
-                if(currentState != ActorState.BrokenStand)GameEvents.OnCharWrong?.Invoke();
-                else GameEvents.OnFinisherFail?.Invoke();
+               GameEvents.OnCharWrong?.Invoke();
                 currentFuelGauge = enemyData.FuelGauge;
             }
         }
@@ -170,67 +109,35 @@ namespace ControlManager
         public void SetFuelGauge(float multi)
         {
             float a = enemyData.FuelGauge * multi;
-            _fuelGaugeSlider.maxValue = a;
-            currentFuelGauge= a;
+            UpdateFuelSlider(a,a);
         }
         
 
         public void SetActiveFuelSlider(bool isActive)
         {
-            IsFuelGausePause = !isActive;
-            if (_fuelGaugeSlider) _fuelGaugeSlider.gameObject.SetActive(isActive);
+            isFuelGausePause = !isActive;
+            if (fuelGaugeSlider) fuelGaugeSlider.gameObject.SetActive(isActive);
             ResetFuelGauge();
         }
-        
+
+        private void UpdateFuelSlider(float value, float max = 0)
+        {
+            if (fuelGaugeSlider)
+            {
+                fuelGaugeSlider.maxValue = max==0? fuelGaugeSlider.maxValue: max;
+                fuelGaugeSlider.value = value;
+            }
+        }
      
 
         public void ResetFuelGauge()
         {
-            _fuelGaugeSlider.maxValue = enemyData.FuelGauge;
+            fuelGaugeSlider.maxValue = enemyData.FuelGauge;
             currentFuelGauge = enemyData.FuelGauge;
         }
+
+        #endregion
         
-        /// <summary>
-        /// Kiểm tra player
-        /// </summary>
-        private void CheckForPlayer()
-        {
-
-            Vector2 origin = (Vector2)transform.position + rayOffset;
-            Vector2 direction = Vector2.left; 
-        
-            int hitCount = Physics2D.RaycastNonAlloc(origin, direction,_rayResults , rayDistance, detectionLayer);
-            if (hitCount > 0)
-            {
-                var hit = _rayResults[0];
-
-                if (hit.collider.CompareTag("Player"))
-                {
-                    if (!HasPlayerDetected)
-                    {
-                        HasPlayerDetected = true;
-                    
-                        if (_combatManager  && _combatManager.CurrentState != CombatState.Fighting)
-                        {
-                            GameEvents.OnReadyToFight?.Invoke();
-                        }
-                    
-                        FightStand();
-                    }
-                    return; 
-                }
-            }
-
-            HasPlayerDetected = false;
-        }
-    
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Vector2 origin = (Vector2)transform.position + rayOffset;
-            Vector2 direction = Vector2.left; 
-            Gizmos.DrawLine(origin, origin + direction * rayDistance);
-        }
+       
     }
 }

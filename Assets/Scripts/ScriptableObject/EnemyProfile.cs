@@ -2,32 +2,27 @@ using System;
 using ControlManager;
 using UnityEngine;
 
+public enum EnemyType
+{
+    Monk,
+    Shinobi
+}
 [CreateAssetMenu(fileName = "EnemyProfile", menuName = "Scriptable Objects/EnemyProfile")]
 public class EnemyProfile : ScriptableObject
 {
-    public string Name;
-    public float AttackSpeed;
+    public EnemyType enemyType;
     public float FuelGauge;
-    public int speed;
     public EnemyController prefabEnemy;
-   
-
+    public float spawnDistanceX;
     public EnemyProfile()
     {
-        AttackSpeed = 2f;
+        spawnDistanceX = 16f;
         FuelGauge = 5f;
     }
-
-   
-
     public EnemyController getPrefabEnemy()
     {
         if (prefabEnemy) return prefabEnemy;
-        else
-        {
-            return null;
-        }
+        return null;
     }
-
-   
+    
 }

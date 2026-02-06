@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Song
   m_EditorClassIdentifier: Assembly-CSharp::VocabData
   Meaning: "S\xF4ng"
-  Kanji: 
-  Hiragana: "\u304B\u308F"
-  Katakana: 
+  Answer: "\u304B\u308F"
+  StateVobcab: 0

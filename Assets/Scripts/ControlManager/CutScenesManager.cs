@@ -33,26 +33,30 @@ public class CutScenesManager : MonoBehaviour
         {
                 
                 _currentOnCompleteCallback = onCompleted;
-                // 1. Lấy kịch bản gốc (TimelineAsset) từ Director
+                // 1. Lấy Timeline Asset
                 var timelineAsset = (TimelineAsset)_director.playableAsset;
-                
-                // 2. Tìm cái Track có tên là "EnemyTrack"
-                // (Dùng LINQ để tìm cho nhanh và gọn)
-                var enemyTrack = timelineAsset.GetOutputTracks()
-                        .FirstOrDefault(t => t.name == _enemyTrackName);
 
-                if (enemyTrack != null)
-                {
-                        // 3. Lấy Animator của con quái
-                        var enemyAnimator = enemyInstance.GetComponent<Animator>();
+// 2. Lấy Animator cần gán
+                var enemyAnimator = enemyInstance.GetComponent<Animator>();
 
-                        // 4. LỆNH QUAN TRỌNG NHẤT: Gán Animator của quái vào Track
-                        _director.SetGenericBinding(enemyTrack, enemyAnimator);
-                }
-                else
+// 3. LỌC TRACK: Dùng .Where() để lấy tất cả track có tên trùng khớp
+                var targetTracks = timelineAsset.GetOutputTracks()
+                        .Where(t => t.name == _enemyTrackName);
+
+// Kiểm tra xem có tìm thấy track nào không (Optional)
+                if (!targetTracks.Any())
                 {
-                        Debug.LogError($"Không tìm thấy track tên {_enemyTrackName} trong Timeline!");
+                        Debug.LogError($"Không tìm thấy track nào tên '{_enemyTrackName}' trong Timeline!");
+                        return;
                 }
+
+// 4. Duyệt qua danh sách và gán binding
+                foreach (var track in targetTracks)
+                {
+                        // Lệnh quan trọng: Gán Animator vào Track
+                        _director.SetGenericBinding(track, enemyAnimator);
+                }
+              
                 
                 _director.playableAsset = timelineAsset;
                 _director.time = 0;
@@ -61,13 +65,19 @@ public class CutScenesManager : MonoBehaviour
                 _director.Play();
         }
 
-        public void PlayFinisherSuccess(Actor enemy, Action action =null)
+        public void PlayFinisherSuccess(float timeStart,Actor enemy, Action action =null)
         {
-                PlayCinematic(finisherSuccess,enemy,action);
+                this.DelayAction(timeStart, (() =>
+                {
+                        PlayCinematic(finisherSuccess, enemy, action);
+                }));
         }
-        public void PlayFinisherFail(Actor enemy,Action action = null)
+        public void PlayFinisherFail(float timeStart,Actor enemy,Action action = null)
         {
-                PlayCinematic(finisherFail,enemy,action);
+                this.DelayAction(timeStart, (() =>
+                {
+                        PlayCinematic(finisherFail,enemy,action);
+                }));
         }
 
 

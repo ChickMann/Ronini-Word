@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: nui
   m_EditorClassIdentifier: Assembly-CSharp::VocabData
   Meaning: "N\xFAi "
-  Kanji: 
-  Hiragana: "\u3084\u307E"
-  Katakana: 
-  isCorrect: 0
+  Answer: "\u3084\u307E"
+  StateVobcab: 0

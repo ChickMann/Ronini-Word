@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: nha ga
   m_EditorClassIdentifier: Assembly-CSharp::VocabData
   Meaning: "Nh\xE0 ga"
-  Kanji: 
-  Hiragana: "\u3048\u304D"
-  Katakana: 
-  isCorrect: 0
+  Answer: "\u3048\u304D"
+  StateVobcab: 0
