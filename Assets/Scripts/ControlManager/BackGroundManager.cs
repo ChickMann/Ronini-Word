@@ -23,6 +23,7 @@ public class BackGroundManager : MonoBehaviour
     [Tooltip("Biểu đồ vận tốc đẩy lùi. Nên copy giống hệt Enemy để đồng bộ.")]
     [SerializeField] private AnimationCurve knockbackCurve = AnimationCurve.EaseInOut(0, 1, 1, 0); 
     [SerializeField] private float knockbackDuration = 0.3f;
+    [SerializeField] private float GlobalMultiplier = 1f;
 
     // THÊM DÒNG NÀY: Biến để test nhanh trong Inspector
     [Header("Debug")]
@@ -97,7 +98,6 @@ public class BackGroundManager : MonoBehaviour
 
     public void TriggerKnockback(float force)
     {
-        // Khởi động Knockback (Lực âm để đẩy lùi về sau)
         _currentKnockbackForce = -force;
         _knockbackTimer = 0f;
         _isKnockingBack = true;
@@ -114,7 +114,6 @@ public class BackGroundManager : MonoBehaviour
     public void SetRunState(bool isRunning)
     {
         _targetRunState = isRunning;
-       // if (isRunning) LeavesForceOverLifetime(baseRunSpeed); else ResetLeavesForceOverLifetime();
     }
     private void ApplyVelocityToLayers()
     {
@@ -141,15 +140,5 @@ public class BackGroundManager : MonoBehaviour
         }
     }
 
-    // private void LeavesForceOverLifetime(float speed)
-    // {
-    //     var forceOverLifetime = leavesParticle.forceOverLifetime;
-    //     forceOverLifetime.x = -speed *0.2f;
-    // }
-    //
-    // private void ResetLeavesForceOverLifetime()
-    // {
-    //     var forceOverLifetime = leavesParticle.forceOverLifetime;
-    //     forceOverLifetime.x = -0.1f;
-    // }
+   
 }

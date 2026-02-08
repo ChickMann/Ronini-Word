@@ -396,6 +396,7 @@ MonoBehaviour:
   animator: {fileID: 5133293268999361980}
   currentState: 0
   enemyData: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
+  speed: 3
   isFuelGausePause: 0
   fuelGauseFirstChar: 2.5
   fuelGaugeSlider: {fileID: 2561273597448739607}

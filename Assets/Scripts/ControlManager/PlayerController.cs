@@ -50,7 +50,6 @@ namespace ControlManager
         protected override void Start()
         {
             base.Start();
-            SetActiveUI(false);
             currentHealth = maxHealth;
             isMoving = false;
             isBrokenStand = false;
@@ -70,6 +69,9 @@ namespace ControlManager
                 Moving(false);
                 Attack();
             }
+
+            if (_combatManager.combatState == CombatState.Ending) SetActiveUI(false);
+            else SetActiveUI(true);
         }
 
         #region Action
@@ -117,7 +119,6 @@ namespace ControlManager
         {
             Stopping();
            FightStand();
-           SetActiveUI(true);
         }
 
         public void DoParry()

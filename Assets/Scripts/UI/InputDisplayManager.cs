@@ -114,7 +114,7 @@ public class InputDisplayManager : MonoBehaviour
 
     #region Input Logic
 
-    private void CheckAnswer(string inputVal)
+    private void CheckAnswer(string inputVal, GameObject b)
     {
         if(isLockedButton) return;
         if (Time.time - _lastInputTime < 0.2f) return;
@@ -133,6 +133,7 @@ public class InputDisplayManager : MonoBehaviour
         if (isMatch)
         {
             HandleCorrectInput(inputVal);
+            b.SetActive(false);
         }
         else
         {
@@ -152,8 +153,8 @@ public class InputDisplayManager : MonoBehaviour
         // Kiểm tra hoàn thành từ
         if (isLastChar)
         {
-            if (!_isWrongInWave && _currentVocabData.StateVobcab != StateVobcab.Perfect) {_currentVocabData.StateVobcab = StateVobcab.Perfect;}
-            else if(!_isWrongInWave && _currentVocabData.StateVobcab != StateVobcab.notPerfect) {_currentVocabData.StateVobcab = StateVobcab.notPerfect;}
+            if (!_isWrongInWave && _currentVocabData.State != StateVocab.Perfect) {_currentVocabData.State = StateVocab.Perfect;}
+            else if(!_isWrongInWave && _currentVocabData.State != StateVocab.NotPerfect) {_currentVocabData.State = StateVocab.NotPerfect;}
             GameEvents.OnSubmitAnswer?.Invoke(_isWrongInWave);
             
         }
@@ -173,6 +174,13 @@ public class InputDisplayManager : MonoBehaviour
 
     public void LockButton(bool isLocked)
     {
+        if (!isLocked)
+        {
+            foreach (Button b in buttonAnswers)
+            {
+                b.gameObject.SetActive(true);
+            }
+        }
         SetPanelActive(!isLocked);
         isLockedButton = isLocked;
     }
@@ -196,9 +204,9 @@ public class InputDisplayManager : MonoBehaviour
                 
                 // Reset trạng thái tương tác
                 buttonAnswers[i].interactable = true;
-                
+                GameObject b = buttonAnswers[i].gameObject;
                 // Capture biến cho Lambda
-                buttonAnswers[i].onClick.AddListener(() => CheckAnswer(charToDisplay));
+                buttonAnswers[i].onClick.AddListener(() => CheckAnswer(charToDisplay,b));
                 buttonAnswers[i].gameObject.SetActive(true);
             }
             else

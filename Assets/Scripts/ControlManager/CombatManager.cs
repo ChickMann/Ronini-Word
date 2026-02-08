@@ -227,7 +227,7 @@ namespace ControlManager
         {
             if (_myImpulse != null)
             {
-                _myImpulse.GenerateImpulse(Vector3.one * 0.1f);
+                _myImpulse.GenerateImpulse(Vector3.one * 0.05f);
             }
         }
         

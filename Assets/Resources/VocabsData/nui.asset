@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5443ac2786a67f49b9a5682454731f7, type: 3}
   m_Name: nui
   m_EditorClassIdentifier: Assembly-CSharp::VocabData
+  _vocabID: 2
   Meaning: "N\xFAi "
   Answer: "\u3084\u307E"
-  StateVobcab: 0
+  State: 0

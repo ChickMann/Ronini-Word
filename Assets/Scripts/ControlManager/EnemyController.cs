@@ -7,6 +7,8 @@ namespace ControlManager
     {
         [Header("Enemy Config")]
         public EnemyProfile enemyData;
+
+        public float speed;
     
         [Header("Fuel Gause Settings")]
         [SerializeField] private bool isFuelGausePause;
@@ -82,8 +84,8 @@ namespace ControlManager
             if (isMoving)
             {
                 if (!enemyData) return;
-                speed = speed==0? 3f: speed;
-                rb2d.linearVelocity = new Vector2(speed* -1f, rb2d.linearVelocity.y);
+                this.speed = speed==0? this.speed: speed;
+                rb2d.linearVelocity = new Vector2(this.speed* -1f, rb2d.linearVelocity.y);
                 if (_backgroundManager)  _backgroundManager.SetRunState(true);
             }
             else

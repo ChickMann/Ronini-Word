@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5443ac2786a67f49b9a5682454731f7, type: 3}
   m_Name: Suoi nuoc nong
   m_EditorClassIdentifier: Assembly-CSharp::VocabData
+  _vocabID: 5
   Meaning: "Su\u1ED1i n\u01B0\u1EDBc n\xF3ng"
   Answer: "\u304A\u3093\u305B\u3093"
-  StateVobcab: 0
+  State: 0
