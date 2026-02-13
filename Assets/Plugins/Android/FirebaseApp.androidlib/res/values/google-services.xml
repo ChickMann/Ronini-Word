@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_android_client_id,@string/default_web_client_id">
+  <string name="firebase_database_url" translatable="false">https://ronin-word-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+  <string name="gcm_defaultSenderId" translatable="false">968082610338</string>
+  <string name="google_storage_bucket" translatable="false">ronin-word.firebasestorage.app</string>
+  <string name="project_id" translatable="false">ronin-word</string>
+  <string name="google_api_key" translatable="false">AIzaSyDpFEGt6thoxwcNz0rcb8RHmZzCoZAKFhU</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDpFEGt6thoxwcNz0rcb8RHmZzCoZAKFhU</string>
+  <string name="google_app_id" translatable="false">1:968082610338:android:3562fed84c943bec9e5ffb</string>
+  <string name="default_android_client_id" translatable="false">968082610338-i7dpmv5keftfse9mkh9g6b0bep0bovu8.apps.googleusercontent.com</string>
+  <string name="default_web_client_id" translatable="false">968082610338-k2ft6bg7ho00f3h19sdq5tng4cq2hnl0.apps.googleusercontent.com</string>
+</resources>

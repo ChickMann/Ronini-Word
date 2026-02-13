@@ -3,11 +3,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+using System.Collections;
 
 public class CutScenesManager : MonoBehaviour
 {
         [SerializeField] private PlayableDirector finisherSuccess;
-        [SerializeField] private PlayableDirector finisherFail;
 
         [SerializeField] private string _enemyTrackName = "EnemyTrack";
         
@@ -15,14 +15,12 @@ public class CutScenesManager : MonoBehaviour
 
         private void OnEnable()
         {
-                finisherFail.stopped += OnDirectorStopped;
                 finisherSuccess.stopped += OnDirectorStopped;
 
         }
 
         private void OnDisable()
         {
-                finisherFail.stopped -= OnDirectorStopped;
                 finisherSuccess.stopped -= OnDirectorStopped;
         }
         /// <summary>
@@ -72,14 +70,51 @@ public class CutScenesManager : MonoBehaviour
                         PlayCinematic(finisherSuccess, enemy, action);
                 }));
         }
-        public void PlayFinisherFail(float timeStart,Actor enemy,Action action = null)
+        /// <summary>
+        /// Lên lịch thực hiện một hành động tại thời điểm cụ thể của Timeline
+        /// </summary>
+        /// <param name="timeInSeconds">Thời điểm muốn kích hoạt (giây)</param>
+        /// <param name="action">Hàm cần chạy</param>
+        public void ScheduleTimelineAction(float timeInSeconds, Action action)
         {
-                this.DelayAction(timeStart, (() =>
+                if (finisherSuccess == null || action == null) return;
+
+                // Nếu timeline đã chạy qua điểm đó rồi thì gọi luôn cho khỏi hụt
+                if (finisherSuccess.time >= timeInSeconds)
                 {
-                        PlayCinematic(finisherFail,enemy,action);
-                }));
+                        action.Invoke();
+                        return;
+                }
+
+                StartCoroutine(WaitForTimeRoutine(timeInSeconds, action));
         }
 
+        private IEnumerator WaitForTimeRoutine(double targetTime, Action action)
+        {
+                // BƯỚC 1 (FIX LỖI CŨ): Đợi cho đến khi Director thực sự bắt đầu chạy
+                // Nếu gọi hàm này trước khi Play(), nó sẽ nằm chờ ở đây chứ không thoát.
+                while (finisherSuccess.state != PlayState.Playing)
+                {
+                        yield return null;
+                }
+
+                // BƯỚC 2: Theo dõi thời gian
+                // Dùng 'double' cho targetTime vì Director.time dùng độ chính xác kép
+                while (finisherSuccess.time < targetTime)
+                {
+                        // Case dự phòng: Nếu Timeline bị Stop giữa chừng (User skip hoặc game over)
+                        // thì hủy theo dõi để không bị kẹt Coroutine vĩnh viễn.
+                        if (finisherSuccess.state != PlayState.Playing) 
+                        {
+                                yield break; // Hủy lệnh
+                        }
+
+                        yield return null;
+                }
+
+                // BƯỚC 3: Kích hoạt
+                action?.Invoke();
+        }
 
         private void OnDirectorStopped(PlayableDirector director)
         {

@@ -16,13 +16,10 @@ public class InputDisplayManager : MonoBehaviour
     [SerializeField] private List<Button> buttonAnswers;
     [SerializeField] private TextMeshProUGUI inputFeedbackText; // Text hiển thị những gì user đã bấm
     [SerializeField] private TextMeshProUGUI vocabQuestionText; // Text câu hỏi/nghĩa
-    [SerializeField] private List<GameObject> panels;
+    [SerializeField] private GameObject panels;
 
     [Header("Runtime State")]
-
     
-   
-
     // Data
     private VocabData _currentVocabData;
     private string _answerHira;
@@ -34,6 +31,7 @@ public class InputDisplayManager : MonoBehaviour
     
     //flag
     private bool _isWrongInWave;
+    private bool _isWrongInVocab;
     [SerializeField] private bool isLockedButton;
 
     private float _lastInputTime;        // Anti-spam
@@ -71,6 +69,7 @@ public class InputDisplayManager : MonoBehaviour
     public void GetVocabData(VocabData vocabData)
     {
         _isWrongInWave = false;
+        _isWrongInVocab = false;
         _currentVocabData = vocabData;
         _answerHira = _currentVocabData.Answer;
         
@@ -83,7 +82,7 @@ public class InputDisplayManager : MonoBehaviour
 
     public void InputNextVocab()
     {
-        _isWrongInWave = false;
+        _isWrongInVocab = false;
         ResetFeedbackText();
        this.DelayAction(0.2f,() => LockButton(false));
     }
@@ -129,7 +128,7 @@ public class InputDisplayManager : MonoBehaviour
             inputVal.Normalize(NormalizationForm.FormC),
             targetChar.Normalize(NormalizationForm.FormC)
         );
-
+        Debug.Log($"CheckAnswer: {inputVal} ");
         if (isMatch)
         {
             HandleCorrectInput(inputVal);
@@ -149,14 +148,12 @@ public class InputDisplayManager : MonoBehaviour
 
         bool isLastChar = _currentIndexAnswer >= _targetCharList.Count;
         GameEvents.OnCharCorrect?.Invoke();
-        
+       
         // Kiểm tra hoàn thành từ
         if (isLastChar)
         {
-            if (!_isWrongInWave && _currentVocabData.State != StateVocab.Perfect) {_currentVocabData.State = StateVocab.Perfect;}
-            else if(!_isWrongInWave && _currentVocabData.State != StateVocab.NotPerfect) {_currentVocabData.State = StateVocab.NotPerfect;}
+            GameDataManager.Instance.OnPlayerAnswered(_currentVocabData.VocabID,!_isWrongInVocab);
             GameEvents.OnSubmitAnswer?.Invoke(_isWrongInWave);
-            
         }
     }
 
@@ -164,7 +161,12 @@ public class InputDisplayManager : MonoBehaviour
     private void HandleWrongInput()
     {
          GameEvents.OnCharWrong?.Invoke();
+    }
+
+    public void SetIsWrongInWave()
+    {
         _isWrongInWave = true;
+        _isWrongInVocab = true;
     }
 
     #endregion
@@ -258,10 +260,7 @@ public class InputDisplayManager : MonoBehaviour
 
     private void SetPanelActive(bool isActive)
     {
-        foreach (GameObject p in panels)
-        {
-            p.SetActive(isActive);
-        }
+        panels.SetActive(isActive);
     }
     
 

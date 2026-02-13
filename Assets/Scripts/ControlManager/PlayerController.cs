@@ -1,3 +1,4 @@
+using SmallHedge.AudioManager;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -82,6 +83,7 @@ namespace ControlManager
             ResetTrigger();
             isBrokenStand = true;
             BrokenStand(true);
+            SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.BrokenStand);
         }
 
         private void DeactiveBrokenStand()
@@ -124,13 +126,13 @@ namespace ControlManager
         public void DoParry()
         {
             base.NextAttack();
-            PlayerEffectSword();
+            PlayEffectSword();
         }
 
         public override void OnFocus()
         {
             base.OnFocus();
-            PlayerEffectSword();
+            PlayEffectSword();
         }
 
 
@@ -138,19 +140,24 @@ namespace ControlManager
     
         #region Sound Effect And Particle
 
-        public void PlayerEffectSword()
+        public void PlayEffectSword()
         {
             if (attackParticle) 
                 attackParticle.Play();
-          
-            GameManager.Instance.PlayerSwordEffect();
+            
+            SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.Parry);
 
         }
         
         private void ToggleFootStepEffect(bool isPlay)
         {
-            GameManager.Instance.PlayerFootStepEffect(isPlay);
+            
             if(runParticle && isPlay) runParticle.Play();
+        }
+
+        public void PlaySoundFootStep()
+        {
+            SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.Footstep);
         }
 
 
@@ -167,6 +174,7 @@ namespace ControlManager
             }
             TakeDamage();
             CurrentHealth--;
+            SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.Hurt);
             UpdateHealthUI(false);
             if(currentHealth==1) ActiveBrokenStand();
             if (CurrentHealth <= 0)
@@ -194,6 +202,7 @@ namespace ControlManager
 
         public void SetShield(bool isShield)
         {
+            SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.Shield);
             hasShield = isShield;
             UpdateShieldUI(isShield);
         }
@@ -201,7 +210,6 @@ namespace ControlManager
         private void UpdateHealthUI(bool isIncrease)
         {
             if(currentHealth <0) return;
-            Debug.Log(heartUI[currentHealth]);
             Image heart = heartUI[currentHealth].GetComponent<Image>();
             if (!isIncrease) heart.sprite = heartBreak;
             else heart.sprite = heartAdd;

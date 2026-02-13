@@ -1,4 +1,5 @@
 using System;
+using SmallHedge.AudioManager;
 using UnityEngine;
 
 /// <summary>
@@ -45,6 +46,7 @@ public class Actor : MonoBehaviour
     public virtual void CancelNextAttack()
     {
         _hasNextAttack = false;
+        animator.ResetTrigger(AnimID.Attacking);
     }
     
 
@@ -99,14 +101,13 @@ public class Actor : MonoBehaviour
     {
         animator.SetTrigger(AnimID.Focusing);
         currentState = ActorState.Focusing;
-            Debug.Log(currentState);
     }
 
     public virtual void BrokenStand(bool isBroken)
     {
-      
             animator.SetBool(AnimID.BrokenStand,isBroken);
             currentState = ActorState.BrokenStand;
+            
     }
     public virtual void Die()
     {
@@ -117,7 +118,7 @@ public class Actor : MonoBehaviour
 
     public void ResetTrigger()
     {
-        animator.ResetTrigger(AnimID.FightStand);
+        animator.ResetTrigger(AnimID.FightStand);   
         animator.ResetTrigger(AnimID.Stopping);
         animator.ResetTrigger(AnimID.Idle);
     }

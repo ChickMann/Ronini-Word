@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: f03e6b0eff9e49dea2b647c11635a1a6
+timeCreated: 1723866501
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208355
+  packageName: Easy Integration Tool for Firebase
+  packageVersion: 2.0.0
+  assetPath: Assets/NarrowEF/Scripts/Auth/AuthResult.cs
+  uploadId: 774821

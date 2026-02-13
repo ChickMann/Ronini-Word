@@ -1,9 +1,10 @@
 === DANH SÁCH TỪ VỰNG RONIN WORD ===
-Tổng số: 5 từ
+Tổng số: 6 từ
 ------------------------------------
-ID: Tên File (Nghĩa) - Dáp án
+ID: Tên File (Nghĩa) - Đáp án
 1: nha ga (Nhà ga) - えき
 2: nui (Núi ) - やま
 3: O to (Ô tô) - くるま
 4: Song (Sông) - かわ
 5: Suoi nuoc nong (Suối nước nóng) - おんせん
+6: o to () - 

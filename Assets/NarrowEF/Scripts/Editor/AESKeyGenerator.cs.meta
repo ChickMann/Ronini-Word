@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: dd6aea4e51102c747940700db96422a6
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208355
+  packageName: Easy Integration Tool for Firebase
+  packageVersion: 2.0.0
+  assetPath: Assets/NarrowEF/Scripts/Utils/AESKeyGenerator.cs
+  uploadId: 774821

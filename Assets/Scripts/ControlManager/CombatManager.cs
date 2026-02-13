@@ -16,7 +16,6 @@ namespace ControlManager
     {
         [Header("Config")] 
         [SerializeField] private float timeDelayReady = 1f;
-        [SerializeField] private float globalSpeedMultiplier = 1f;
 
         [Header("Knockback Settings")] 
         [SerializeField] private float backgroundKnockbackForce = 10f; 
@@ -91,19 +90,19 @@ namespace ControlManager
             playerController.CancelNextAttack();
             if (_currentWaveIndex >= _curentLevelData.Waves.Count)
             {
-                CompletedLevel();
+                OnEndGame();
                 return;
             }
             _currentWave = _curentLevelData.Waves[_currentWaveIndex];
-            SpawnEnemy(_currentWave.EnemyProfile);
+            SpawnEnemy(_currentWave.EnemyProfile,_currentWave.VocabList.Count);
             combatState = CombatState.Running;
         }
 
-        private void SpawnEnemy(EnemyProfile profile)
+        private void SpawnEnemy(EnemyProfile profile, int countVocab)
         {
             Vector2 pos = new Vector2(transform.position.x + profile.spawnDistanceX, transform.position.y);
             CurrentEnemy = Instantiate(profile.getPrefabEnemy(), pos, Quaternion.identity);
-            CurrentEnemy.SetupEnemyData(profile);
+            CurrentEnemy.SetupEnemyData(profile,countVocab);
         }
 
         public void OnReadyToFight()
@@ -114,6 +113,7 @@ namespace ControlManager
                 combatState = CombatState.Fighting;
                 StartCombatRound();
                 playerController.ReadyToFight();
+                CurrentEnemy.FightStand();
             });
         }
 
@@ -150,7 +150,8 @@ namespace ControlManager
             if(combatState == CombatState.Ending) return;
             bool isFinisher = _currentVocabIndex >= _currentWave.VocabList.Count-1;
             bool isBorken = _currentVocabIndex == _currentWave.VocabList.Count-2;
-            Debug.Log("Finisher: " + isFinisher);
+            CurrentEnemy.HealthDecrease();
+          
             if (isFinisher)
             {
                 if(!isWrongInWave) playerController.AddHealth();
@@ -162,13 +163,16 @@ namespace ControlManager
                
                 if (isBorken)
                 {
+                    SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.BrokenStand);
                     CurrentEnemy.BrokenStand(true);
                     playerController.ResetTrigger();
                     
                     playerController.OnFocusing();
                 }
                 NextVocab();
+           
             }
+            
 
         }
         private void OnCharCorrect()
@@ -177,7 +181,6 @@ namespace ControlManager
           if(playerController.currentState == ActorState.Focusing) playerController.OnFocus();
           else playerController.DoParry();
           CurrentEnemy.ResetFuelGauge();
-          
         }
 
         private void OnCharWrong()
@@ -186,6 +189,9 @@ namespace ControlManager
             CurrentEnemy.NextAttack();
             playerController.DecreaseHealth();
             CurrentEnemy.ResetFuelGauge();
+          DoCinematicShake();
+          GameManager.Instance.inputDisplayManager.SetIsWrongInWave();
+            
         }
 
         private void ExecuteWinFinisher()
@@ -193,7 +199,12 @@ namespace ControlManager
             Debug.Log("PERFECT FINISHER!");
             GameManager.Instance.inputDisplayManager.LockButton(true);
             CurrentEnemy.SetActiveFuelSlider(false);
-            this.DelayAction(0.5f, CurrentEnemy.Die);
+            // this.DelayAction(1.85f, CurrentEnemy.Die);
+            GameManager.Instance.CutScenesManager.ScheduleTimelineAction(1.22f, () =>
+            {
+                CurrentEnemy.Die();
+                CurrentEnemy.SetActiveHealth(false);
+            });
             GameManager.Instance.CutScenesManager.PlayFinisherSuccess(0.5f,CurrentEnemy,(() =>
             {   
                 playerController.ResetTrigger();
@@ -210,6 +221,8 @@ namespace ControlManager
             GameManager.Instance.inputDisplayManager.LockButton(true);
             CurrentEnemy.SetActiveFuelSlider(false);
            combatState = CombatState.Ending;
+           CurrentEnemy.SetActiveHealth(false);
+         GameDataManager.Instance.OnWaveEnded();
         }
      
         private void KillEnemyAndNextWave(float timeDestroy)
@@ -219,15 +232,12 @@ namespace ControlManager
             StartWave();
         }
 
-        private void CompletedLevel()
-        {
-            combatState = CombatState.Ending;
-        }
+  
         public void DoCinematicShake()
         {
             if (_myImpulse != null)
             {
-                _myImpulse.GenerateImpulse(Vector3.one * 0.05f);
+                _myImpulse.GenerateImpulse(Vector3.right * 0.3f);
             }
         }
         

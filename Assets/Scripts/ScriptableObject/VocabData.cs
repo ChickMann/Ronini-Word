@@ -22,7 +22,6 @@ public class VocabData : ScriptableObject
     [Header("Data")]
     public string Meaning;
     public string Answer;
-    public StateVocab State = StateVocab.None;
 
     private void Reset()
     {

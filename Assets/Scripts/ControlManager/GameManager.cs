@@ -1,4 +1,5 @@
 using ControlManager;
+using SmallHedge.AudioManager;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,11 +16,14 @@ public class GameManager : MonoBehaviour
     public BackGroundManager backGroundManager;
     public InputDisplayManager inputDisplayManager;
     public CombatManager combatManager; 
-    public AudioManager audioManager;
     public CutScenesManager CutScenesManager;
+    public ScoresManager ScoresManager;
+    public LoginWithGoogle LoginWithGoogle;
+    public GameObject panel;
     
     private void Awake()
     {
+        SmallHedge.AudioManager.AudioManager.PlayMusic(MusicType.MusicMenu);
         // Singleton Implementation
         if (Instance != null && Instance != this) 
         {
@@ -36,8 +40,10 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Start Level")]
     public void StartLevel()
     {
+        SmallHedge.AudioManager.AudioManager.PlayMusic(MusicType.MusicFight);
         gameState = GameState.Playing;
         combatManager.SetUpStartLevel(currentLevelData);
+        panel.SetActive(false);
     }
 
     public void EndLevel()
@@ -46,18 +52,4 @@ public class GameManager : MonoBehaviour
         combatManager.OnEndGame();
     }
 
-
-    // --- Audio Proxies ---
-    public void PlayerSwordEffect()
-    {
-        if(audioManager) audioManager.PlaySwordSound();
-    }
-    
-    public void PlayerFootStepEffect(bool isPlay)
-    {
-        if(audioManager) audioManager.PlayFootStep(isPlay);
-    }
-    
-    
-   
 }

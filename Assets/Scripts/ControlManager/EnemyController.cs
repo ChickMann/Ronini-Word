@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,34 +9,41 @@ namespace ControlManager
     {
         [Header("Enemy Config")]
         public EnemyProfile enemyData;
-
+        public int health;
         public float speed;
     
         [Header("Fuel Gause Settings")]
         [SerializeField] private bool isFuelGausePause;
         [SerializeField] private float fuelGauseFirstChar;
-
-
+        
         [Header("UI References")]
         [SerializeField] private Slider fuelGaugeSlider;
+        [SerializeField] private GameObject healthContainer;
+        
+        [Header("Prefab References")]
+        [SerializeField] private GameObject healthPrefab;
+        [SerializeField] private Sprite heartBreak;
         
         [Header("Debug")]
         [SerializeField] private float currentFuelGauge;
+        [SerializeField] private int currentIndexHealth;
    
         // State
         public bool hasPlayerDetected { get; private set; }
 
         // Components & Cache
-        public Rigidbody2D rb2d;
+        private Rigidbody2D rb2d;
         private BackGroundManager _backgroundManager;
         private CombatManager _combatManager;
-        
+        private List<GameObject> heathList;
 
         protected override void Awake()
         {
             base.Awake();
             rb2d = GetComponent<Rigidbody2D>();
             _combatManager = GameManager.Instance.combatManager;
+            heathList = new List<GameObject>();
+            currentIndexHealth = 0;
         }
 
         protected override void Start()
@@ -72,11 +81,12 @@ namespace ControlManager
         public void SetHasPlayerDetected(bool hasPlayerDetected) => this.hasPlayerDetected = hasPlayerDetected;
      
 
-        public void SetupEnemyData(EnemyProfile data)
+        public void SetupEnemyData(EnemyProfile data,int countVocab)
         {
             enemyData = data;
             if (_backgroundManager) _backgroundManager.SetRunState(false);
-
+            health = countVocab;
+            InstantiateHealth();
         }
 
         private void Moving(bool isMoving,float speed =0)
@@ -92,6 +102,28 @@ namespace ControlManager
             {
                 if (_backgroundManager) _backgroundManager.SetRunState(false);
             }
+            
+        }
+
+        private void InstantiateHealth()
+        {
+            for (int i = 0; i < health; i++)
+            {
+               GameObject a = Instantiate(healthPrefab, healthContainer.transform);
+               heathList.Add(a);
+            }
+        }
+
+        public void HealthDecrease()
+        {
+           if(currentIndexHealth> health) return;
+            heathList[currentIndexHealth].GetComponent<Image>().sprite = heartBreak;
+            currentIndexHealth++;
+        }
+
+        public void SetActiveHealth(bool isActive)
+        {
+            healthContainer.SetActive(isActive);
         }
 
         #region Fuel_Gauge

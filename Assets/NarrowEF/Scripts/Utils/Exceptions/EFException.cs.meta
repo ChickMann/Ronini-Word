@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 5ade440fb3bb4f929e0926800070fd24
+timeCreated: 1723855714
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208355
+  packageName: Easy Integration Tool for Firebase
+  packageVersion: 2.0.0
+  assetPath: Assets/NarrowEF/Scripts/Utils/Exceptions/EFException.cs
+  uploadId: 774821
