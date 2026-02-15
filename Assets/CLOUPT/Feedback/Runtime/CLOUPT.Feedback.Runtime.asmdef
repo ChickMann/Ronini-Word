@@ -1,0 +1,17 @@
+{
+    "name": "CLOUPT.Feedback.Runtime",
+    "rootNamespace": "CLOUPT.Feedback",
+    "references": [
+        "CLOUPT.Core.Runtime",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

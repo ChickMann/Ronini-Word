@@ -28,7 +28,7 @@ public class GameDataManager : MonoBehaviour
     {
         // [FIX] CHỜ ĐĂNG NHẬP
         // Đợi cho đến khi Firebase lấy được User ID hoặc quá 5 giây (timeout)
-        Debug.Log("⏳ Đang đợi kết nối Firebase...");
+        Debug.Log(" Đang đợi kết nối Firebase...");
         
         float timer = 0;
         while (FirebaseAuth.DefaultInstance.CurrentUser == null && timer < 5f)
@@ -140,10 +140,10 @@ public class GameDataManager : MonoBehaviour
         Debug.Log(" BẮT ĐẦU DỌN DẸP DỮ LIỆU CŨ...");
 
         // 1. Xóa file save vật lý (JSON) trong máy
-        string path = System.IO.Path.Combine(Application.persistentDataPath, "user_backup.json");
-        if (System.IO.File.Exists(path))
+        string path = Path.Combine(Application.persistentDataPath, "user_backup.json");
+        if (File.Exists(path))
         {
-            System.IO.File.Delete(path);
+            File.Delete(path);
             Debug.Log("🗑️ Đã xóa file user_backup.json");
         }
 

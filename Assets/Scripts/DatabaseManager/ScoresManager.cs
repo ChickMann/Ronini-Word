@@ -72,6 +72,7 @@ public class ScoresManager : MonoBehaviour
             // Quan trọng: Cập nhật state NGAY LẬP TỨC để tránh lỗi logic nếu hỏi lại từ này
             VocabFirebaseManager.Instance.UpdateVocabState(vocabID, newState);
             Debug.Log($"---> Từ mới: +{scoreToAdd} điểm");
+            PixelTextController.Instance.ScoreTextAnimation(scoreToAdd);
         }
         else if (oldState == 1) // Case 2: Từ cũ (Chưa hoàn hảo)
         {
@@ -80,6 +81,7 @@ public class ScoresManager : MonoBehaviour
                 scoreToAdd = 2; // Bù điểm (5 - 3 = 2)
                 VocabFirebaseManager.Instance.UpdateVocabState(vocabID, 2); // Up lên Perfect
                 Debug.Log($"---> Nâng cấp: +{scoreToAdd} điểm");
+                PixelTextController.Instance.ScoreTextAnimation(scoreToAdd);
             }
             else
             {
@@ -143,37 +145,60 @@ public class ScoresManager : MonoBehaviour
 
     public async Task SaveScoreToCloudAsync()
     {
-        // ... (Đoạn cộng điểm giữ nguyên) ...
-        LocalTotalScore += _currentWaveScore;
-        _currentWaveScore = 0; 
-        UpdateUI();
+        if (_currentWaveScore <= 0) return; // Bỏ qua nếu không có điểm để cộng
 
-        // [FIX 3] Lại kiểm tra an toàn trước khi lưu
+        // 1. Tính toán điểm mục tiêu BẮT BUỘC TRƯỚC khi chạy hiệu ứng
+        int targetTotalScore = LocalTotalScore + _currentWaveScore;
+
+        // 2. Chạy hiệu ứng cộng điểm mượt mà (vd: trong 1 giây)
+        await PlayScoreTransferEffectAsync(targetTotalScore, 0.5f);
+
+        // 3. Tiến hành lưu Cloud
         InitDataChannel();
+    }
 
-        try
+    /// <summary>
+    /// Hiệu ứng chuyển điểm từ WaveScore sang TotalScore mượt mà theo thời gian.
+    /// </summary>
+    private async Task PlayScoreTransferEffectAsync(int targetTotalScore, float duration)
+    {
+        int startTotal = LocalTotalScore;
+        int startWave = _currentWaveScore;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
         {
-            // Gọi SetInteger
-            int serverScore = await _scoreDataChannel.SetInteger(LocalTotalScore);
-            // ... (Giữ nguyên code cũ) ...
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+
+            // Mathf.Lerp giúp con số tăng/giảm mượt mà bất kể khoảng cách điểm lớn hay nhỏ
+            LocalTotalScore = Mathf.RoundToInt(Mathf.Lerp(startTotal, targetTotalScore, t));
+            _currentWaveScore = Mathf.RoundToInt(Mathf.Lerp(startWave, 0, t));
+
+            UpdateUI();
+
+            // Trả quyền điều khiển lại cho Unity Main Thread để vẽ UI frame này,
+            // sau đó tiếp tục vòng lặp ở frame tiếp theo.
+            await Task.Yield(); 
         }
-        catch (Exception ex)
-        {
-            Debug.LogError($"[CLOUD] Lỗi Upload điểm: {ex.Message}");
-        }
+
+        // Đảm bảo sau khi kết thúc hiệu ứng, con số là chính xác tuyệt đối
+        LocalTotalScore = targetTotalScore;
+        _currentWaveScore = 0;
+        UpdateUI();
     }
 
     // --- 3. UI ---
 
     private void UpdateUI()
     {
-        if (txtTotalScore) txtTotalScore.text = $"{LocalTotalScore}";
+        if (txtTotalScore) txtTotalScore.text = $"TotalScore: {LocalTotalScore}";
         
         // Chỉ hiện điểm cộng thêm nếu > 0
         if (txtWaveScore) 
         {
-            txtWaveScore.text = _currentWaveScore > 0 ? $"{_currentWaveScore}" : "";
-            txtWaveScore.gameObject.SetActive(_currentWaveScore > 0);
+            txtWaveScore.text = $"Score: {_currentWaveScore}";
+           
         }
     }
     

@@ -121,7 +121,10 @@ public class Actor : MonoBehaviour
         animator.ResetTrigger(AnimID.FightStand);   
         animator.ResetTrigger(AnimID.Stopping);
         animator.ResetTrigger(AnimID.Idle);
+        animator.ResetTrigger(AnimID.Focusing);
+
     }
+    
 
     /// <summary>
     /// Animation Event: Gọi khi kết thúc animation tấn công.

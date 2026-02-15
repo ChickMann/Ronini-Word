@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 46a69388dd40c22489e1c0e243ac015f
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 289930
+  packageName: Simple Feedback Form
+  packageVersion: 1.0.1
+  assetPath: Assets/CLOUPT/Core/UI/Fonts/OFL.txt
+  uploadId: 847616

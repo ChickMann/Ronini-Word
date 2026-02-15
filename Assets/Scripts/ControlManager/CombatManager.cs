@@ -20,7 +20,8 @@ namespace ControlManager
         [Header("Knockback Settings")] 
         [SerializeField] private float backgroundKnockbackForce = 10f; 
         
-        [Header("Refs")] [SerializeField] private PlayerController playerController;
+        [Header("Refs")] 
+        [SerializeField] private PlayerController playerController;
         
         private CinemachineImpulseSource _myImpulse;
         
@@ -35,9 +36,7 @@ namespace ControlManager
         // State Runtime
         public EnemyController CurrentEnemy { get; private set; }
         public CombatState combatState;
-
-        // Stats
-        private int TotalMistakes;
+        
 
         // Timer
         private float _attackTimer;
@@ -80,17 +79,23 @@ namespace ControlManager
         {
             _curentLevelData = data;
             _currentWaveIndex = 0;
-            TotalMistakes = 0;
+            _currentVocabIndex = 0;
+            if (CurrentEnemy) 
+            {
+                Destroy(CurrentEnemy.gameObject);
+            }
             StartWave();
+            playerController.ResetPlayer();
         }
 
         private void StartWave()
         {
+            GameManager.Instance.inputDisplayManager.ResetStartWave();
             playerController.ResetTrigger();
             playerController.CancelNextAttack();
             if (_currentWaveIndex >= _curentLevelData.Waves.Count)
             {
-                OnEndGame();
+               GameManager.Instance.EndLevel();
                 return;
             }
             _currentWave = _curentLevelData.Waves[_currentWaveIndex];
@@ -119,7 +124,6 @@ namespace ControlManager
 
         private void StartCombatRound()
         {
-            Debug.Log("Start Combat Round");
             CurrentEnemy.SetActiveFuelSlider(true);
             _currentVocabIndex = 0;
             _curentLevelData.Waves[_currentWaveIndex].VocabList.Shuffle();
@@ -185,7 +189,6 @@ namespace ControlManager
 
         private void OnCharWrong()
         {
-            TotalMistakes++;
             CurrentEnemy.NextAttack();
             playerController.DecreaseHealth();
             CurrentEnemy.ResetFuelGauge();
@@ -241,5 +244,23 @@ namespace ControlManager
             }
         }
         
+        public void ResetLevlel()
+        {
+            combatState = CombatState.Running;
+            // 1. Hủy Enemy hiện tại trên Scene (nếu có) để chuẩn bị spawn con mới
+            if (CurrentEnemy) 
+            {
+                Destroy(CurrentEnemy.gameObject);
+            }
+
+            // 2. Reset lại index của từ vựng về 0
+            _currentVocabIndex = 0;
+            _currentWaveIndex = 0;
+            
+            // 3. Bắt đầu lại wave hiện tại (StartWave đã bao gồm logic reset UI và Player)
+            StartWave();
+            playerController.ResetPlayer();
+        }
+      
     }
 }

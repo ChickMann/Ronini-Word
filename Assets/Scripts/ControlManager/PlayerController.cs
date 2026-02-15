@@ -83,7 +83,7 @@ namespace ControlManager
             ResetTrigger();
             isBrokenStand = true;
             BrokenStand(true);
-            SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.BrokenStand);
+           AudioManager.PlaySound(SoundType.BrokenStand);
         }
 
         private void DeactiveBrokenStand()
@@ -145,7 +145,7 @@ namespace ControlManager
             if (attackParticle) 
                 attackParticle.Play();
             
-            SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.Parry);
+            AudioManager.PlaySound(SoundType.Parry);
 
         }
         
@@ -157,7 +157,7 @@ namespace ControlManager
 
         public void PlaySoundFootStep()
         {
-            SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.Footstep);
+            AudioManager.PlaySound(SoundType.Footstep);
         }
 
 
@@ -174,7 +174,7 @@ namespace ControlManager
             }
             TakeDamage();
             CurrentHealth--;
-            SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.Hurt);
+            AudioManager.PlaySound(SoundType.Hurt);
             UpdateHealthUI(false);
             if(currentHealth==1) ActiveBrokenStand();
             if (CurrentHealth <= 0)
@@ -202,7 +202,7 @@ namespace ControlManager
 
         public void SetShield(bool isShield)
         {
-            SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.Shield);
+            AudioManager.PlaySound(SoundType.Shield);
             hasShield = isShield;
             UpdateShieldUI(isShield);
         }
@@ -226,20 +226,41 @@ namespace ControlManager
         {
             uiContainer.SetActive(isActive);
         }
-        [ContextMenu( "Add Health Test")]
-        public void AddHealthTest()
+
+        public void ResetPlayer()
         {
-            AddHealth();
-        }
-        [ContextMenu( "Add Shield Test")]
-        public void AddShieldTest()
-        {
-           SetShield(true);
-        }
-        [ContextMenu( "remove Shield Test")]
-        public void RemoveShieldTest()
-        {
-            SetShield(false);
+            // 1. Reset dữ liệu số
+            currentHealth = maxHealth;
+            hasShield = false;
+
+            // 2. Reset toàn bộ UI Tim (Phải dùng vòng lặp để đảm bảo TẤT CẢ đều sáng lại)
+            if (heartUI != null)
+            {
+                foreach (var heartObj in heartUI)
+                {
+                    if (heartObj != null)
+                    {
+                        // Gán trực tiếp sprite đầy máu
+                        var img = heartObj.GetComponent<Image>();
+                        if (img != null) img.sprite = heartAdd; 
+                    }
+                }
+            }
+
+            // 3. Reset UI Khiên (Về trạng thái tắt/vỡ)
+            if (shieldUI != null)
+            {
+                var shieldImg = shieldUI.GetComponent<Image>();
+                if (shieldImg != null) shieldImg.sprite = shieldBreak;
+            }
+
+            // 4. Reset trạng thái Animation & Logic
+            ResetTrigger();         // Xóa các trigger tấn công/bị thương còn tồn đọng
+            DeactiveBrokenStand();  // Tắt trạng thái thở dốc
+            Idle();                 // Về trạng thái đứng chờ
+    
+            // 5. Bật lại UI (đề phòng trường hợp game over bị tắt đi)
+            SetActiveUI(true);
         }
         #endregion
     

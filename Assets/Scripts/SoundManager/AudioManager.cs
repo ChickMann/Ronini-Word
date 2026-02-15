@@ -14,7 +14,10 @@ namespace SmallHedge.AudioManager
         [SerializeField] private SoundsSO soundsSO;
         [SerializeField] private MusicsSO musicsSO;
         private static AudioManager instance = null;
-        private AudioSource audioSource;
+        
+        // [FIX 1] Tách biệt 2 AudioSource
+        private AudioSource musicSource; 
+        private AudioSource sfxSource;
 
         private Coroutine _musicCoroutine;
 
@@ -23,7 +26,11 @@ namespace SmallHedge.AudioManager
             if (!instance)
             {
                 instance = this;
-                audioSource = GetComponent<AudioSource>();
+                // Nguồn phát nhạc (Dùng Component có sẵn trên GameObject)
+                musicSource = GetComponent<AudioSource>();
+                
+                // Tự động tạo thêm 1 nguồn phát SFX ẩn ngay lúc Runtime
+                sfxSource = gameObject.AddComponent<AudioSource>();
             }
         }
 
@@ -42,22 +49,23 @@ namespace SmallHedge.AudioManager
             }
             else
             {
-                instance.audioSource.outputAudioMixerGroup = instance.soundsSO.mixer;
-                instance.audioSource.PlayOneShot(randomClip, volume * soundList.volume);
+                // [FIX 2] Dùng sfxSource độc lập, không đụng chạm đến nhạc nền
+                instance.sfxSource.outputAudioMixerGroup = instance.soundsSO.mixer;
+                instance.sfxSource.PlayOneShot(randomClip, volume * soundList.volume);
             }
         }
 
         public static void PlayMusic(MusicType music, AudioSource source = null, float volume = 1,
             float fadeDuration = 1.0f)
         {
-            var targetSource = source ? source : instance.audioSource;
+            // [FIX 3] Mặc định dùng musicSource
+            var targetSource = source ? source : instance.musicSource;
 
-            if (targetSource == instance.audioSource)
+            if (targetSource == instance.musicSource)
             {
                 if (instance._musicCoroutine != null)
                     instance.StopCoroutine(instance._musicCoroutine);
 
-                // Truyền -1 vào lastIndex để bài đầu tiên có thể là bất kỳ bài nào
                 instance._musicCoroutine = instance.StartCoroutine(
                     instance.PlayMusicRandomInList(music, targetSource, volume, fadeDuration, -1)
                 );
@@ -70,11 +78,10 @@ namespace SmallHedge.AudioManager
             }
         }
 
-// Coroutine xử lý: Random trong cùng 1 list + Không lặp lại bài cũ
         private IEnumerator PlayMusicRandomInList(MusicType type, AudioSource source, float maxVolume, float fadeTime,
             int lastIndex)
         {
-            // --- BƯỚC 1: FADE OUT (Nếu đang phát) ---
+            // --- BƯỚC 1: FADE OUT ---
             if (source.isPlaying && source.volume > 0)
             {
                 float startVol = source.volume;
@@ -90,7 +97,7 @@ namespace SmallHedge.AudioManager
                 source.Stop();
             }
 
-            // --- BƯỚC 2: CHỌN BÀI MỚI (TRỪ BÀI CŨ RA) ---
+            // --- BƯỚC 2: CHỌN BÀI MỚI ---
             int typeIndex = (int)type;
             if (typeIndex < 0 || typeIndex >= musicsSO.musics.Length) yield break;
 
@@ -100,22 +107,14 @@ namespace SmallHedge.AudioManager
             if (clips == null || clips.Length == 0) yield break;
 
             int nextIndex = 0;
-
-            // Logic Random thông minh:
-            // Nếu danh sách có nhiều hơn 1 bài, ta sẽ random cho đến khi ra bài KHÁC bài vừa phát (lastIndex)
             if (clips.Length > 1)
             {
-                int attempts = 20; // Giới hạn số lần thử để tránh treo máy (Safety first)
+                int attempts = 20; 
                 do
                 {
                     nextIndex = UnityEngine.Random.Range(0, clips.Length);
                     attempts--;
                 } while (nextIndex == lastIndex && attempts > 0);
-            }
-            else
-            {
-                // Nếu chỉ có 1 bài thì bắt buộc phải phát lại bài đó (index 0)
-                nextIndex = 0;
             }
 
             // --- BƯỚC 3: PLAY & FADE IN ---
@@ -123,7 +122,8 @@ namespace SmallHedge.AudioManager
             float finalVolume = maxVolume * musicData.volume;
 
             source.clip = nextClip;
-            source.outputAudioMixerGroup = musicsSO.mixer;
+            // [FIX 4] Trực tiếp gọi instance để code tường minh, tránh lỗi luồng ngầm của Coroutine
+            source.outputAudioMixerGroup = instance.musicsSO.mixer; 
             source.Play();
 
             float timer = 0;
@@ -143,24 +143,22 @@ namespace SmallHedge.AudioManager
                 yield return null;
             }
 
-            // --- BƯỚC 5: GỌI TIẾP BÀI SAU (ĐỆ QUY) ---
-            // Truyền nextIndex hiện tại vào làm lastIndex cho lần gọi sau
-            // Giữ nguyên MusicType cũ
+            // --- BƯỚC 5: ĐỆ QUY GỌI TIẾP ---
             instance._musicCoroutine = instance.StartCoroutine(
                 instance.PlayMusicRandomInList(type, source, maxVolume, fadeTime, nextIndex)
             );
         }
 
-// --- DEBUG ---
         [ContextMenu("🐛 Debug: Skip To End")]
         public void DebugSkipToEnd()
         {
-            if (audioSource != null && audioSource.clip != null && audioSource.isPlaying)
+            // Sửa lại thành kiểm tra musicSource
+            if (musicSource != null && musicSource.clip != null && musicSource.isPlaying)
             {
-                float debugTime = audioSource.clip.length - 3.0f;
+                float debugTime = musicSource.clip.length - 3.0f;
                 if (debugTime > 0)
                 {
-                    audioSource.time = debugTime;
+                    musicSource.time = debugTime;
                     Debug.Log($"[SoundManager] ⏩ Skipped. Next random song (non-repeating) coming up!");
                 }
             }

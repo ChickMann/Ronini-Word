@@ -10,15 +10,15 @@ namespace Tests
         [Test]
         public void JapaneseData_BasicHiragana_IsNotEmpty()
         {
-            Assert.IsNotNull(JapaneseData.BasicHiragana);
-            Assert.IsTrue(JapaneseData.BasicHiragana.Count > 0, "Dữ liệu Hiragana cơ bản không được rỗng.");
+            Assert.IsNotNull(JapaneseData.basicHiraAndKata);
+            Assert.IsTrue(JapaneseData.basicHiraAndKata.Count > 0, "Dữ liệu Hiragana cơ bản không được rỗng.");
         }
 
         [Test]
         public void JapaneseData_ContainsCommonChars()
         {
-            Assert.IsTrue(JapaneseData.BasicHiragana.Contains("あ"));
-            Assert.IsTrue(JapaneseData.BasicHiragana.Contains("ん"));
+            Assert.IsTrue(JapaneseData.basicHiraAndKata.Contains("あ"));
+            Assert.IsTrue(JapaneseData.basicHiraAndKata.Contains("ん"));
         }
 
         // Test logic đếm lỗi (Mistake) thay cho Score

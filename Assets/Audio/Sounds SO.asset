@@ -32,7 +32,7 @@ MonoBehaviour:
     sounds:
     - {fileID: 8300000, guid: 1bed5ab4e44bba543a2aac2d72917997, type: 3}
   - name: BrokenStand
-    volume: 1
+    volume: 0.7
     sounds:
     - {fileID: 8300000, guid: 7e143caa0168d36498430dc631571c9f, type: 3}
   - name: Shield

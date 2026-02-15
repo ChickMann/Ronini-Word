@@ -4,111 +4,124 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15996b24-b822-4b42-b432-4f257800d9a0" name="Changes" comment="">
+    <list default="true" id="15996b24-b822-4b42-b432-4f257800d9a0" name="Changes" comment="remove unused enemy animations, audio, and prefab assets">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.prototype project SSG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.prototype project SSG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Enemy/fright.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Enemy/fright/attack1.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Enemy/fright/attack1.aseprite.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Enemy/fright/attack2.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Enemy/fright/attack2.aseprite.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Enemy/fright/attack3.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Enemy/fright/attack3.aseprite.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Enemy/fright/die.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Enemy/fright/die.aseprite.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Enemy/fright/idle.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Enemy/fright/idle.aseprite.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animator/Player/Clip/run5_Clip.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animator/Player/Clip/run5_Clip.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animator/Player/PlayerAnim.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animator/Player/PlayerAnim.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/Queen of the White Dawn.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/Queen of the White Dawn.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/Sekiro Parry.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/Sekiro Parry.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/elden-ring-loss-of-balance.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/elden-ring-loss-of-balance.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/hurt.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/hurt.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/samurai-slash-6845.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/samurai-slash-6845.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/sword-clashhit-393837.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/sword-clashhit-393837.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/youre-a-stone-luigi.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/youre-a-stone-luigi.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CutScene/a/FinisherCutScene.playable" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CutScene/a/FinisherCutScene.playable" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/EnemysData/EnemyProfile.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/EnemysData/EnemyProfile.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/VocabsData/O to.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/VocabsData/O to.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/VocabsData/VocabsListText/VocabList_Export.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/VocabsData/VocabsListText/VocabList_Export.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Musics SO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/Musics SO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Sounds SO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/Sounds SO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Tests/GameLogicTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Tests/GameLogicTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Monk.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Monk.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Samurai Blue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Samurai Blue.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Samurai Commander.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Samurai Commander.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Shinobi.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Shinobi.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actor/Actor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Actor/Actor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControlManager/AudioManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/BackGroundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControlManager/BackGroundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/AudioManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/AudioManager.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControlManager/CombatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/CutScenesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControlManager/CutScenesManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControlManager/EnemyController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControlManager/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControlManager/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/GameDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/GameDataManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/ScoresManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/ScoresManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/JapaneseData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/JapaneseData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObject/EnemyProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObject/EnemyProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObject/VocabData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObject/VocabData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tests.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tests/GameLogicTests.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tests/GameLogicTests.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tests/Tests.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tests/Tests/Tests.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tests/Tests/Tests.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tools/ReadOnlyDrawer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tools/ReadOnlyDrawer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/InputDisplayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/InputDisplayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/TMP Settings.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/TMP Settings.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/16/16127ba942d22dad173101cb7d5ecd21" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/19/19963f2a1e5d0901957862def183110a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LoginWithGoogle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LoginWithGoogle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundManager/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundManager/AudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/InputDisplayManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/InputDisplayManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Enemys.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Player.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Crit Data.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Crit Data.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Default Data.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Default Data.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_7.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_7.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_8.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_8.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_9.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_9.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Blink.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Blink.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Bounce.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Bounce.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Fade.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Fade.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Pop.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Pop.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Shift.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Shift.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Simple.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Data/Demo_Simple.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Resources/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Resources/Materials/Enemy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Resources/Materials/Enemy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Resources/Materials/Ground.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Resources/Materials/Ground.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Resources/Materials/Player.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Resources/Materials/Player.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Scenes/Demo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Scenes/Demo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Scripts/Enemy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Scripts/Enemy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Scripts/Movement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Demo/Scripts/Movement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Dynamic Floating Text v1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Dynamic Floating Text v1.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Resources/Icons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Resources/Icons/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Resources/Icons/Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Resources/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Resources/Prefabs/Default Canvas Prefab 2D.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Resources/Prefabs/Default Canvas Prefab 2D.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Resources/Prefabs/Default Canvas Prefab.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Resources/Prefabs/Default Canvas Prefab.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/AlternationMode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/AlternationMode.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/Billboard.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/Billboard.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/DynamicText.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/DynamicText.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/DynamicText2D.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/DynamicText2D.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/DynamicTextData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/DynamicTextData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/DynamicTextManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/DynamicTextManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/Editor/DynamicTextDataEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/Editor/DynamicTextDataEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/EnterType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/EnterType.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/ExitType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Dynamic Floating Text/Scripts/ExitType.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_KO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_KO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_crit.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_crit.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_critText.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_critText.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_damage.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_damage.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_freeze.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_freeze.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_healing.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_healing.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_lvlUp.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_lvlUp.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_metalic.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_metalic.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_premium.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_premium.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_pyro.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_pyro.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_shock.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_shock.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_spooky.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_spooky.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_venom.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_venom.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/TextMeshProFont/Dynamic/mplus-1c-heavy SDF Dynamic.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/TextMeshProFont/Dynamic/mplus-1c-heavy SDF Dynamic.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/TextMeshProFont/Dynamic/mplus-2m-bold SDF Dynamic.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/TextMeshProFont/Dynamic/mplus-2m-bold SDF Dynamic.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/TextMeshProFont/Selected/mplus-1c-bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/TextMeshProFont/Selected/mplus-1c-bold SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Config.Runtime.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Config.Runtime.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Runtime.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Runtime.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Shaders.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Shaders.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unity.Rendering.LightTransport.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.Rendering.LightTransport.Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unity.Rider.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.Rider.Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unity.Searcher.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.Searcher.Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unity.Settings.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.Settings.Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unity.ShaderGraph.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.ShaderGraph.Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unity.ShaderGraph.Utilities.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.ShaderGraph.Utilities.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unity.Splines.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.Splines.Editor.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,22 +160,33 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5d00ddd22475405dbfc414f0e67c44da8e00/ed/694b687d/PlayableDirector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65785f17956b4ac28bd75f66691a901a37a00/39/120e8fe4/Animator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d9024bdc2a414b3c81b047ea3e343594a66a00/72/a2a3c652/Editor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f168f20cf3704581a3929bec01436ca112200/fa/1417de3b/Query.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/VocabListGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GoogleSignIn/Impl/GoogleSignInImpl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/NarrowEF/Scripts/Data/SimpleData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/NarrowEF/Scripts/EFManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/NarrowEF/Scripts/Scriptables/EFSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/NarrowEF/Scripts/Utils/Constants.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/NarrowEF/Scripts/Utils/GoogleSignInDefineSetter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Actor/Actor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Actor/ActorState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CheckPlayerHitbox.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControlManager/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControlManager/BackGroundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControlManager/CombatManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControlManager/CutScenesManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControlManager/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControlManager/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControlManager/InputDisplayManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControlManager/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DatabaseManager/GameDataManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DatabaseManager/ScoresManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DatabaseManager/VocabFirebaseManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enum/CombatState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enum/GameState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/JapaneseData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LayerConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PixelTextController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScriptableObject/EnemyProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScriptableObject/LevelData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScriptableObject/VocabData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -175,10 +199,15 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SoundManager/SoundsSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SoundManager/SoundsSOEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tools/CoroutineExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tools/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tools/RandomList.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/InputDisplayManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UserProfile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UI/LeaderboardRow.uxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UI/LeaderboardView.uxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/OArielG/2DSimpleUIPack.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UI/PixelBattleText/Example/AnimatedBattleText.Example.Damage.asmdef" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UI/PixelBattleText/Scripts/PixelBattleTextController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0.unity" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -310,6 +339,11 @@
       <workItem from="1770780063631" duration="2287000" />
       <workItem from="1770783399183" duration="14144000" />
       <workItem from="1770862224132" duration="30417000" />
+      <workItem from="1770943910165" duration="10533000" />
+      <workItem from="1770967766344" duration="14125000" />
+      <workItem from="1771002403735" duration="1028000" />
+      <workItem from="1771031036535" duration="774000" />
+      <workItem from="1771122732557" duration="2108000" />
     </task>
     <task id="LOCAL-00001" summary="update combat mechanics and input handling, BackGround, Add Ui health">
       <option name="closed" value="true" />
@@ -347,7 +381,8 @@
     <MESSAGE value="update leaves" />
     <MESSAGE value="update combat mechanics and input handling, BackGround, Add Ui health" />
     <MESSAGE value="add 2D Simple UI Pack with examples" />
-    <option name="LAST_COMMIT_MESSAGE" value="add 2D Simple UI Pack with examples" />
+    <MESSAGE value="remove unused Aseprite assets, audio, and Enemy prefab" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

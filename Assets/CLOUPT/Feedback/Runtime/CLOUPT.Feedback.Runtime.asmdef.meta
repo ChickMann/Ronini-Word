@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3c3c7d2f9e1a8a541aecc41a9153f7b9
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 289930
+  packageName: Simple Feedback Form
+  packageVersion: 1.0.1
+  assetPath: Assets/CLOUPT/Feedback/Runtime/CLOUPT.Feedback.Runtime.asmdef
+  uploadId: 847616

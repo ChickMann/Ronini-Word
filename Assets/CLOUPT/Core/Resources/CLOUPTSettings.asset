@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9382f1b1af8a0d4482f0978154259f3, type: 3}
+  m_Name: CLOUPTSettings
+  m_EditorClassIdentifier: 
+  _encryptedAppId: wY/fRGu2I8o1mEvpSg7EBbpJl6ltrLBmCfRJJdUbRW5Koa1PKkJxkN9Ji+B/wY/t
+  _appIdHash: pUxsqRNVmHTQH7mO1w7FuejnXFZ3x4CsFV0ne5lCZkM=
+  _debugMode: 0

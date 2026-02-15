@@ -4,7 +4,7 @@ public static class JapaneseData
 {
     // 1. Kho dữ liệu gốc (Private - để nội bộ class quản lý)
     // Sử dụng HashSet để đảm bảo không trùng lặp và tra cứu siêu tốc
-    private static readonly HashSet<string> _basicHiragana = new HashSet<string>
+    private static readonly HashSet<string> _basicHiraAndKata = new HashSet<string>
     {
         // --- 5 Nguyên âm (A I U E O) ---
         "あ", "い", "う", "え", "お",
@@ -60,13 +60,9 @@ public static class JapaneseData
         // ==========================================
 
         // --- Hàng P (Pa Pi Pu Pe Po) ---
-        "ぱ", "ぴ", "ぷ", "ぺ", "ぽ"
-    };
-    public static IReadOnlyCollection<string> BasicHiragana => _basicHiragana;
-    
-    private static readonly HashSet<string> _basicKatakana = new HashSet<string>
-    {
-        // --- 5 Nguyên âm (A I U E O) ---
+        "ぱ", "ぴ", "ぷ", "ぺ", "ぽ",
+        //---------
+        
         "ア", "イ", "ウ", "エ", "オ",
 
         // --- Hàng K (Ka Ki Ku Ke Ko) ---
@@ -122,7 +118,7 @@ public static class JapaneseData
         // --- Hàng P (Pa Pi Pu Pe Po) ---
         "パ", "ピ", "プ", "ペ", "ポ"
     };
-
-    // Public Property để truy cập an toàn (Read-only)
-    public static IReadOnlyCollection<string> BasicKatakana => _basicKatakana;
+    public static IReadOnlyCollection<string> basicHiraAndKata => _basicHiraAndKata;
+    
+   
 }
