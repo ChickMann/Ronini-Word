@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: textAnim_crit
   m_EditorClassIdentifier: Assembly-CSharp::TextAnimation
   font: {fileID: 11400000, guid: 554d25ed6addaf34f9824d8cfe5a5d44, type: 2}
-  textSize: 90
+  textSize: 70
   alignment: 1
   transitionDuration: 1.5
   perLetterDelay: 0.05

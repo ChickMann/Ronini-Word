@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ControlManager;
 using SmallHedge.AudioManager;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameState gameState;
 
     [Header("Data")]
+    public List<LevelData> levelDataList;
     public LevelData currentLevelData;
 
     [Header("Managers")]
@@ -18,9 +20,7 @@ public class GameManager : MonoBehaviour
     public InputDisplayManager inputDisplayManager;
     public CombatManager combatManager; 
     public CutScenesManager CutScenesManager;
-    public ScoresManager ScoresManager;
-    public LoginWithGoogle LoginWithGoogle;
-    public GameObject panel;
+    public LoginWithGoogle loginWithGoogle;
     
     private void Awake()
     {
@@ -47,30 +47,43 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Start Level")]
     public void StartLevel()
     {
+       
         AudioManager.PlayMusic(MusicType.MusicFight);
-        gameState = GameState.Playing;
-        combatManager.SetUpStartLevel(currentLevelData);
-        panel.SetActive(false);
+        this.DelayAction(2f, () =>
+        {
+            gameState = GameState.Playing;
+            combatManager.SetUpStartLevel(currentLevelData);
+            
+        });
+        
+    }
+
+    public void SetCurrentLevel(LevelData data)
+    {
+        currentLevelData = data;
     }
 
     public void EndLevel()
     {
-        panel.SetActive(true);
+        this.DelayAction(2f,() => UIManager.Instance.SetActiveCompletedPanel(true));
         gameState = GameState.CompletedLevel;
         combatManager.OnEndGame();
     }
+    
+    
     [ContextMenu("Restart Level")]
     public void RestartLevel()
     {
-        panel.SetActive(false);
+        AudioManager.PlayMusic(MusicType.MusicFight);
         gameState = GameState.Playing;
-        this.DelayAction(2f,() => StartLevel());
+         combatManager.ResetLevlel();
     }
 
     [ContextMenu("Back To Menu")]
     public void BackToMenu()
     {
         AudioManager.PlayMusic(MusicType.MusicMenu);
+        combatManager.ResetAll();
     }
 
 }

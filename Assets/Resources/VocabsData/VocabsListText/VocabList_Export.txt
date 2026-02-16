@@ -1,10 +1,487 @@
 === DANH SÁCH TỪ VỰNG RONIN WORD ===
-Tổng số: 6 từ
+Tổng số: 483 từ
 ------------------------------------
 ID: Tên File (Nghĩa) - Đáp án
-1: nha ga (Nhà ga) - えき
-2: nui (Núi ) - やま
-3: O to (Ô tô) - くるま
-4: Song (Sông) - かわ
-5: Suoi nuoc nong (Suối nước nóng) - おんせん
-6: o to () - 
+1: Toi (Tôi) - わたし
+2: Ten (Tên) - なまえ
+3: Y (Ý) - イタリア
+4: Dat nuoc cua ban la nuoc nao (Đất nước của bạn là nước nào? ) - おくにはどちらですか。
+5: Xin loi... cho tui hoi... (Xin lỗi… cho tôi hỏi…) - すみません
+6: Anh, Chi oi, xin loi cho toi hoi 1 chut (Anh / chị ơi, xin lỗi cho tôi hỏi 1 chút…) - あのう、すみません
+7: Giao vien (Giáo viên) - きょうし
+8: Anh,Chi oi... (Anh / chị ơi…) - あのう
+9: Anh,Chi,Ong,Ba,Ban (Anh/Chị/Ông/Bà/Bạn ～) - さん
+10: America (Mỹ) - アメリカ
+11: Cong viec (Công việc (của bạn)) - しごと
+12: Han quoc (Hàn Quốc) - かんこく
+13: Hoc sinh (Học sinh) - がくせい
+14: Japan (Nhật Bản) - にほん
+15: Nga (Nga) - ロシア
+16: Nguoi (Người (nước nào)) - じん
+17: Trung quoc (Trung Quốc) - ちゅうごく
+18: Toi cung vay! (Tôi cũng vậy!) - こちらこそ
+19: Tieng (Tiếng (nước nào)) - ご
+20: The a! (Thế à!) - そうですか。
+21: Thay, Co giao (Thầy/Cô giáo) - せんせい
+22: Thai Lan (Thái Lan) - タイ
+23: Rat mong nhan duoc su giup do cua ban (Rất mong nhận được sự giúp đỡ của bạn) - よろしくおねがいします
+24: O dau, Phia nao (Ở đâu / Phía nào) - どちら
+25: Nhan vien van phong (Nhân viên văn phòng) - かいしゃいん
+26: Nhan vien (Nhân viên (của công ty nào đó)) - しゃいん
+27: Truong dai hoc (Trường đại học) - だいがく
+28: Truong tieng nhat (Trường tiếng Nhật) - にほんごがっこう
+29: Truong trung hoc pho thong(cap 3) (Trường trung học phổ thông (cấp 3)) - こうこう
+30: Uc (Úc) - オーストラリア
+31: Xin chao (Xin chào (lần đầu gặp mặt)) - はじめまして
+32: Dat nuoc (Đất nước (bạn)) - くに
+33: Ngay (Ngày (mùng)) - にち
+34: Banh mi (Bánh mì) - パン
+34: Day, cho nay (Đây, chỗ này) - ここ
+34: Nuoc (Nước) - みず
+35: Ngay sinh, sinh nhat (Ngày sinh / Sinh nhật) - たんじょうび
+36: Brazil (Brazil) - ブラジル
+37: Thang (Tháng) - がつ
+38: Tuoi (tuổi) - さい
+39: Luc nao, Khi nao (Lúc nào / Khi nào) - いつ
+40: So thich (Sở thích) - しゅみ
+41: The thao (Thể thao) - すぽーつ
+42: Bong da (Bóng đá) - サッカー
+43: Tennis Quan vot (Tennis (Quần vợt)) - テニス
+44: Boi loi (Bơi lội) - すいえい
+45: Ngay 1 (Ngày (mùng) ～) - か
+46: Am nhac (Âm nhạc) - おんがく
+47: Doc sach (Đọc sách) - どくしょ
+48: Du lich (Du lịch) - りょこう
+49: Nau an, Mon an (Nấu ăn / Món ăn) - りょうり
+50: Cai gi (Cái gì) - なん
+51: A, A – A! (A) - あ
+52: Phia nay (Phía này) - こちら
+53: Kia, cho kia (Kia, chỗ kia) - そこ
+54: Phia kia ( Phía kia) - そちら
+55: Do, cho do (Đó, chỗ đó) - あそこ
+56: Phia do (Phía đó) - あちら
+57: Quay thong tin (Quầy thông tin) - インフォメーション
+58: Thang cuon (Thang cuốn) - エスカレーター
+59: Thang may (Thang máy) - エレベーター
+60: Noi hut thuoc (Nơi hút thuốc) - きつえんしょ
+61: Nha ve sinh (Nhà vệ sinh) - トイレ
+62: Quay thu ngan (Quầy thu ngân) - レジ
+63: Quan giai khat (Quán giải khát) - きっさてん
+64: Cua hang 100 Yen (Cửa hàng 100 Yên) - １００えん ショップ
+65: Nha hang, quan an (Nhà hàng, quán ăn) - レストラン
+66: Ngam, duoi long dat (Ngầm, dưới lòng đất) - ちか
+67: May anh (Máy ảnh) - カメラ
+68: Dien thoai di dong (Điện thoại di động) - けいたいでんわ
+69: Kim tu dien (Kim từ điển) - でんしじしょ
+70: May tinh ca nhan (Máy tính cá nhân) - パソコン
+71: Giay (Giày) - くつ
+72: Tay (Tẩy) - けしごむ
+73: But (Bút) - ペン
+74: Giay ve sinh (Giấy vệ sinh) - トイレットペーパー
+75: Sach (Sách) - ほん
+76: Dau (Dầu) - あぶら
+77: Banh ngot (Bánh ngọt) - ケーキ
+78: Gao (Gạo) - こめ
+79: Trung (Trứng ) - たまご
+80: Nhan vien ban hang (Nhân viên bán hàng) - てんいん
+81: Tang (Tầng) - かい
+82: Cua hang, Hieu (Cửa hàng ～, Hiệu～) - や
+83: Kinh chao quy khach (Kính chào quý khách) - いらっしゃいませ
+84: Cai nay (Cái này) - これ
+85: Cai kia (Cái kia) - それ
+86: Cai do (Cái đó) - あれ
+87: Cai nao (Cái nào) - どれ
+88: Cai ～ nay (Cái ～ này) - この
+89: Cai ～ kia (Cái ～ kia) - その
+90: Cai ～ do (Cái ～ đó) - あの
+91: Cai ～ nao (Cái ～ nào) - どの
+92: Cap, tui xach (Cặp, túi xách) - かばん
+93: Quan dai (Quần dài) - ズボン
+94: Ao phong (Áo phông) - Tシャツ
+95: Dong ho (Đồng hồ) - とけい
+96: Yen (～ Yên) - えん
+97: The thi, Thoi thi (Thế thì / Thôi thì) - じゃ
+98: Bao nhieu tien (Bao nhiêu tiền) - いくら
+99: Ca phe (Cà phê) - コーヒー
+100: Thit (Thịt) - にく
+101: Thit bo (Thịt bò) - ぎゅうにく
+102: Thit lon (Thịt lợn) - ぶたにく
+103: Rau (Rau) - やさい
+104: Qua dau (Quả dâu) - いちご
+105: Qua tao (Quả táo) - りんご
+106: Mon an, Nau an (Món ăn / Nấu ăn) - りょうり
+107: Day la mon an ca (Đây là món ăn cá.) - これはさかな のりょうりです
+108: Mon ca ri (Món cà-ri) - カレー
+109: Canh, sup (Canh, súp) - スープ
+110: Ca (Cá) - さかな
+111: Mon thit lon chien xu (Món thịt lợn chiên xù) - とんかつ
+112: Mon thit bam vien (Món thịt băm viên) - ハンバーグ
+113: Com (Cơm) - ごはん
+114: Cho toi 2 bat, xuat com (Cho tôi 2 bát/xuất cơm.) - ごはんを２つください
+115: Com, gao (Cơm, gạo) - ライス
+116: Nuoc ngot, nuoc trai cay (Nước ngọt, nước trái cây) - ジュース
+117: Tra den (Trà đen) - こうちゃ
+118: Tra, nuoc che (Trà, nước chè) - ちゃ
+119: Bia (Bia) - ビール
+120: Ruou vang (Rượu vang) - ワイン
+121: An do (Ấn Độ) - インド
+122: Duc (Đức) - ドイツ
+123: Phap (Pháp) - フランス
+124: Vi tien (Ví tiền) - さいふ
+125: Tieng Anh (Tiếng Anh) - えいご
+126: ～ cai  ～ chiec (～ cái / ～ chiếc) - つ
+127: Ai (Ai) - だれ
+128: Cho toi goi do (Cho tôi gọi đồ.) - ちゅうもんをおねがいします
+129: Xin moi (Xin mời) - どうぞ
+130: Bay gio (Bay gio) - いま
+131: Buoi sang, AM (Buổi sáng / AM) - ごぜん
+132: Buoi chieu, PM (Buổi chiều / PM) - ごご
+133: Buoi trua (Buổi trưa) - ひる
+134: Ngan hang (Ngân hàng) - ぎんこう
+135: Nha thi dau, Nha tap the duc (Nhà thi đấu, Nhà tập thể dục) - たいいくかん
+136: Thu vien (Thư viện) - としょかん
+137: Benh vien (Bệnh viện) - びょういん
+138: Buu dien (Bưu điện) - ゆうびんきょく
+139: Gio hoc (Giờ học) - じゅぎょう
+140: Bai kiem tra (Bài kiểm tra) - テスト
+141: Nghi, Ngay nghi (Nghỉ / Ngày nghỉ) - やすみ
+142: Thoi gian, Gio giac (Thời gian / Giờ giấc) - じかん
+143: Gio (～ giờ) - じ
+144: Phut (～ phút) - ふん
+145: Bay gio la 9 gio 20 phut (Bây giờ là 9 giờ 20 phút.) - いま 、９じ２０ぷんです。
+146: Gio ruoi (～ giờ rưỡi) - じはん
+147: Thu (Thứ ～) - ようび
+148: Hay qua nhi (Hay quá nhỉ!) - いいですね
+148: Ke hoach, lich (Kế hoạch, lịch) - スケジュール
+149: Viec lam them (Việc làm thêm) - アルバイト
+150: Truot tuyet (Trượt tuyết) - スキー
+151: Bua tiec (Bữa tiệc) - パーティー
+152: Tiec nuong ngoai troi (Tiệc nướng ngoài trời) - バーベキュー
+153: Phao hoa (Pháo hoa) - はなび
+154: Ngam hoa, anh dao (Ngắm hoa (anh đào)) - はなみ
+155: O cung gia dinh ban dia (Ở cùng gia đình bản địa) - ホームステイ
+156: Le hoi (Lễ hội) - まつり
+157: Bien (Biển) - うみ
+158: Cong vien (Công viên) - こうえん
+159: Hoa anh dao (Hoa anh đào) - さくら
+160: Ruou, Nhat (Rượu (Nhật)) - さけ
+161: Mon sushi (Món sushi) - すし
+162: Xe buyt (Xe buýt) - バス
+163: Com hop (Cơm hộp) - べんとう
+164: 1 nam (1 năm) - いちねん
+165: Mua xuan (Mùa xuân) - はる
+166: Mua he (Mùa hè) - なつ
+167: Mua thu (Mùa thu) - あき
+168: Mua dong (Mùa đông) - ふゆ
+169: Tuan le vang (Tuần lễ vàng) - ゴールデンウイーク
+170: Di (Đi) - いきます
+171: Cai gi (Cái gì) - なに
+172: Ve, tro ve (Về, trở về) - かえります
+173: Uong (Uống) - のみます
+174: An (Ăn) - たべます
+175: Xem, nhin (Xem, nhìn) - みます
+176: Lam, choi (Làm, chơi) - します
+177: Choi truot tuyet (Chơi trượt tuyết.) - スキーをします
+178: Chao, Wow (Chà / Wow) - へえ
+179: Oi, Ha (Ơ! / Hả) - えっ
+180: Hay qua nhi! (Hay quá nhỉ!) - いいですね
+181: Buoi sang (Buổi sáng) - あさ
+182: Buoi toi, dem (Buổi tối, đêm) - よる
+183: Hang ngay (Hàng ngày) - まいにち
+184: Hang sang (Hàng sáng) - まいあさ
+185: Moi toi (Mỗi tối) - まいばん
+186: Bua sang (Bữa sáng) - あさごはん
+187: Bua trua (Bữa trưa) - ひるごはん
+188: Nha, ngoi nha (Nhà, ngôi nhà) - うち
+189: Cong ty (Công ty) - かいしゃ
+190: Truong hoc (Trường học) - がっこう
+191: Cua hang tien loi (Cửa hàng tiện lợi) - コンビニ
+192: Sua bo (Sữa bò) - ぎゅうにゅう
+193: Hoa qua, trai cay (Hoa quả, trái cây) - くだもの
+194: Mon salad (Món salad) - サラダ
+195: Pho mat (Phô-mát) - チーズ
+196: Mang internet (Mạng internet) - インターネット
+197: Bao, to bao (Báo, tờ báo ) - しんぶん
+198: Ti vi (Ti vi) - テレビ
+199: CD (CD) - シーディー
+200: DVD (DVD) - ディーブイディー
+201: Mua (Mua) - かいます
+202: Cai gi cung (Cái gì cũng…) - なにも
+203: Dau cung (Đâu cũng…) - どこも
+204: Lam viec, lao dong (Làm việc, lao động) - はたらきます
+205: Nghe (Nghe) - ききます
+206: Doc (Đọc) - よみます
+207: Ngu (Ngủ) - ねます
+208: Hoc, hoc bai, hoc tap (Học, học bài, học tập) - べんきょうします
+209: Toi, den (Tới, đến) - きます
+210: Phia bac (Phía bắc) - きた
+211: Phia nam (Phía nam) - みなみ
+212: Phia dong (Phía đông) - ひがし
+213: Phia tay (Phía tây) - にし
+214: Chinh giua (Chính giữa) - まんなか
+215: O to (Ô tô) - くるま
+216: Tau cao toc (Tàu cao tốc) - しんかんせん
+217: Tau dien (Tàu điện) - でんしゃ
+218: May bay (Máy bay ) - ひこうき
+219: Nha ga (Nhà ga) - えき
+220: Thanh pho, thi tran (Thành phố, thị trấn) - まち
+221: Tieng (～Tiếng) - じかん
+222: Tieng ruoi (～ Tiếng rưỡi) - じかんはん
+223: Phut (～ Phút ) - ふん
+224: Tu nha den truong mat 20 phut (Từ nhà đến trường mất 20 phút) - うちからがっこう まで２０ぷんです
+225: Di bo (Đi bộ) - あるいて
+226: Khoang (Khoảng) - くらい
+227: Bao lau (Bao lâu) - どのくらい
+228: Suoi nuoc nong (Suối nước nóng) - おんせん
+229: Song (Sông) - かわ
+230: Nui (Núi) - やま
+231: Nha tho (Nhà thờ) - きょうかい
+232: Lau dai (Lâu đài) - おしろ
+233: Den (Đền) - じんじゃ
+234: Chua (Chùa) - おてら
+235: Toa nha (Tòa nhà) - ビル
+236: Noi, cho (Nơi, chỗ) - ところ
+237: Nguoi (Người) - ひと
+238: Mau xanh, Cay xanh (Màu xanh, Cây xanh) - みどり
+239: Co (Có) - あります
+240: O Hakone co suoi nuoc nong (Ở Hakone có suối nước nóng) - はこねにおんせんがあります
+241: Moi (Mới) - あたらしい
+242: Cu (Cũ) - ふるい
+243: Tot (Tốt) - いい
+244: Nhieu (Nhiều ～) - おおい
+245: It (Ít ～) - すくない
+246: To, lon (To, lớn) - おおきい
+247: Nho, be (Nhỏ, bé) - ちいさい
+248: Cao, dat (Cao, đắt) - たかい
+249: Nui Phu Si cao (Núi Phú Sỹ cao) - ふじさんはたかいです
+250: Thap (Thấp) - ひくい
+251: Dep, sach se (Đẹp, sạch sẽ) - きれい
+252: Yen tinh (Yên tĩnh) - しずか
+253: Noi tieng (Nổi tiếng) - ゆうめい
+254: Nao nhiet, nhon nhip (Náo nhiệt, nhộn nhịp) - にぎやか
+255: Nhu the nao (Như thế nào) - どんな
+256: Va (Và) - そして
+257: Mua (Mưa) - あめ
+258: Tuyet (Tuyết ) - ゆき
+259: Ngay, Mat troi (Ngày / Mặt trời) - ひ
+260: Dua gang, dua luoi (Dưa gang (dưa lưới)) - メロン
+261: Am ap, thoi tiet (Ấm áp (thời tiết)) - あたたかい
+262: Mat me (Mát mẻ) - すずしい
+263: Nong buc, thoi tiet (Nóng bức (thời tiết)) - あつい
+264: Lanh, ret, thoi tiet (Lạnh, rét (thời tiết)) - さむい
+265: Thoi tiet dep (Thời tiết đẹp) - てんきがいい
+266: Thoi tiet xau (Thời tiết xấu) - てんきがわるい
+267: Am, nhiet do, cam giac (Ấm (nhiệt độ, cảm giác)) - あたたかい
+268: Nong, nhiet do (Nóng (nhiệt độ)) - あつい
+269: Lanh, mat, nhiet do, cam giac (Lạnh / Mát (nhiệt độ, cảm giác)) - つめたい
+270: Ngon (Ngon) - おいしい
+271: Ngot (Ngọt) - あまい
+272: Cay (Cay) - からい
+273: Dang (Đắng) - にがい
+274: Chua (Chua) - すっぱい
+275: Suot 1 nam (Suốt 1 năm) - いちねんじゅう
+276: Khong lam (Không ～ lắm) - あまり
+277: Dat nuoc toi vao mua he khong lanh lam (Đất nước tôi vào mùa hè không lạnh lắm) - わたしのくにはなつ、あまりあつくないです。
+278: Rat (Rất) - とても
+279: Mot chut, it (Một chút, ít) - すこし
+280: The nao (Thế nào) - どう
+281: Dong y (Câu nói thể hiện sự đồng tình với ý kiến của người khác) - そうですね
+282: Hom nay (Hôm nay) - きょう
+283: Ngay mai (Ngày mai) - あした
+284: Ngay kia (Ngày kia) - あさって
+285: Hom qua (Hôm qua) - きのう
+286: Hom kia (Hôm kia) - おととい
+287: Tuan truoc (Tuần trước) - せんしゅう
+288: Cuoi tuan (Cuối tuần) - しゅうまつ
+289: Nha (Nhà) - いえ
+290: Can phong (Căn phòng) - へや
+291: Trung tam thuong mai (Trung tâm thương mại) - デパート 
+292: Bao tang my thuat (Bảo tàng mỹ thuật) - びじゅつかん
+293: Tro choi (Trò chơi) - ゲーム 
+294: Gia dinh (Gia đình) - かぞく
+295: Nguoi yeu (Người yêu) - こいびと
+296: Ban be (Bạn bè) - ともだち
+297: Ban cung phong (Bạn cùng phòng) - ルームメイト
+298: Noi nao do (Nơi nào đó) - どこか
+299: Gap go (Gặp gỡ) - あいます
+300: Lam, che tao (Làm, chế tạo) - つくります
+301: Mua sam (Mua sắm) - かいものします
+302: Dung bua, an uong (Dùng bữa, ăn uống) - しょくじします
+303: Giat giu (Giặt giũ) - せんたくします
+304: Hut bui, lau don nha cua (Hút bụi, lau dọn nhà cửa) - そうじします
+305: Sau do (Sau đó) - それから
+306: Mot minh (Một mình) - ひとりで
+307: Sang nay (Sáng nay) - けさ
+308: Thang truoc (Tháng trước) - せんげつ
+309: Nam ngoai (Năm ngoái) - きょねん
+310: Cam cum (Cảm cúm) - かぜ
+311: Thoi tiet (Thời tiết) - てんき
+312: Com toi (Cơm tối) - ばんごはん
+313: Quan ao (Quần áo) - ふく
+314: Leo, treo (Leo, trèo) - のぼります
+315: Vao, buoc vao (Vào / Bước vào) - はいります
+316: Tam suoi nuoc nong (Tắm suối nước nóng) - おんせんにはいります
+317: Ban (Bận) - いそがしい
+318: Thu vi, hay, hap dan (Thú vị, hay, hấp dẫn) - おもしろい
+319: Cam thay sang khoai (Cảm thấy sảng khoái) - きもちがいい
+320: Cao, dat (Cao, đắt) - たかい
+321: May tinh dat (Máy tính đắt) - パソコンはたかかったです
+322: Re (Rẻ) - やすい
+323: Vui ve (Vui vẻ) - たのしい
+324: Kho (Khó) - むずかしい
+325: De, don gian (Dễ, đơn giản) - かんたん
+326: Vat va (Vất vả) - たいへん
+327: Ranh roi (Rảnh rỗi) - ひま
+328: Tai sao (Tại sao) - どうして 
+329: Lan toi (Lần tới) - こんど
+330: Toi nay (Tối nay) - こんばん
+331: Nam nay (Năm nay) - ことし
+332: Sang năm (Sang năm) - らいねん
+333: Hoat hinh (Hoạt hình) - アニメ
+334: Tranh (Tranh) - え
+335: Phong canh (Phong cảnh) - けしき
+336: Xe dap (Xe đạp) - じてんしゃ
+337: Anh (Ảnh) - しゃしん
+338: Chup (Chụp) - とります
+339: Vay, muon (Vay, mượn) - かります
+340: Muon co (Muốn có) - ほしい
+341: Thich (Thích) - すき
+342: Ghet (Ghét) - きらい
+343: Tuan nay (Tuần này) - こんしゅう
+344: Tuan sau (Tuần sau) - らいしゅう
+345: Thang nay (Tháng này) - こんげつ
+346: Thang sau (Tháng sau) - らいげつ
+347: Hat karaoke (Hát karaoke) - カラオケ
+348: Hoa nhac (Hòa nhạc) - コンサート
+349: Tran dau (Trận đấu) - しあい
+350: Giam gia (Giảm giá) - セール
+351: Ve (Vé) - チケット
+352: Ban do (Bản đồ) - ちず
+353: Do boi (Đồ bơi) - みずぎ
+354: Bong chay (Bóng chày) - やきゅう
+355: Hua, hen (Hứa, hẹn) - やくそく
+356: Lai xe (Lái xe) - ドライブ
+357: Viec ban (Việc bận) - ようじ
+358: Cach dem vat mong, phang (Cách đếm vật mỏng, phẳng) - まい
+359: Co (Có) - あります
+360: Toi nay co viec ban (Tối nay có việc bận) - こんばん、ようじがあります
+361: Co tran dau bong chay o Yokohama (Có trận đấu bóng chày ở Yokohama) - よこはまでやきゅうのしあいがあります
+362: Toi co 2 ve (Tôi có 2 vé) - チケットが２まいあります
+363: Tiec (Tiếc) - ざんねん
+364: Cung voi (Cùng với) - いっしょに
+365: Hay day, duoc day (Hay đấy, được đấy) - いいですね
+366: Di xem phim voi toi di (Đi xem phim với tôi đi?) - いっしょにえいがをみにいきませんか
+367: Hay đay. Chung ta cung di (Hay đấy. Chúng ta cùng đi) - いいですね。いきましょう
+368: A (A) - ああ
+369: A, thu bay thi khong duoc (A, thứ 7 thì không được ) - ああ、にち ようびはちょっと
+370: Xin loi (Xin lỗi) - すみません
+371: Toi nay di an voi toi di (Tối nay đi ăn với tôi đi?) - こんばんいっしょにごはんをたべませんか
+372: Xin loi, toi nay khong duoc roi (Xin lỗi, tối nay thì không được rồi) - すみません。こんばんはちょっと
+373: Hen anh lan sau (Hẹn anh lần sau) - またこんど
+374: Oa (Oa (Thể hiện sự ngạc nhiên)) - わあ
+375: Do an (Đồ ăn) - たべもの
+376: Do uong (Đồ uống) - のみもの
+377: Thit nuong (Thịt nướng) - やきにく
+378: My Nhat (Mỳ Nhật) - ラーメン
+379: An buffe (Ăn buffe) - たべほうだい
+380: Suat an, Khoa hoc (Suất ăn / Khóa học) - コース
+381: Quan ruou (Quán rượu) - いざかや
+382: Rap chieu phim (Rạp chiếu phim) - えいがかん
+383: Tau dien ngam (Tàu điện ngầm) - ちかてつ
+384: Ca si (Ca sỹ) - かしゅ
+385: Mua (Mùa) - きせつ
+386: Hai kich (Hài kịch) - コメディー
+387: Nhac jazz (Nhạc jazz) - ジャズ
+388: Tour du lich (Tour du lịch) - ツアー
+389: Ben nao, phuong nao (Bên nào, phương nào) - どちら
+390: Ben nao cung (Bên nào cũng) - どちらも
+391: Gan (Gần) - ちかい
+392: Xa (Xa) - とおい
+393: Som (Sớm) - はやい
+394: Rong (Rộng) - ひろい
+395: Nhat (Nhất) - いちばん
+396: Toan bo (Toàn bộ) - ぜんぶ
+397: Ngap ngung khi suy nghi de tra loi (Câu nói ngập ngừng khi suy   nghĩ để trả lời câu hỏi.) - そうですねえ
+398: Mon banh xeo Nhat (Món bánh xèo Nhật ) - おこのみやき
+399: Choi (Chơi) - あそびます
+400: Mon nuong co thit bo va rau (Món nhúng có thịt bò và rau) - すきやき
+401: Nhat dinh (Nhất định) - ぜひ
+402: Van, chua (Vẫn, chưa) - まだ
+403: Da, roi (Đã, rồi) - もう
+404: Lam nhu the di (Làm như thế đi) - そうしましょう
+405: Toi hieu roi (Tôi hiểu rồi) - わかりました
+406: Soat ve (Soát vé) - かいさつ
+407: Cay, Go (Cây / Gỗ) - き
+408: Don canh sat (Đồn cảnh sát) - こうばん
+409: May ban hang tu dong (Máy bán hàng tự động) - じどうはんばいき
+410: Thung thu (Thùng thư) - ポスト
+411: Hoa (Hoa) - はな
+412: Con cho (Con chó) - いぬ
+413: Giua, o giua (Giữa, ở giữa) - あいだ
+414: Tren, ben tren (Trên, bên trên ) - うえ
+415: Duoi, phia duoi (Dưới, phía dưới) - した
+416: Gan, vi tri gan (Gần (ở vị trí gần)) - ちかく
+417: Ben canh, canh sat (Bên cạnh (cạnh sát)) - となり
+418: Trong, ben trong (Trong, bên trong) - なか
+419: Ngoai, ben ngoai (Ngoài, bên ngoài) - そと
+420: Truoc, phia truoc (Trước, phía trước) - まえ
+421: Sau, phia sau, dang sau (Sau, phía sau, đằng sau) - うしろ 
+422: Ben canh, chieu ngang (Bên cạnh, chiều ngang) - よこ
+423: Di don (Đi đón) - むかえにいきます
+424: Co mat, ton tai (Có mặt ở (sự tồn tại của người, động vật)) - います
+425: Toi o trong hieu sach (Tôi ở hiệu sách) - わたしはほんやのなかにいます
+426: A lo (A lô(khi gọi điện thoại) ) - もしもし
+427: Ghe, cai ghe (Ghế, cái ghế) - いす
+428: Ban, cai ban (Bàn, cái bàn) - テーブル
+429: Lo vi song (Lò vi sóng) - でんしれんじ
+430: Tu lanh (Tủ lạnh) - れいぞうこ
+431: Duong, an (Đường (ăn)) - さとう
+432: Muoi 1 (Muối) - しょうゆ
+432: Muoi (Muối) - しお
+433: Coc, cai coc (Cốc, cái cốc) - コップ
+434: Dia, cai dia (Đĩa, cái đĩa) - さら
+435: Cai thia, cai muong (Cái thìa, cái muỗng) - スプーン
+436: Dao, con dao (Dao, con dao) - ナイフ
+437: Cai dia (Cái dĩa) - フォーク
+438: Dua (Đũa) - はし
+439: Chu han (Chữ hán) - かんじ
+440: Cai nao (Cái nào) - どれ
+441: ～ nao (～ nào) - どの
+442: Giat, rua, tam (Giặt, rửa, tắm) - あらいます
+443: Dat, de (Đặt, để) - おきます
+444: Viet (Viết) - かきます
+445: Cho muon (Cho mượn) - かします
+446: Nghe, hoi (Nghe, hỏi) - ききます
+447: Toi hoi anh Pak so dien thoai. (Tôi hỏi anh Pak số điện thoại.) - パクぱくさんにでんわばんごうをききます
+448: Cat, got (Cắt, gọt) - きります
+449: Dung, su dung (Dùng, sử dụng) - つかいます
+450: Giup, giup do (Giúp, giúp đỡ) - てつだいます
+451: Cam, lay (Cầm, lấy) - とります
+452: Mang di (Mang đi) - もっていきます
+453: Hieu, biet (Hiểu, biết) - わかります
+454: Nop, lay ra (Nộp, lấy ra) - だします
+455: Toi lay nuoc trai cay tu tu lanh (Tôi lấy nước trái cây từ tủ lạnh) - れいぞうこからジュースをだします
+456: Cho vao, bo vao (Cho vào, bỏ vào) - いれます
+457: Day, chi bao (Dạy, chỉ bảo) - おしえます
+458: Xin loi (Xin lỗi) - すみませんが
+459: Nhieu (Nhiều) - たくさん
+460: A, a (A, à ) - ああ
+461: A, cai nay nhi (A, là cái này nhỉ!) - ああ、これですね
+462: Duoc day (Được đấy!) - いいですよ
+463: Bai hat (Bài hát) - うた
+464: Dan ghi ta (Đàn ghi ta) - ギター
+465: Nha bep (Nhà bếp) - だいどころ
+466: Thuoc la (Thuốc lá) - たばこ
+467: Dien thoai (Điện thoại) - でんわ
+468: Banh pizza (Bánh pizza) - ピザ
+469: Cua so (Cửa sổ) - まど
+470: Hat (Hát) - うたいます
+471: Hut (Hút) - すいます
+472: Noi chuyen (Nói chuyện) - はなします
+473: Choi, nhac cu (Chơi (nhạc cụ)) - ひきます
+474: Cam, mang (Cầm, mang) - もちます
+475: Mo (Mở) - あけます
+476: Dong (Đóng) - しめます
+477: Goi (Gọi) - かけます
+478: Toi goi dien cho ban toi (Tôi gọi điện cho bạn tôi) - ともだちにでんわをかけます
+479: Mang den (Mang đến) - もってきます

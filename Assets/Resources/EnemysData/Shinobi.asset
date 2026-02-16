@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Shinobi
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProfile
   enemyName: Shinobi
-  FuelGauge: 5
+  FuelGauge: 6
   prefabEnemy: {fileID: 7908500367811722163, guid: c750bb6bbfce1c7479ffc654d494372c, type: 3}
   spawnDistanceX: 16

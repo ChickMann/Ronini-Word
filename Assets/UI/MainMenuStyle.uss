@@ -1,0 +1,120 @@
+/* ==========================================================================
+   CÀI ĐẶT CHUNG
+   ========================================================================== */
+.root-container {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    /* Căn giữa nội dung hoặc lệch trái tùy ý */
+    justify-content: center;
+    align-items: flex-start; /* Lệch trái như ảnh cũ */
+    padding-left: 10%; /* Khoảng cách từ mép trái */
+}
+
+/* ==========================================================================
+   BẢNG MENU (PANEL)
+   ========================================================================== */
+.menu-panel {
+    /* Nền tối bán trong suốt, tông xanh đen của rừng */
+    background-color: rgba(15, 25, 35, 0.85);
+
+    /* Viền pixel nhẹ màu xám bạc */
+    border-width: 4px;
+    border-color: rgb(60, 75, 90);
+    /* Bo góc nhẹ kiểu pixel (không mượt) */
+    border-radius: 8px;
+
+    padding: 30px;
+    min-width: 350px;
+    align-items: center;
+
+    /* Hiệu ứng đổ bóng nhẹ để tách khỏi nền rừng */
+    /* -unity-box-shadow: 0 4px 8px rgba(0,0,0, 0.5); (Chỉ Unity mới hỗ trợ) */
+}
+
+/* ==========================================================================
+   TIÊU ĐỀ GAME
+   ========================================================================== */
+.game-title {
+    /* Màu bạc sáng/vàng nhạt để nổi bật */
+    color: rgb(220, 220, 200);
+    font-size: 48px;
+    /* Giả lập font pixel đậm nếu chưa có font xịn */
+    -unity-font-style: bold;
+    margin-bottom: 40px;
+    /* Tạo viền chữ nhẹ để sắc nét hơn */
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.5); /* Bóng đổ cứng kiểu pixel */
+}
+
+/* ==========================================================================
+   NÚT BẤM (RONIN STYLE)
+   ========================================================================== */
+.button-group {
+    width: 100%;
+    align-items: stretch; /* Nút giãn ngang hết panel */
+}
+
+.ronin-button {
+    /* Kích thước và khoảng cách */
+    height: 50px;
+    margin-bottom: 15px;
+    font-size: 20px;
+
+    /* MÀU SẮC TRẠNG THÁI BÌNH THƯỜNG */
+    /* Nền nút: Tối hơn nền panel một chút */
+    background-color: rgba(25, 35, 45, 0.9);
+    /* Chữ màu xám bạc */
+    color: rgb(180, 190, 200);
+    /* Viền nút màu tối */
+    border-width: 3px;
+    border-color: rgb(50, 60, 70);
+    border-radius: 4px; /* Bo góc pixel nhẹ */
+
+    /* Tắt hiệu ứng chuyển động mượt mặc định của Unity để giữ chất pixel cứng cáp */
+    transition-duration: 0s;
+}
+
+/* --- TRẠNG THÁI HOVER (Di chuột vào) --- */
+.ronin-button:hover {
+    /* Nền sáng hơn một chút */
+    background-color: rgba(35, 45, 55, 1);
+    /* Chữ chuyển sang màu VÀNG (Gold) */
+    color: rgb(255, 215, 0);
+    /* Viền cũng chuyển sang màu VÀNG rực */
+    border-color: rgb(255, 215, 0);
+
+    /* Thêm bóng đổ vàng nhẹ (tùy chọn) */
+    /* -unity-box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); */
+}
+
+/* --- TRẠNG THÁI ACTIVE (Đang bấm xuống) --- */
+.ronin-button:active {
+    /* Tối lại một chút khi bấm */
+    background-color: rgb(15, 20, 25);
+    border-color: rgb(200, 180, 0);
+    color: rgb(200, 180, 0);
+    /* Dịch chuyển nhẹ xuống để tạo cảm giác bấm */
+    translate: 0px 2px;
+}
+
+/* ==========================================================================
+   NÚT LOA (Góc phải dưới)
+   ========================================================================== */
+.mute-button {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    /* Nền tối hình tròn/vuông bo góc */
+    background-color: rgba(15, 25, 35, 0.8);
+    border-width: 3px;
+    border-color: rgb(60, 75, 90);
+    border-radius: 50%; /* Hoặc 8px nếu muốn hình vuông */
+}
+
+.mute-button:hover {
+    border-color: rgb(255, 215, 0);
+}

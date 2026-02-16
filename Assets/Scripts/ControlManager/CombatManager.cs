@@ -74,7 +74,15 @@ namespace ControlManager
         }
 
         // --- LEVEL FLOW ---
-
+        public void ResetAll()
+        {
+            if (CurrentEnemy) 
+            {
+                Destroy(CurrentEnemy.gameObject);
+            }
+            playerController.ResetPlayer();
+          
+        }
         public void SetUpStartLevel(LevelData data)
         {
             _curentLevelData = data;

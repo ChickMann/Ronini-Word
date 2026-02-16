@@ -1,0 +1,15 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=04e586382e16ace4f8ef4b44dddda2ad&amp;type=3#MainMenuStyle"/>
+    <ui:VisualElement name="MainMenuRoot" class="root-container">
+        <ui:VisualElement name="MenuPanel" class="menu-panel" style="opacity: 1;">
+            <ui:Label text="RONIN WORD" name="GameTitle" class="game-title"/>
+            <ui:VisualElement name="ButtonGroup" class="button-group">
+                <ui:Button text="New Game" name="BtnNewGame" class="ronin-button"/>
+                <ui:Button text="Leaderboards" name="BtnLeaderboards" class="ronin-button"/>
+                <ui:Button text="Options" name="BtnOptions" class="ronin-button"/>
+                <ui:Button text="Exit" name="BtnExit" class="ronin-button"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button name="BtnMute" class="mute-button"/>
+    </ui:VisualElement>
+</ui:UXML>

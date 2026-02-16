@@ -114,7 +114,7 @@ public class GameDataManager : MonoBehaviour
             {
                 // Khôi phục dữ liệu vào 2 Manager
                 ScoresManager.Instance.LocalTotalScore = data.TotalScore;
-                VocabFirebaseManager.Instance.VocabDict = data.vocabs ?? new System.Collections.Generic.Dictionary<string, int>();
+                VocabFirebaseManager.Instance.VocabDict = data.vocabs ?? new Dictionary<string, int>();
                 
                 Debug.Log("Đã khôi phục dữ liệu từ máy (Offline Mode).");
                 return true;
@@ -155,6 +155,92 @@ public class GameDataManager : MonoBehaviour
             ScoresManager.Instance.ResetData();
 
         // 3. (Tùy chọn) Reset các biến cục bộ khác của GameDataManager nếu có
+    }
+    
+   /// <summary>
+    /// Trả về Dictionary:
+    /// - Key: VocabData (Dữ liệu từ vựng gốc)
+    /// - Value: int (Trạng thái/Status đã lưu, ví dụ: 2)
+    /// </summary>
+    public Dictionary<VocabData, int> GetVocabMapFromBackup()
+    {
+        // Khởi tạo Dictionary kết quả
+        Dictionary<VocabData, int> resultMap = new Dictionary<VocabData, int>();
+
+        if (!File.Exists(BackupPath))
+        {
+            Debug.LogWarning("⚠️ Không tìm thấy file backup user_backup.json");
+            return resultMap;
+        }
+
+        try
+        {
+            string json = File.ReadAllText(BackupPath);
+            LocalBackupData data = JsonConvert.DeserializeObject<LocalBackupData>(json);
+
+            if (data == null || data.vocabs == null || data.vocabs.Count == 0)
+            {
+                Debug.Log("File backup rỗng.");
+                return resultMap;
+            }
+
+            // 1. TẠO TỪ ĐIỂN TRA CỨU (MASTER MAP) ĐỂ TÌM VOCAB GỐC
+            Dictionary<int, VocabData> masterVocabMap = new Dictionary<int, VocabData>();
+
+            if (GameManager.Instance != null && GameManager.Instance.levelDataList != null)
+            {
+                foreach (var level in GameManager.Instance.levelDataList)
+                {
+                    foreach (var wave in level.Waves)
+                    {
+                        foreach (var vocab in wave.VocabList)
+                        {
+                            if (!masterVocabMap.ContainsKey(vocab.VocabID))
+                            {
+                                masterVocabMap.Add(vocab.VocabID, vocab);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError("Chưa load được LevelData trong GameManager!");
+                return resultMap;
+            }
+
+            // 2. DUYỆT FILE BACKUP VÀ GHÉP CẶP
+            foreach (var kvp in data.vocabs)
+            {
+                // kvp.Key = "id_9"
+                // kvp.Value = 2 (Status)
+
+                // Cắt bỏ chữ "id_" để lấy số ID
+                string cleanIdString = kvp.Key.Replace("id_", "").Trim();
+
+                if (int.TryParse(cleanIdString, out int vocabID))
+                {
+                    // Tìm VocabData gốc dựa trên ID
+                    if (masterVocabMap.TryGetValue(vocabID, out VocabData foundVocab))
+                    {
+                        int status = kvp.Value; // Lấy luôn status (số 2)
+                        
+                        // Thêm vào Dictionary kết quả
+                        if (!resultMap.ContainsKey(foundVocab))
+                        {
+                            resultMap.Add(foundVocab, status);
+                        }
+                    }
+                }
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"❌ Lỗi GetVocabMapFromBackup: {ex.Message}");
+        }
+
+        Debug.Log($"✅ Đã khôi phục {resultMap.Count} cặp (Vocab + Status) từ Backup.");
+        return resultMap;
     }
    
 }

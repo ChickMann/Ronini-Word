@@ -13,7 +13,7 @@ namespace SmallHedge.AudioManager
     {
         [SerializeField] private SoundsSO soundsSO;
         [SerializeField] private MusicsSO musicsSO;
-        private static AudioManager instance = null;
+        public static AudioManager instance = null;
         
         // [FIX 1] Tách biệt 2 AudioSource
         private AudioSource musicSource; 
@@ -147,6 +147,13 @@ namespace SmallHedge.AudioManager
             instance._musicCoroutine = instance.StartCoroutine(
                 instance.PlayMusicRandomInList(type, source, maxVolume, fadeTime, nextIndex)
             );
+        }
+
+        public void SetMuteMusicAndSound(bool isMute)
+        {
+            musicSource.mute = isMute;
+            sfxSource.mute = isMute;
+           
         }
 
         [ContextMenu("🐛 Debug: Skip To End")]

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: textAnim_KO 1
   m_EditorClassIdentifier: 
   font: {fileID: 11400000, guid: ed9accc231f96b141b88b6108567d563, type: 2}
-  textSize: 90
+  textSize: 80
   alignment: 1
   transitionDuration: 1.5
   perLetterDelay: 0.1
   invertAnimationOrder: 0
-  initialSpacing: 90
-  endSpacing: 90
+  initialSpacing: 80
+  endSpacing: 80
   spacingCurve:
     serializedVersion: 2
     m_Curve:

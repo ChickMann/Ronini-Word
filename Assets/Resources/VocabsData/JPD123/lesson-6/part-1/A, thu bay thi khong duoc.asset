@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5443ac2786a67f49b9a5682454731f7, type: 3}
+  m_Name: A, thu bay thi khong duoc
+  m_EditorClassIdentifier: Assembly-CSharp::VocabData
+  _vocabID: 369
+  Meaning: "A, th\u1EE9 7 th\xEC kh\xF4ng \u0111\u01B0\u1EE3c "
+  Answer: "\u3042\u3042\u3001\u306B\u3061 \u3088\u3046\u3073\u306F\u3061\u3087\u3063\u3068"
+  State: 0

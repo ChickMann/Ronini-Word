@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5443ac2786a67f49b9a5682454731f7, type: 3}
+  m_Name: Cai gi cung
+  m_EditorClassIdentifier: Assembly-CSharp::VocabData
+  _vocabID: 202
+  Meaning: "C\xE1i g\xEC c\u0169ng\u2026"
+  Answer: "\u306A\u306B\u3082"
+  State: 0

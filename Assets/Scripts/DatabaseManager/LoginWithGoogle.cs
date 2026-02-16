@@ -23,7 +23,6 @@ public class LoginWithGoogle : MonoBehaviour
     [SerializeField] private Image userProfilePic;
     
     [Header("Username System")]
-    [SerializeField] private GameObject usernameInputPanel; 
     [SerializeField] private TMP_InputField usernameInputField; 
     [SerializeField] private TextMeshProUGUI displayUsernameText; 
     [SerializeField] private Button submitNameButton; 
@@ -73,7 +72,7 @@ public class LoginWithGoogle : MonoBehaviour
     {
         _auth = FirebaseAuth.DefaultInstance;
     
-        if (usernameInputPanel != null) usernameInputPanel.SetActive(false);
+        UIManager.Instance.SetEnterNamePanel(false);
 
         bool isRemembered = PlayerPrefs.GetInt(PREF_REMEMBER_ME, 0) == 1;
         if (rememberMeToggle != null) rememberMeToggle.isOn = isRemembered;
@@ -94,13 +93,13 @@ public class LoginWithGoogle : MonoBehaviour
             }
             else
             {
-                ShowLoginPanel();
+                UIManager.Instance.LoginPanel();
             }
         }
         else
         {
             if (GoogleSignIn.DefaultInstance != null) GoogleSignIn.DefaultInstance.SignOut();
-            ShowLoginPanel();
+            UIManager.Instance.LoginPanel();
         }
     }
     public async void SignInWithGoogleAsync()
@@ -165,7 +164,7 @@ public class LoginWithGoogle : MonoBehaviour
                 if (usernameInputField != null) 
                     usernameInputField.text = user.DisplayName; 
 
-                usernameInputPanel.SetActive(true);
+                UIManager.Instance.SetEnterNamePanel(true);
                 userPanel.SetActive(false); 
             }
             else
@@ -186,7 +185,7 @@ public class LoginWithGoogle : MonoBehaviour
             Debug.LogError($"❌ Lỗi HandlePostLogin: {ex.Message}");
             // Fallback
             if (usernameInputField != null) usernameInputField.text = user.DisplayName;
-            usernameInputPanel.SetActive(true);
+            UIManager.Instance.SetEnterNamePanel(true);
         }
     }
 
@@ -216,7 +215,7 @@ public class LoginWithGoogle : MonoBehaviour
                 await GameDataManager.Instance.SyncFromCloud();
             }
 
-            usernameInputPanel.SetActive(false);
+            UIManager.Instance.SetEnterNamePanel(false);
             ShowMainUserPanel(_auth.CurrentUser);
         }
         catch (Exception ex)
@@ -233,7 +232,7 @@ public class LoginWithGoogle : MonoBehaviour
         if (user == null) return;
 
         userPanel.SetActive(true);
-        usernameInputPanel.SetActive(false);
+        UIManager.Instance.SetEnterNamePanel(false);
         loginPanel.SetActive(false);
 
         if (displayUsernameText != null)
@@ -262,16 +261,10 @@ public class LoginWithGoogle : MonoBehaviour
 
         _currentCustomName = "";
         if (usernameInputField != null) usernameInputField.text = "";
-
-        ShowLoginPanel();
+        
     }
 
-    private void ShowLoginPanel()
-    {
-        loginPanel.SetActive(true);
-        userPanel.SetActive(false);
-        if (usernameInputPanel != null) usernameInputPanel.SetActive(false);
-    }
+ 
 
     private async Task LoadProfileImage(string url)
     {

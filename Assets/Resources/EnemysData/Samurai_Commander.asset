@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Samurai_Commander
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProfile
   enemyName: Samurai Commander
-  FuelGauge: 5
+  FuelGauge: 3
   prefabEnemy: {fileID: 7549311703139423212, guid: fe07c248601cdfb46bd3fc684669ec5c, type: 3}
   spawnDistanceX: 16
