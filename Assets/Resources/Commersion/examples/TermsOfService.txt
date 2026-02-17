@@ -1,0 +1,97 @@
+TERMS OF SERVICE
+
+Last updated: August 16, 2025
+
+These Terms of Service ("Terms") govern your use of the mobile application operated by CLOUPT ("we," "our," or "us"). By downloading, accessing, or using our app, you agree to be bound by these Terms.
+
+ACCEPTANCE OF TERMS
+
+By using our Service, you confirm that:
+• You are at least 13 years old
+• You have the legal capacity to enter into these Terms
+• You agree to comply with all applicable laws and regulations
+
+DESCRIPTION OF SERVICE
+
+Our mobile application provides [BRIEF DESCRIPTION OF YOUR APP'S FUNCTIONALITY]. We reserve the right to modify, suspend, or discontinue any aspect of the Service at any time.
+
+USER ACCOUNTS AND REGISTRATION
+
+• You may need to create an account to access certain features
+• You are responsible for maintaining the security of your account
+• You must provide accurate and complete information
+• You are responsible for all activities under your account
+
+ACCEPTABLE USE
+
+You agree NOT to:
+• Use the Service for illegal or unauthorized purposes
+• Violate any laws, regulations, or third-party rights
+• Upload malicious code or harmful content
+• Attempt to gain unauthorized access to our systems
+• Interfere with or disrupt the Service
+• Use the Service to spam or harass others
+
+INTELLECTUAL PROPERTY
+
+• All content and materials in the app are owned by CLOUPT or our licensors
+• You may not copy, modify, distribute, or create derivative works
+• Any feedback or suggestions you provide may be used by us without compensation
+• You retain ownership of content you create using our Service
+
+PURCHASES AND PAYMENTS
+
+• In-app purchases are processed through your device's app store
+• All purchases are final and non-refundable unless required by law
+• Prices are subject to change without notice
+• We are not responsible for app store policies or payment processing
+
+PRIVACY
+
+Your privacy is important to us. Please review our Privacy Policy, which governs how we collect, use, and protect your information.
+
+DISCLAIMERS
+
+THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING:
+• MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+• NON-INFRINGEMENT
+• ACCURACY OR RELIABILITY OF CONTENT
+• UNINTERRUPTED OR ERROR-FREE OPERATION
+
+LIMITATION OF LIABILITY
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, CLOUPT SHALL NOT BE LIABLE FOR:
+• INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+• LOSS OF PROFITS, DATA, OR USE
+• DAMAGES EXCEEDING THE AMOUNT PAID TO US IN THE LAST 12 MONTHS
+
+INDEMNIFICATION
+
+You agree to defend, indemnify, and hold us harmless from any claims, damages, or expenses arising from your use of the Service or violation of these Terms.
+
+TERMINATION
+
+• You may stop using the Service at any time
+• We may suspend or terminate your access for violations of these Terms
+• Certain provisions will survive termination
+
+GOVERNING LAW
+
+These Terms are governed by the laws of [YOUR JURISDICTION] without regard to conflict of law provisions.
+
+CHANGES TO TERMS
+
+We may modify these Terms at any time. We will notify users of significant changes through the app or other means. Continued use constitutes acceptance of the modified Terms.
+
+CONTACT INFORMATION
+
+For questions about these Terms, please contact us:
+• Email: hello@cloupt.com
+• Company: CLOUPT
+• Address: Please contact us via email
+
+SEVERABILITY
+
+If any provision of these Terms is found to be unenforceable, the remaining provisions will remain in full force and effect.
+
+These Terms constitute the entire agreement between you and CLOUPT regarding the Service and supersede all prior agreements.
