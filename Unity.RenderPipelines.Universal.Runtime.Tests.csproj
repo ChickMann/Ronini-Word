@@ -42,15 +42,15 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@66e99ffa09c7\Tests\Runtime\Unity.RenderPipelines.Universal.Runtime.Tests.asmdef" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a6e30d1f59f5\Tests\Runtime\Unity.RenderPipelines.Universal.Runtime.Tests.asmdef" />
     <Reference Include="UnityEngine">
-      <HintPath>E:\Unity versions\6000.3.2f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+      <HintPath>E:\Unity versions\6000.3.8f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>E:\Unity versions\6000.3.2f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>E:\Unity versions\6000.3.8f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>E:\Unity versions\6000.3.2f1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
+      <HintPath>E:\Unity versions\6000.3.8f1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

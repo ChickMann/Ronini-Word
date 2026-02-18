@@ -102,21 +102,40 @@ public class ScoresManager : MonoBehaviour
         }
     }
 
+// --- 2. LOGIC CLOUD (ĐÃ SỬA) ---
+
     public async Task SaveScoreToCloudAsync()
     {
+        // 1. Kiểm tra điều kiện
         if (CurrentWaveScore <= 0) return; 
 
+        // 2. Tính toán tổng điểm đích ngay lập tức
         int targetTotalScore = LocalTotalScore + CurrentWaveScore;
 
-        // Chạy hiệu ứng (Logic hiệu ứng vẫn nằm đây vì nó thay đổi data theo thời gian)
-        this.DelayAction(3f, () =>
-        {
-            _ = PlayScoreTransferEffectAsync(targetTotalScore, 0.5f);
-        });  
+        Debug.Log($"[CLOUD] Bắt đầu lưu điểm: {targetTotalScore} (Cũ: {LocalTotalScore} + Mới: {CurrentWaveScore})");
 
+        // 3. LƯU LÊN FIREBASE NGAY LẬP TỨC (Không chờ hiệu ứng)
         InitDataChannel();
-        // Thực hiện lưu lên Cloud ở đây (bạn chưa viết hàm SaveData trong code cũ, hãy thêm vào nếu cần)
-        // await _scoreDataChannel.SaveData(LocalTotalScore); 
+        try 
+        {
+            // Giả định hàm trong SimpleData là SaveData hoặc SetData. 
+            // Nếu tool của bạn dùng tên khác (vd: SetData), hãy đổi tên hàm này.
+            // Đổi SaveData -> SetData
+            await _scoreDataChannel.SetData(targetTotalScore);
+            
+            Debug.Log("[CLOUD] ✅ Đã upload điểm lên Firebase thành công!");
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"[CLOUD] ❌ Lỗi upload điểm: {ex.Message}");
+            // Tùy chọn: Có thể return luôn nếu muốn fail-safe, nhưng vẫn nên cho chạy hiệu ứng UI cho đẹp
+        }
+
+        // 4. Chạy hiệu ứng chuyển điểm (Visual Only)
+        // Không dùng DelayAction stringy nữa, dùng Task.Delay chuẩn async
+        await Task.Delay(3000); // Đợi 3s như logic cũ của bạn
+        
+        await PlayScoreTransferEffectAsync(targetTotalScore, 0.5f);
     }
 
     private async Task PlayScoreTransferEffectAsync(int targetTotalScore, float duration)
@@ -130,17 +149,20 @@ public class ScoresManager : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
 
+            // Lerp giá trị hiển thị
             LocalTotalScore = Mathf.RoundToInt(Mathf.Lerp(startTotal, targetTotalScore, t));
+            
+            // Giảm điểm wave về 0
             CurrentWaveScore = Mathf.RoundToInt(Mathf.Lerp(startWave, 0, t));
 
-            NotifyUIUpdate(); // [CHANGED] Cập nhật UI liên tục trong vòng lặp
-
+            NotifyUIUpdate(); 
             await Task.Yield(); 
         }
 
+        // Chốt giá trị cuối cùng để đảm bảo chính xác
         LocalTotalScore = targetTotalScore;
         CurrentWaveScore = 0;
-        NotifyUIUpdate(); // [CHANGED] Cập nhật lần cuối
+        NotifyUIUpdate(); 
     }
 
     public void ResetData()

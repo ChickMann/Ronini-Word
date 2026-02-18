@@ -8,16 +8,15 @@ using UnityEngine.Audio;
 
 namespace SmallHedge.AudioManager
 {
-    [RequireComponent(typeof(AudioSource))]
     public class AudioManager : MonoBehaviour
     {
         [SerializeField] private SoundsSO soundsSO;
         [SerializeField] private MusicsSO musicsSO;
         public static AudioManager instance = null;
         
-        // [FIX 1] Tách biệt 2 AudioSource
-        private AudioSource musicSource; 
-        private AudioSource sfxSource;
+        [Header("Audio Sources")]
+        [SerializeField] AudioSource musicSource; 
+        [SerializeField] AudioSource sfxSource;
 
         private Coroutine _musicCoroutine;
 
@@ -26,11 +25,6 @@ namespace SmallHedge.AudioManager
             if (!instance)
             {
                 instance = this;
-                // Nguồn phát nhạc (Dùng Component có sẵn trên GameObject)
-                musicSource = GetComponent<AudioSource>();
-                
-                // Tự động tạo thêm 1 nguồn phát SFX ẩn ngay lúc Runtime
-                sfxSource = gameObject.AddComponent<AudioSource>();
             }
         }
 
