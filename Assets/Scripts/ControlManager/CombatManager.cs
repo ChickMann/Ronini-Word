@@ -210,7 +210,6 @@ namespace ControlManager
             Debug.Log("PERFECT FINISHER!");
             GameManager.Instance.inputDisplayManager.LockButton(true);
             CurrentEnemy.SetActiveFuelSlider(false);
-            // this.DelayAction(1.85f, CurrentEnemy.Die);
             GameManager.Instance.CutScenesManager.ScheduleTimelineAction(1.22f, () =>
             {
                 CurrentEnemy.Die();

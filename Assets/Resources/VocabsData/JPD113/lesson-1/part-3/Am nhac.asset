@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5443ac2786a67f49b9a5682454731f7, type: 3}
   m_Name: Am nhac
   m_EditorClassIdentifier: Assembly-CSharp::VocabData
-  _vocabID: 46
+  _vocabID: 45
   Meaning: "\xC2m nh\u1EA1c"
   Answer: "\u304A\u3093\u304C\u304F"
-  State: 0

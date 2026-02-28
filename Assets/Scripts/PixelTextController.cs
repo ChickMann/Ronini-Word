@@ -9,15 +9,21 @@ public class PixelTextController : MonoBehaviour
     public TextAnimation scoreTextAnimation;
     public TextAnimation goodTextAnimation;
     public TextAnimation prefectTextAnimation;
+    public TextAnimation addHealthTextAnimation;
+    public TextAnimation addShieldTextAnimation;
     
     [Header("Text")]
     [SerializeField] private string goodText;
     [SerializeField] private string prefectText;
+    [SerializeField] private string addHealthText;
+    [SerializeField] private string addShieldText;
     
     [Header("position")]
     [SerializeField] private Vector3 scoreTextPosition;
     [SerializeField] private Vector3 goodTextPosition;
     [SerializeField] private Vector3 prefectTextPosition;
+    [SerializeField] private Vector3 addHealthTextPosition;
+    [SerializeField] private Vector3 addShieldTextPosition;
 
     private void Awake()
     {
@@ -52,5 +58,19 @@ public class PixelTextController : MonoBehaviour
         
         PixelBattleTextController.DisplayText(prefectText, prefectTextAnimation,
             prefectTextPosition);
+    }
+    [ContextMenu("test Health")]
+    public void HealthTextAnimation()
+    {
+        
+        PixelBattleTextController.DisplayText(addHealthText, addHealthTextAnimation,
+            addHealthTextPosition);
+    }
+    [ContextMenu("test Shield")]
+    public void ShieldTextAnimation()
+    {
+        
+        PixelBattleTextController.DisplayText(addShieldText, addShieldTextAnimation,
+            addShieldTextPosition);
     }
 }

@@ -53,8 +53,6 @@ public class GameDataManager : MonoBehaviour
             LoadLocalBackup();
         }
     }
-    
-    // ... (Các phần còn lại giữ nguyên) ...
 
 
     // --- 1. XỬ LÝ SỰ KIỆN TRONG GAME ---
@@ -98,7 +96,6 @@ public class GameDataManager : MonoBehaviour
 
         string json = JsonConvert.SerializeObject(data);
         File.WriteAllText(BackupPath, json);
-        // Debug.Log("Đã Auto-Save xuống máy.");
     }
 
     private bool LoadLocalBackup()

@@ -1,10 +1,6 @@
 using System;
 using UnityEngine;
 
-// Đảm bảo bạn đã import namespace chứa Data và UI Prefab
-// using Game.Data;
-// using Game.UI; 
-
 public static class GameEvents
 {
 

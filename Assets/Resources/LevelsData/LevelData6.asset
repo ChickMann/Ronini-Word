@@ -13,32 +13,23 @@ MonoBehaviour:
   m_Name: LevelData6
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   LevelID: 6
-  scoreRequirement: 175
+  scoreRequirement: 80
   Waves:
   - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
     VocabList:
-    - {fileID: 11400000, guid: 57c6692398ad8264ca861a0d77a00e1d, type: 2}
-    - {fileID: 11400000, guid: cd4c80f5dc118b84ab79d39f993c639e, type: 2}
-    - {fileID: 11400000, guid: d40fcc0297d63df4d89015d59b8b39a8, type: 2}
+    - {fileID: 11400000, guid: 4881d57c220613c4692a041c5cf7c2c4, type: 2}
+    - {fileID: 11400000, guid: dd449ed6765596c43aac0f8ddea2a212, type: 2}
   - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
     VocabList:
-    - {fileID: 11400000, guid: 8a907736fe461f54f82a9a8b4f0c6418, type: 2}
-    - {fileID: 11400000, guid: 0603cf7ce797b01429c77c85d360c068, type: 2}
-  - EnemyProfile: {fileID: 11400000, guid: fc4ed6c50c6e3ef40b86bc7f56a3dfc7, type: 2}
-    VocabList:
-    - {fileID: 11400000, guid: c0d360795ecb81e49baa1a53b42f6ce9, type: 2}
-    - {fileID: 11400000, guid: eeef3ccb4a0c09f4b8af9146a88a7760, type: 2}
-    - {fileID: 11400000, guid: 745d9b1e675fc244a9095530ea9cad85, type: 2}
-    - {fileID: 11400000, guid: 7443845e775379642b49a353260b035e, type: 2}
+    - {fileID: 11400000, guid: 5723a0735623ff04598ad0fbc8561d13, type: 2}
+    - {fileID: 11400000, guid: d8ddb7f0beb0d7640ad6e8e4213ed7d7, type: 2}
   - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
     VocabList:
-    - {fileID: 11400000, guid: fbc55d8aa09e87b4aafded5582802691, type: 2}
-    - {fileID: 11400000, guid: 178fdd26549979c49b74f0826d1377dc, type: 2}
-  - EnemyProfile: {fileID: 11400000, guid: fe14b6cd62feb2f4d8560d5186585195, type: 2}
+    - {fileID: 11400000, guid: 3a5bf2858b21b9844bf99124a65d6ac0, type: 2}
+    - {fileID: 11400000, guid: 8ed3dfc8608aa9a4d88d07ce6c5e8252, type: 2}
+    - {fileID: 11400000, guid: cbc3e5f7f28ec7240a1656e455bb03af, type: 2}
+  - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
     VocabList:
-    - {fileID: 11400000, guid: ba70bf9190e153f4189ed049039b28e6, type: 2}
-    - {fileID: 11400000, guid: 8ed6bd009c8015d41bed3328bf9b014c, type: 2}
-    - {fileID: 11400000, guid: 48ff99a8ca43ae44197a8839b28c4712, type: 2}
-    - {fileID: 11400000, guid: 70418c75d8790ed46bf6a9ce97b0b2f1, type: 2}
-    - {fileID: 11400000, guid: 93f16d912f1cd2040842345fc7b9ea1b, type: 2}
-    - {fileID: 11400000, guid: c37db3247e6d12644bc0b9a2ad9ecf6f, type: 2}
+    - {fileID: 11400000, guid: 2231d3710cf253745981798619a4d8ab, type: 2}
+    - {fileID: 11400000, guid: d11a4b59e56634b4da1741d3a6d964e1, type: 2}
+    - {fileID: 11400000, guid: 53bc54bf8667b564384f7fc01e9a27d5, type: 2}

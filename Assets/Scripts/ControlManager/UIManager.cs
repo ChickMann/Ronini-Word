@@ -50,6 +50,9 @@ public class UIManager : MonoBehaviour
     [Header("Tutorial panel References")]
     [SerializeField] private GameObject tutorialPanel;
     
+    [Header("Social")]
+    private const string FaceBookPageId = "61586321263480"; 
+    
     [Header("InGame references")]
     [SerializeField] private TextMeshProUGUI scoreText;
 
@@ -65,13 +68,18 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.Instance;
-        updateTotalScoreText();
+       
         updateScoreText();
         
         if (ScoresManager.Instance != null)
         {
             UpdateScoreHUD(ScoresManager.Instance.LocalTotalScore, ScoresManager.Instance.CurrentWaveScore);
         }
+    }
+
+    private void Update()
+    {
+        updateTotalScoreText();
     }
 
     #region Menu
@@ -410,11 +418,33 @@ public class UIManager : MonoBehaviour
 }
 
     #endregion
+
+    #region Social
+
+    public void OpenFacebookPage()
+    {
+        AudioManager.PlaySound(SoundType.ButtonMenu);
+#if UNITY_ANDROID
+        string facebookUrl = $"fb://page/{FaceBookPageId}";
+#elif UNITY_IOS
+        string facebookUrl = $"fb://profile/{FaceBookPageId}";
+#else
+        // Nếu là WebGL hoặc Editor thì mở trình duyệt
+        string facebookUrl = $"https://www.facebook.com/{FaceBookPageName}";
+#endif
+
+        Application.OpenURL(facebookUrl);
+        
+        // Log để kiểm tra trong Editor
+        Debug.Log($"Đang mở Fanpage: {facebookUrl}");
+    }
+
+    #endregion
     
     private void SwitchPanels(GameObject currentPanel, GameObject previousPanel)
     {
-        if(previousPanel == menuPanel) updateTotalScoreText();
         currentPanel.SetActive(false);
         previousPanel.SetActive(true);
     }
+    
 }

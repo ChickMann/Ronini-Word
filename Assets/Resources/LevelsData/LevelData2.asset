@@ -13,20 +13,17 @@ MonoBehaviour:
   m_Name: LevelData2
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   LevelID: 2
-  scoreRequirement: 30
+  scoreRequirement: 12
   Waves:
   - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
     VocabList:
-    - {fileID: 11400000, guid: 8ed3dfc8608aa9a4d88d07ce6c5e8252, type: 2}
-    - {fileID: 11400000, guid: cbc3e5f7f28ec7240a1656e455bb03af, type: 2}
-    - {fileID: 11400000, guid: 3a5bf2858b21b9844bf99124a65d6ac0, type: 2}
-  - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
-    VocabList:
     - {fileID: 11400000, guid: c06058ff222bf9141b175f48e695dbc9, type: 2}
-    - {fileID: 11400000, guid: dd449ed6765596c43aac0f8ddea2a212, type: 2}
-    - {fileID: 11400000, guid: d11a4b59e56634b4da1741d3a6d964e1, type: 2}
+    - {fileID: 11400000, guid: 84b6e9687d609a04dbb94a3119eb6653, type: 2}
   - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
     VocabList:
-    - {fileID: 11400000, guid: 539c5f97a14f5b640ba3d77ce8323348, type: 2}
-    - {fileID: 11400000, guid: 279b3682c1932d94d87b487cfe2d81f5, type: 2}
-    - {fileID: 11400000, guid: f1b287a2f14f5d74f97fc6304c23c686, type: 2}
+    - {fileID: 11400000, guid: d48da62e89e9db145af07094b2f83399, type: 2}
+    - {fileID: 11400000, guid: e6cbb578fbca497488cb9e972f2633af, type: 2}
+  - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
+    VocabList:
+    - {fileID: 11400000, guid: 2925e96def8ef844da8666a0085da1db, type: 2}
+    - {fileID: 11400000, guid: f4a0b904eac86d648b4073c025b5639c, type: 2}

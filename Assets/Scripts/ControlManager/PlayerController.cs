@@ -193,6 +193,7 @@ namespace ControlManager
         {
             if (currentHealth < maxHealth)
             {
+                PixelTextController.Instance.HealthTextAnimation();
                 UpdateHealthUI(true);
                 currentHealth++;
             }
@@ -202,6 +203,7 @@ namespace ControlManager
 
         public void SetShield(bool isShield)
         {
+            if (isShield)  PixelTextController.Instance.ShieldTextAnimation();
             AudioManager.PlaySound(SoundType.Shield);
             hasShield = isShield;
             UpdateShieldUI(isShield);

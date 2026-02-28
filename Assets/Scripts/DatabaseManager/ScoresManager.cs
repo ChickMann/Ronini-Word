@@ -118,9 +118,6 @@ public class ScoresManager : MonoBehaviour
         InitDataChannel();
         try 
         {
-            // Giả định hàm trong SimpleData là SaveData hoặc SetData. 
-            // Nếu tool của bạn dùng tên khác (vd: SetData), hãy đổi tên hàm này.
-            // Đổi SaveData -> SetData
             await _scoreDataChannel.SetData(targetTotalScore);
             
             Debug.Log("[CLOUD] ✅ Đã upload điểm lên Firebase thành công!");

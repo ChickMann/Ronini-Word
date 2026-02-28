@@ -15,4 +15,4 @@ MonoBehaviour:
   enemyName: Monk
   FuelGauge: 5
   prefabEnemy: {fileID: 3948947358221730339, guid: de907fcbeeea1fa409c895e16471db5f, type: 3}
-  spawnDistanceX: 20
+  spawnDistanceX: 18

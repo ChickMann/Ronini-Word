@@ -24,7 +24,6 @@ public class BackGroundManager : MonoBehaviour
     [SerializeField] private AnimationCurve knockbackCurve = AnimationCurve.EaseInOut(0, 1, 1, 0); 
     [SerializeField] private float knockbackDuration = 0.3f;
 
-    // THÊM DÒNG NÀY: Biến để test nhanh trong Inspector
     [Header("Debug")]
     [SerializeField] private bool testRunning = false;
 
@@ -61,7 +60,6 @@ public class BackGroundManager : MonoBehaviour
         }
     }
 
-    // Dùng Update để check biến _testRunning liên tục
     private void Update()
     {
         // 1. Xử lý tốc độ chạy nền (Running)

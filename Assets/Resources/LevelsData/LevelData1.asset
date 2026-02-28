@@ -17,14 +17,9 @@ MonoBehaviour:
   Waves:
   - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
     VocabList:
-    - {fileID: 11400000, guid: e6cbb578fbca497488cb9e972f2633af, type: 2}
+    - {fileID: 11400000, guid: c06058ff222bf9141b175f48e695dbc9, type: 2}
+    - {fileID: 11400000, guid: 84b6e9687d609a04dbb94a3119eb6653, type: 2}
+  - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
+    VocabList:
     - {fileID: 11400000, guid: d48da62e89e9db145af07094b2f83399, type: 2}
-  - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
-    VocabList:
-    - {fileID: 11400000, guid: 2925e96def8ef844da8666a0085da1db, type: 2}
-    - {fileID: 11400000, guid: f4a0b904eac86d648b4073c025b5639c, type: 2}
-    - {fileID: 11400000, guid: 262abe33620e905429ed3ee916104a73, type: 2}
-  - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
-    VocabList:
-    - {fileID: 11400000, guid: 315b3d5629d8b4042829478f52394fba, type: 2}
-    - {fileID: 11400000, guid: 76225a08f79252640a728421b4caddf1, type: 2}
+    - {fileID: 11400000, guid: e6cbb578fbca497488cb9e972f2633af, type: 2}

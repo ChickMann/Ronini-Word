@@ -21,6 +21,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: feb9800ddfb8b9f459b0d20e8e7450e7, type: 3}
     - {fileID: 8300000, guid: b19567c0778c4664ba4fac5eda7c3d40, type: 3}
     - {fileID: 8300000, guid: a926f6863f0e4b341ae953f6bd71d557, type: 3}
+    - {fileID: 8300000, guid: 6d8a3b681215b654fa76000592653f81, type: 3}
+    - {fileID: 8300000, guid: 596bda1666e61a045a4897b5e2a0307d, type: 3}
+    - {fileID: 8300000, guid: ee32054a6a48a42439cba0fb6338529e, type: 3}
   - name: MusicFight
     volume: 0.7
     musics:
@@ -29,3 +32,6 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a8ae7ee65f3a0214c8ca5615c5a68bc6, type: 3}
     - {fileID: 8300000, guid: e6fde72e38b042547a33836f8648280e, type: 3}
     - {fileID: 8300000, guid: 925eee5b9dc799a4db739172abda2f75, type: 3}
+    - {fileID: 8300000, guid: e0f000202d7352743a29b445f4f5d640, type: 3}
+    - {fileID: 8300000, guid: 1fcf0af923a1c8940a6b3137f6ea5d1b, type: 3}
+    - {fileID: 8300000, guid: 9cdb87172cb4c31468c5b7e3c653e941, type: 3}

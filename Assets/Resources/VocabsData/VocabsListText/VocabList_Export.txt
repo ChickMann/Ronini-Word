@@ -1,10 +1,10 @@
 === DANH SÁCH TỪ VỰNG RONIN WORD ===
-Tổng số: 483 từ
+Tổng số: 482 từ
 ------------------------------------
 ID: Tên File (Nghĩa) - Đáp án
 1: Toi (Tôi) - わたし
 2: Ten (Tên) - なまえ
-3: Y (Ý) - イタリア
+3: Y (Nước Ý) - イタリア
 4: Dat nuoc cua ban la nuoc nao (Đất nước của bạn là nước nào? ) - おくにはどちらですか。
 5: Xin loi... cho tui hoi... (Xin lỗi… cho tôi hỏi…) - すみません
 6: Anh, Chi oi, xin loi cho toi hoi 1 chut (Anh / chị ơi, xin lỗi cho tôi hỏi 1 chút…) - あのう、すみません
@@ -34,7 +34,7 @@ ID: Tên File (Nghĩa) - Đáp án
 30: Uc (Úc) - オーストラリア
 31: Xin chao (Xin chào (lần đầu gặp mặt)) - はじめまして
 32: Dat nuoc (Đất nước (bạn)) - くに
-33: Ngay (Ngày (mùng)) - にち
+33: Ngay (Ngày) - にち
 34: Banh mi (Bánh mì) - パン
 34: Day, cho nay (Đây, chỗ này) - ここ
 34: Nuoc (Nước) - みず
@@ -48,7 +48,6 @@ ID: Tên File (Nghĩa) - Đáp án
 42: Bong da (Bóng đá) - サッカー
 43: Tennis Quan vot (Tennis (Quần vợt)) - テニス
 44: Boi loi (Bơi lội) - すいえい
-45: Ngay 1 (Ngày (mùng) ～) - か
 46: Am nhac (Âm nhạc) - おんがく
 47: Doc sach (Đọc sách) - どくしょ
 48: Du lich (Du lịch) - りょこう

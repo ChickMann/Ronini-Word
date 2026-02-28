@@ -27,8 +27,6 @@ public class LoginWithGoogle : MonoBehaviour
     [SerializeField] private TextMeshProUGUI displayUsernameText; 
     [SerializeField] private Button submitNameButton; 
     
-    // [KHÔNG CẦN QUAN TÂM CẤU HÌNH INSPECTOR NỮA]
-    // Chúng ta sẽ tự tạo kênh dữ liệu chuẩn trong code
     [SerializeField] private SimpleData usernameDataChannel; 
 
     [Header("Settings")]
@@ -200,7 +198,7 @@ public class LoginWithGoogle : MonoBehaviour
 
         try 
         {
-            // [FIX CỨNG] Lưu đúng vào chỗ đã Tải ở trên ("Username", "Player")
+            // Lưu đúng vào chỗ đã Tải ở trên ("Username", "Player")
             SimpleData freshChannel = new SimpleData("Username", DataType.String, "Player");
             
             Debug.Log($"---> Đang LƯU vào: {EFManager.Instance.RePlacePrefix("Player")}/Username");
@@ -224,8 +222,6 @@ public class LoginWithGoogle : MonoBehaviour
             submitNameButton.interactable = true;
         }
     }
-
-    // --- CÁC HÀM UI KHÁC GIỮ NGUYÊN ---
 
     private void ShowMainUserPanel(FirebaseUser user)
     {

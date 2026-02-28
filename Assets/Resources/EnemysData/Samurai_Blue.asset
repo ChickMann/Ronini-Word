@@ -15,4 +15,4 @@ MonoBehaviour:
   enemyName: Samurai Blue
   FuelGauge: 4
   prefabEnemy: {fileID: 4228113323354499968, guid: 93bba01e332123d43863c0a752f15711, type: 3}
-  spawnDistanceX: 16
+  spawnDistanceX: 20

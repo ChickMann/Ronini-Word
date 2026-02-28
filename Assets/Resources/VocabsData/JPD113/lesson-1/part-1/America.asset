@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: America
   m_EditorClassIdentifier: Assembly-CSharp::VocabData
   _vocabID: 10
-  Meaning: "M\u1EF9"
+  Meaning: "N\u01B0\u1EDBc M\u1EF9"
   Answer: "\u30A2\u30E1\u30EA\u30AB"
-  State: 0

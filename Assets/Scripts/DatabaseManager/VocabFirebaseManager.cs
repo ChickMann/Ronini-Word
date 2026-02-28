@@ -38,15 +38,12 @@ public class VocabFirebaseManager : MonoBehaviour
 
     // --- 1. API CHO SCORES MANAGER GỌI ---
 
-  private string GetSafeKey(int vocabID)
-    {
-        return "id_" + vocabID; // Biến số 1 thành "id_1"
-    }
-
-    // --- 1. SỬA API ---
-
-    public int GetVocabState(int vocabID)
-    {
+      private string GetSafeKey(int vocabID)
+      {
+          return "id_" + vocabID; // Biến số 1 thành "id_1"
+      }
+  
+      public int GetVocabState(int vocabID)    {
         string key = GetSafeKey(vocabID); // Dùng Key an toàn
         if (VocabDict.TryGetValue(key, out int state)) return state;
         return 0;
@@ -64,11 +61,7 @@ public class VocabFirebaseManager : MonoBehaviour
             _dirtyVocabIDs.Add(key);
         }
     }
-
-    // --- 2. SỬA LOGIC SAVE/LOAD ---
     
-    // (Hàm SaveDirtyVocabsToCloudAsync giữ nguyên, vì nó tự lấy Key từ Dictionary)
-
     public async Task LoadVocabsFromCloudAsync()
     {
         string path = EFManager.Instance.RePlacePrefix(autoPrefix);
