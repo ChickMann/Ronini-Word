@@ -5,50 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15996b24-b822-4b42-b432-4f257800d9a0" name="Changes" comment="Remove Dynamic Floating Text package and related assets">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.prototype project SSG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.prototype project SSG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/Musics SO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/Musics SO.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/CHANGELOG.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/CHANGELOG.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/LICENSE.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/LICENSE.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/README.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalDependencyManager/Editor/README.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/mainTemplate.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/mainTemplate.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/EnemysData/Monk.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/EnemysData/Monk.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/EnemysData/Samurai_Blue.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/EnemysData/Samurai_Blue.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/EnemysData/Samurai_Commander.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/EnemysData/Samurai_Commander.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData5.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData6.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/LevelsData/LevelData6.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/VocabsData/JPD113/lesson-1/part-1/America.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/VocabsData/JPD113/lesson-1/part-1/America.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/VocabsData/JPD113/lesson-1/part-3/A, A – A!.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/VocabsData/JPD113/lesson-1/part-3/A, A – A!.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/VocabsData/JPD113/lesson-1/part-3/Am nhac.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/VocabsData/JPD113/lesson-1/part-3/Am nhac.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/VocabsData/VocabsListText/VocabList_Export.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/VocabsData/VocabsListText/VocabList_Export.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Monk.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Monk.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Samurai Blue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Samurai Blue.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Samurai Commander.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Samurai Commander.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Shinobi.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Shinobi.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/BackGroundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControlManager/BackGroundManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControlManager/CombatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControlManager/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControlManager/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/GameDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/GameDataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/LoginWithGoogle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/LoginWithGoogle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/ScoresManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/ScoresManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/VocabFirebaseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DatabaseManager/VocabFirebaseManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PixelTextController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PixelTextController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_spooky.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/PixelBattleText/Animation Presets/textAnim_spooky.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/fonts/BoldPixels/Assets/font/BoldPixels SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/fonts/BoldPixels/Assets/font/BoldPixels SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/Demo/SampleScene/ReflectionProbe-0.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/Demo/SampleScene/ReflectionProbe-0.exr.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/TextMeshProFont/Dynamic/mplus-1c-bold SDF Dynamic.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/TextMeshProFont/Dynamic/mplus-1c-bold SDF Dynamic.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/TextMeshProFont/Dynamic/mplus-1c-heavy SDF Dynamic.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/fonts/SU3DJPFont/TextMeshProFont/Dynamic/mplus-1c-heavy SDF Dynamic.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/0f/0f9a7da26b177b2a0a166686e1091a55" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/AndroidResolverDependencies.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/AndroidResolverDependencies.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Config.Runtime.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Config.Runtime.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Editor.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Runtime.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Unity.RenderPipelines.Universal.Runtime.csproj" afterDir="false" />
@@ -70,7 +35,7 @@
     <option name="firstShow" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="56" />
+    <option name="cachedIndexableFilesCount" value="220" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -304,6 +269,7 @@
       <workItem from="1771749429409" duration="9000" />
       <workItem from="1772242025808" duration="206000" />
       <workItem from="1772257704249" duration="1441000" />
+      <workItem from="1772596100640" duration="1457000" />
     </task>
     <task id="LOCAL-00001" summary="update combat mechanics and input handling, BackGround, Add Ui health">
       <option name="closed" value="true" />
