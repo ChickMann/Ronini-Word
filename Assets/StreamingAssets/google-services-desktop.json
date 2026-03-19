@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "968082610338",
+    "firebase_url": "https://ronin-word-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ronin-word",
+    "storage_bucket": "ronin-word.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968082610338:android:3562fed84c943bec9e5ffb",
+        "android_client_info": {
+          "package_name": "com.chickman.roninword"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968082610338-i7dpmv5keftfse9mkh9g6b0bep0bovu8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chickman.roninword",
+            "certificate_hash": "6a82a773efcd1f842b4edfa222cddeb8716dfc0f"
+          }
+        },
+        {
+          "client_id": "968082610338-k2ft6bg7ho00f3h19sdq5tng4cq2hnl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpFEGt6thoxwcNz0rcb8RHmZzCoZAKFhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968082610338-k2ft6bg7ho00f3h19sdq5tng4cq2hnl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

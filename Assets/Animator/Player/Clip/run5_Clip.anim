@@ -43,8 +43,23 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    pptrCurveMapping:
+    - {fileID: 1967438376581316371, guid: b854e5623845e04468cdf7be81b631c1, type: 3}
+    - {fileID: -8606673983978266260, guid: b854e5623845e04468cdf7be81b631c1, type: 3}
+    - {fileID: 3436273051114243078, guid: b854e5623845e04468cdf7be81b631c1, type: 3}
+    - {fileID: 2077745495955740706, guid: b854e5623845e04468cdf7be81b631c1, type: 3}
+    - {fileID: -4395863553558650797, guid: b854e5623845e04468cdf7be81b631c1, type: 3}
+    - {fileID: -4395863553558650797, guid: b854e5623845e04468cdf7be81b631c1, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -69,4 +84,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.17
+    functionName: PlaySoundFootStep
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.37
+    functionName: PlaySoundFootStep
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

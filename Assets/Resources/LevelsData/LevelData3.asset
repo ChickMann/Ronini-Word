@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94942b83ef5bd8f4caa7c3678e5326f0, type: 3}
+  m_Name: LevelData3
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  LevelID: 3
+  scoreRequirement: 26
+  Waves:
+  - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
+    VocabList:
+    - {fileID: 11400000, guid: 2925e96def8ef844da8666a0085da1db, type: 2}
+    - {fileID: 11400000, guid: f4a0b904eac86d648b4073c025b5639c, type: 2}
+  - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
+    VocabList:
+    - {fileID: 11400000, guid: 320cff4610173c641819de3445bca4b7, type: 2}
+    - {fileID: 11400000, guid: a2bb6cb769c3d0a4aabdbb9263bba35c, type: 2}
+  - EnemyProfile: {fileID: 11400000, guid: c680e20b33ca9254e977c9f444d71fad, type: 2}
+    VocabList:
+    - {fileID: 11400000, guid: daea43f3e68751d479c8ef17598d1670, type: 2}
+    - {fileID: 11400000, guid: 262abe33620e905429ed3ee916104a73, type: 2}

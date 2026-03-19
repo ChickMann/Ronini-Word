@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bf97935bc5d8cc64f89d0f198c54c493
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208355
+  packageName: Easy Integration Tool for Firebase
+  packageVersion: 2.0.0
+  assetPath: Assets/NarrowEF/Demo/EasyFirebase-Demo.unity
+  uploadId: 774821

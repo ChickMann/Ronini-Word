@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5443ac2786a67f49b9a5682454731f7, type: 3}
+  m_Name: Dat nuoc toi vao mua he khong lanh lam
+  m_EditorClassIdentifier: Assembly-CSharp::VocabData
+  _vocabID: 277
+  Meaning: "\u0110\u1EA5t n\u01B0\u1EDBc t\xF4i v\xE0o m\xF9a h\xE8 kh\xF4ng l\u1EA1nh
+    l\u1EAFm"
+  Answer: "\u308F\u305F\u3057\u306E\u304F\u306B\u306F\u306A\u3064\u3001\u3042\u307E\u308A\u3042\u3064\u304F\u306A\u3044\u3067\u3059\u3002"
+  State: 0

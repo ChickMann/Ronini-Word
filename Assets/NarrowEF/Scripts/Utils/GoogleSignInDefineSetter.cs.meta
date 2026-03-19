@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: b3ff5682c15f6ab409e4dd6d061725fd
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208355
+  packageName: Easy Integration Tool for Firebase
+  packageVersion: 2.0.0
+  assetPath: Assets/NarrowEF/Scripts/Utils/GoogleSignInDefineSetter.cs
+  uploadId: 774821

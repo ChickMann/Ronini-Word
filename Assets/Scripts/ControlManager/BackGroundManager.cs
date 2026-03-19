@@ -9,9 +9,7 @@ public class BackGroundManager : MonoBehaviour
     [SerializeField] private float baseRunSpeed = 5f;
     [SerializeField] private List<ParallaxLayer> layers = new();
     [SerializeField] private float acceleration = 5f; // Tốc độ tăng tốc/giảm tốc
-
-    [SerializeField] private ParticleSystem leavesParticle;
-
+    
     private float _currentGlobalSpeed = 0f; // Tốc độ chạy nền
     private bool _targetRunState = false;
     
@@ -26,7 +24,6 @@ public class BackGroundManager : MonoBehaviour
     [SerializeField] private AnimationCurve knockbackCurve = AnimationCurve.EaseInOut(0, 1, 1, 0); 
     [SerializeField] private float knockbackDuration = 0.3f;
 
-    // THÊM DÒNG NÀY: Biến để test nhanh trong Inspector
     [Header("Debug")]
     [SerializeField] private bool testRunning = false;
 
@@ -34,7 +31,7 @@ public class BackGroundManager : MonoBehaviour
     [System.Serializable]
     public struct ParallaxLayer
     {
-        public Rigidbody2D body;
+        public LayerConfig layerConfig;
         [Range(0f, 1f)] public float parallaxFactor; 
     }
 
@@ -55,7 +52,7 @@ public class BackGroundManager : MonoBehaviour
     {
         foreach (var layer in layers)
         {
-            if (layer.body is { } rb) 
+            if (layer.layerConfig.body is { } rb) 
             {
                 rb.bodyType = RigidbodyType2D.Kinematic; 
                 rb.useFullKinematicContacts = false;
@@ -63,7 +60,6 @@ public class BackGroundManager : MonoBehaviour
         }
     }
 
-    // Dùng Update để check biến _testRunning liên tục
     private void Update()
     {
         // 1. Xử lý tốc độ chạy nền (Running)
@@ -93,11 +89,12 @@ public class BackGroundManager : MonoBehaviour
 
     
         if (testRunning) SetRunState(true); else SetRunState(false);
+        
+        LoopLayer();
     }
 
     public void TriggerKnockback(float force)
     {
-        // Khởi động Knockback (Lực âm để đẩy lùi về sau)
         _currentKnockbackForce = -force;
         _knockbackTimer = 0f;
         _isKnockingBack = true;
@@ -114,7 +111,6 @@ public class BackGroundManager : MonoBehaviour
     public void SetRunState(bool isRunning)
     {
         _targetRunState = isRunning;
-       // if (isRunning) LeavesForceOverLifetime(baseRunSpeed); else ResetLeavesForceOverLifetime();
     }
     private void ApplyVelocityToLayers()
     {
@@ -122,26 +118,24 @@ public class BackGroundManager : MonoBehaviour
 
         foreach (var layer in layers)
         {
-            if (layer.body is null) continue;
+            if (layer.layerConfig.body is null) continue;
 
             // Tổng hợp: Tốc độ chạy + Tốc độ Knockback
             float totalSpeed = _currentGlobalSpeed + _knockbackVelocity;
             float finalSpeed = totalSpeed * layer.parallaxFactor;
             
-            layer.body.linearVelocity = direction * finalSpeed;
+            layer.layerConfig.body.linearVelocity = direction * finalSpeed;
         }
         
     }
 
-    // private void LeavesForceOverLifetime(float speed)
-    // {
-    //     var forceOverLifetime = leavesParticle.forceOverLifetime;
-    //     forceOverLifetime.x = -speed *0.2f;
-    // }
-    //
-    // private void ResetLeavesForceOverLifetime()
-    // {
-    //     var forceOverLifetime = leavesParticle.forceOverLifetime;
-    //     forceOverLifetime.x = -0.1f;
-    // }
+    private void LoopLayer()
+    {
+        foreach (ParallaxLayer layer in layers)
+        {
+            layer.layerConfig.RepeatLayer();
+        }
+    }
+
+   
 }

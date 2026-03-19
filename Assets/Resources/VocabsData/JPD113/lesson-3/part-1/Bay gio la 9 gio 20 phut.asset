@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5443ac2786a67f49b9a5682454731f7, type: 3}
+  m_Name: Bay gio la 9 gio 20 phut
+  m_EditorClassIdentifier: Assembly-CSharp::VocabData
+  _vocabID: 145
+  Meaning: "B\xE2y gi\u1EDD l\xE0 9 gi\u1EDD 20 ph\xFAt."
+  Answer: "\u3044\u307E \u3001\uFF19\u3058\uFF12\uFF10\u3077\u3093\u3067\u3059\u3002"
+  State: 0

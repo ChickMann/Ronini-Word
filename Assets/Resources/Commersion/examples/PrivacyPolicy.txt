@@ -1,0 +1,80 @@
+PRIVACY POLICY
+
+Last updated: August 16, 2025
+
+This Privacy Policy describes how CLOUPT ("we," "our," or "us") collects, uses, and protects your information when you use our mobile application and related services (the "Service").
+
+INFORMATION WE COLLECT
+
+Personal Information
+We may collect the following types of personal information:
+• Email address
+• Name and contact information
+• Device information and identifiers
+• Usage data and analytics
+• In-app purchase information
+
+Non-Personal Information
+We may collect non-personal information such as:
+• Device type and operating system
+• App usage statistics
+• Crash reports and performance data
+
+HOW WE USE YOUR INFORMATION
+
+We use the collected information for:
+• Providing and maintaining our Service
+• Improving user experience
+• Sending important updates and notifications
+• Processing transactions
+• Providing customer support
+• Complying with legal obligations
+
+DATA SHARING AND DISCLOSURE
+
+We do not sell, trade, or otherwise transfer your personal information to third parties except:
+• With your explicit consent
+• To service providers who assist us in operating our app
+• When required by law or legal process
+• To protect our rights and safety
+
+THIRD-PARTY SERVICES
+
+Our app may integrate with third-party services such as:
+• Analytics providers (Google Analytics, Firebase)
+• Advertising networks
+• Social media platforms
+• Payment processors
+
+These services have their own privacy policies, and we encourage you to review them.
+
+DATA SECURITY
+
+We implement appropriate security measures to protect your information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure.
+
+CHILDREN'S PRIVACY
+
+Our Service is not intended for children under 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected such information, we will take steps to delete it.
+
+YOUR RIGHTS
+
+Depending on your location, you may have the right to:
+• Access your personal information
+• Correct inaccurate information
+• Delete your information
+• Restrict processing
+• Data portability
+• Object to processing
+
+CHANGES TO THIS POLICY
+
+We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy in the app and updating the "Last updated" date.
+
+CONTACT US
+
+If you have any questions about this Privacy Policy, please contact us:
+• Email: hello@cloupt.com
+• Company: CLOUPT
+• Address: Please contact us via email
+
+This Privacy Policy is effective as of the date stated above and will remain in effect except with respect to any changes in its provisions in the future.

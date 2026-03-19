@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd35427240e2aa4bb4a9df93b174f2e, type: 3}
+  m_Name: EF-Settings
+  m_EditorClassIdentifier: Assembly-CSharp::EF.Generic.EFSettings
+  dataItems:
+  - dataType: 2
+    title: TotalScore
+    prefix: Player
+  - dataType: 1
+    title: Username
+    prefix: Player
+  - dataType: 0
+    title: Vocabs
+    prefix: Player
+  googleIdToken: 
+  encryptedToken: Wl0yR1Kw0ePs6SoaQt/+2BU364aU1HWi5sh/Rhl2jE+PSk7xKiAKu/AGOSVY5q/NQaek5oFz/Z6S80VhkW/ZPDAV5hHq+LOuYJfSt+qJgKiI02LfLfKEdzYZEbbJ/geo

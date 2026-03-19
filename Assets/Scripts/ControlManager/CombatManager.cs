@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Cinemachine;
+using Unity.Multiplayer.PlayMode;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -11,152 +14,140 @@ namespace ControlManager
     /// </summary>
     public class CombatManager : MonoBehaviour
     {
-        [Header("Config")] [SerializeField] private float spawnDistanceX;
+        [Header("Config")] 
         [SerializeField] private float timeDelayReady = 1f;
-        [SerializeField] private float globalSpeedMultiplier = 1f;
 
-        [Header("Knockback Settings")] [SerializeField]
-        private float _enemyKnockbackForce = 8.0f; // Lực đẩy lùi Enemy (Vận tốc)
-
-        [SerializeField] private float _backgroundKnockbackForce = 10f; // Lực đẩy background
-        [SerializeField] private float finishKnockbackMultiplier = 2.5f;
-
-        [Header("Refs")] [SerializeField] private PlayerController playerController;
+        [Header("Knockback Settings")] 
+        [SerializeField] private float backgroundKnockbackForce = 10f; 
+        
+        [Header("Refs")] 
+        [SerializeField] private PlayerController playerController;
+        
+        private CinemachineImpulseSource _myImpulse;
+        
 
         // Data Runtime
-        private List<EnemyWaveData> _waves;
-        private int _currentWaveIndex;
-        private int countVocabIsCorrect;
+        private LevelData _curentLevelData;
         private EnemyWaveData _currentWave;
-        private VocabData currentVocab = null;
+        private int _currentWaveIndex;
+        private int _currentVocabIndex;
+        private VocabData _currentVocab;
 
         // State Runtime
         public EnemyController CurrentEnemy { get; private set; }
-        public CombatState CurrentState;
-
-        // Stats
-        public int CurrentMistakes { get; private set; } // Lỗi trong từ hiện tại
-        public int TotalMistakes { get; private set; } // Tổng lỗi toàn game
+        public CombatState combatState;
+        
 
         // Timer
         private float _attackTimer;
         private float _attackDuration;
         private float _lastPunishTime; // Chống spam click quá nhanh (0.2s)
 
-        // Flags
-        private bool _isLastChancePhase = false; // Cờ đánh dấu đang trong giai đoạn "Cơ hội cuối cùng"
 
         private void Start()
         {
-            CurrentState = CombatState.Waiting;
+            _myImpulse = GetComponent<CinemachineImpulseSource>();
+            combatState = CombatState.Ending;
             if (!playerController) playerController = FindAnyObjectByType<PlayerController>();
-            GameManager.Instance.inputDisplayManager.LockButton(true);
+           
         }
+        
 
         private void OnEnable()
         {
-            GameEvents.OnLevelStart += SetUpStartLevel;
-            GameEvents.OnReadyToFight += OnReadyToFight;
             GameEvents.OnCharCorrect += OnCharCorrect;
             GameEvents.OnCharWrong += OnCharWrong;
             GameEvents.OnSubmitAnswer += OnVocabFinished;
-            GameEvents.OnFinisherFail += ExecuteFailFinisher;
-            GameEvents.OnPlayerBroken += HandlePlayerDefeated;
-
-            GameEvents.OnEndGame += OnEndGame;
-
         }
 
         private void OnDisable()
         {
-            GameEvents.OnLevelStart -= SetUpStartLevel;
-            GameEvents.OnReadyToFight -= OnReadyToFight;
             GameEvents.OnCharCorrect -= OnCharCorrect;
             GameEvents.OnCharWrong -= OnCharWrong;
             GameEvents.OnSubmitAnswer -= OnVocabFinished;
-            GameEvents.OnFinisherFail -= ExecuteFailFinisher;
-            GameEvents.OnPlayerBroken -= HandlePlayerDefeated;
-
- 
-            GameEvents.OnEndGame -= OnEndGame;
         }
-        // --- LEVEL FLOW ---
 
-        private void SetUpStartLevel(LevelData data)
+        private void Update()
         {
-            _waves = data.Waves;
+            if(CurrentEnemy && CurrentEnemy.hasPlayerDetected && combatState == CombatState.Running) OnReadyToFight(); 
+            
+        }
+
+        // --- LEVEL FLOW ---
+        public void ResetAll()
+        {
+            if (CurrentEnemy) 
+            {
+                Destroy(CurrentEnemy.gameObject);
+            }
+            playerController.ResetPlayer();
+          
+        }
+        public void SetUpStartLevel(LevelData data)
+        {
+            _curentLevelData = data;
             _currentWaveIndex = 0;
-            TotalMistakes = 0;
-            _isLastChancePhase = false;
+            _currentVocabIndex = 0;
+            if (CurrentEnemy) 
+            {
+                Destroy(CurrentEnemy.gameObject);
+            }
             StartWave();
+            playerController.ResetPlayer();
         }
 
         private void StartWave()
         {
-            _currentWave = _waves[_currentWaveIndex];
-            countVocabIsCorrect = 0;
-            _isLastChancePhase = false;
-            foreach (VocabData vc in _currentWave.VocabList)
+            GameManager.Instance.inputDisplayManager.ResetStartWave();
+            playerController.ResetTrigger();
+            playerController.CancelNextAttack();
+            if (_currentWaveIndex >= _curentLevelData.Waves.Count)
             {
-                vc.isCorrect = false;
+               GameManager.Instance.EndLevel();
+                return;
             }
-
-            SpawnEnemy(_currentWave.EnemyProfile);
+            _currentWave = _curentLevelData.Waves[_currentWaveIndex];
+            SpawnEnemy(_currentWave.EnemyProfile,_currentWave.VocabList.Count);
+            combatState = CombatState.Running;
         }
 
-        private void SpawnEnemy(EnemyProfile profile)
+        private void SpawnEnemy(EnemyProfile profile, int countVocab)
         {
-            Vector2 pos = new Vector2(transform.position.x + spawnDistanceX, transform.position.y);
+            Vector2 pos = new Vector2(transform.position.x + profile.spawnDistanceX, transform.position.y);
             CurrentEnemy = Instantiate(profile.getPrefabEnemy(), pos, Quaternion.identity);
-            CurrentEnemy.SetupEnemyData(profile);
+            CurrentEnemy.SetupEnemyData(profile,countVocab);
         }
 
-        private void OnReadyToFight()
+        public void OnReadyToFight()
         {
-            CurrentState = CombatState.Readying;
+            combatState = CombatState.Readying;
             this.DelayAction(timeDelayReady, () =>
             {
-                CurrentState = CombatState.Fighting;
+                combatState = CombatState.Fighting;
                 StartCombatRound();
+                playerController.ReadyToFight();
+                CurrentEnemy.FightStand();
             });
-            playerController.ReadyToFight(timeDelayReady);
         }
 
         private void StartCombatRound()
         {
             CurrentEnemy.SetActiveFuelSlider(true);
-            GameManager.Instance.inputDisplayManager.LockButton(false);
-            
-            List<VocabData> vocabList = _currentWave.VocabList.ToList();
-            foreach (VocabData vc in vocabList)
-            {
-                if (!currentVocab)
-                {
-                    currentVocab = vc;
-                    break;
-                }
+            _currentVocabIndex = 0;
+            _curentLevelData.Waves[_currentWaveIndex].VocabList.Shuffle();
+            _currentVocab = _curentLevelData.Waves[_currentWaveIndex].VocabList[_currentVocabIndex];
+            GameManager.Instance.inputDisplayManager.GetVocabData(_currentVocab);
+            GameManager.Instance.inputDisplayManager.InputNextVocab();
+        }
 
-                if (currentVocab != vc && !vc.isCorrect)
-                {
-                    currentVocab = vc;
-                    break;
-                }
-            }
-
-            bool isFinisher = countVocabIsCorrect == _currentWave.VocabList.Count - 1;
-            CurrentMistakes = 0;
-
-            GameManager.Instance.inputDisplayManager.GetVocabData(currentVocab);
-            GameManager.Instance.inputDisplayManager.NextVocab();
-
-            if (isFinisher)
-            {
-                SetupFinisherPhase();
-            }
-            else
-            {
-                if(playerController.currentState != ActorState.BrokenStand && playerController.currentState != ActorState.Focusing) playerController.FightStand();
-            }
+        private void NextVocab()
+        {
+            GameManager.Instance.inputDisplayManager.LockButton(true);
+            if (_currentVocabIndex >= _currentWave.VocabList.Count - 1) return;
+             _currentVocabIndex++;
+             _currentVocab = _curentLevelData.Waves[_currentWaveIndex].VocabList[_currentVocabIndex];
+            GameManager.Instance.inputDisplayManager.GetVocabData(_currentVocab);
+            GameManager.Instance.inputDisplayManager.InputNextVocab();
         }
 
         private void SetupFinisherPhase()
@@ -166,141 +157,52 @@ namespace ControlManager
         }
 
         // --- INPUT HANDLERS ---
-
-        private void OnCharCorrect()
+        private void OnVocabFinished(bool isWrongInWave)
         {
-            if (playerController.CurrentState != ActorState.Focusing)
-            {
-                CurrentEnemy.NextAttack();
-                playerController.DoParry();
-
-                if (playerController.currentState != ActorState.BrokenStand)
-                {
-                    float force = _enemyKnockbackForce;
-                    if (countVocabIsCorrect == _currentWave.VocabList.Count - 1) force *= finishKnockbackMultiplier;
-                    this.DelayAction(0.2f, () =>
-                    {
-                        if (CurrentEnemy) CurrentEnemy.TriggerKnockback(force);
-                        if (GameManager.Instance.backGroundManager)
-                            GameManager.Instance.backGroundManager.TriggerKnockback(_backgroundKnockbackForce);
-                    });
-                }
-              
-                CurrentEnemy.ResetFuelGauge();
-            }
-            else
-            {
-                playerController.CancelNextAttack();
-                playerController.OnFocus();
-            }
-
-        }
-
-        private void OnCharWrong()
-        {
-            
-            CurrentMistakes++;
-            TotalMistakes++;
-
-            bool isFocusing = playerController.CurrentState == ActorState.Focusing;
-
-            if (isFocusing)
-            {
-                if (CurrentMistakes >= playerController.CurrentHealth)
-                {
-                    ExecuteFailFinisher();
-                }
-            }
-            else
-            {
-                HandleInputWrong();
-            }
-        }
-
-        private void HandleInputWrong()
-        {
-            if (Time.time - _lastPunishTime < 0.2f) return;
-            _lastPunishTime = Time.time;
-
-            Debug.Log("CombatManager: HandleInputWrong. Applying IMMEDIATE penalty.");
-
-            CurrentEnemy.NextAttack();
-            playerController.DecreaseHealth();
-            UpdateMistakes();
-        }
-
-        private void UpdateMistakes()
-        {
-            // Logic cập nhật UI mistake nếu cần
-        }
-
-        private void ResetAttackTimer()
-        {
-            // Reset timer logic if needed (Currently using FuelGauge)
-        }
-
-        // --- RESOLUTION ---
-
-        private void HandlePlayerDefeated(bool isNextVocab)
-        {
-            Debug.Log("Player Broken! Entering Last Chance Phase...");
-            playerController.BrokenStand(true);
-            _isLastChancePhase = true; // Bật cờ đánh dấu đang trong giai đoạn hồi phục sinh tử
-            CurrentEnemy.ResetFuelGauge();
-            playerController.ResetHealth();
-            if(isNextVocab) StartCombatRound();
-            
-        }
-
-        /// <summary>
-        /// Hàm này dùng để hồi phục trạng thái Player khi sang từ vựng mới.
-        /// Đã đổi tên từ NextVocab -> ResetPlayerState để tránh nhầm lẫn.
-        /// </summary>
-     
-
-        private void OnVocabFinished()
-        {
-            countVocabIsCorrect = 0;
-            foreach (VocabData vc in _currentWave.VocabList)
-            {
-                if (vc.isCorrect) countVocabIsCorrect++;
-            }
-
-            Debug.Log($"Vocab Finished. Progress: {countVocabIsCorrect}/{_currentWave.VocabList.Count}");
-
-            // Kiểm tra cờ Last Chance
-            if (_isLastChancePhase)
-            {
-                Debug.Log("Last Chance Success! Resetting Wave & Standing Up.");
-
-                _isLastChancePhase = false; // Tắt cờ vì đã thành công
-
-                countVocabIsCorrect = 0;
-                foreach (VocabData vc in _currentWave.VocabList)
-                {
-                    vc.isCorrect = false;
-                }
-
-                playerController.BrokenStand(false);
-                playerController.ResetHealth();
-                playerController.ResetLife();
-                StartCombatRound();
-                return;
-            }
-
-            playerController.ResetHealth();
-            bool isFinisher = countVocabIsCorrect >= _currentWave.VocabList.Count;
-            bool isBroken = countVocabIsCorrect == _currentWave.VocabList.Count - 1;
-
+            if(combatState == CombatState.Ending) return;
+            bool isFinisher = _currentVocabIndex >= _currentWave.VocabList.Count-1;
+            bool isBorken = _currentVocabIndex == _currentWave.VocabList.Count-2;
+            CurrentEnemy.HealthDecrease();
+          
             if (isFinisher)
             {
+                if(!isWrongInWave) playerController.AddHealth();
+                playerController.DoParry();
                 ExecuteWinFinisher();
             }
             else
             {
-                if (isBroken)  this.DelayAction(0.2f, () => { CurrentEnemy.BrokenStand(true); });
-                StartCombatRound();
+               
+                if (isBorken)
+                {
+                    SmallHedge.AudioManager.AudioManager.PlaySound(SmallHedge.AudioManager.SoundType.BrokenStand);
+                    CurrentEnemy.BrokenStand(true);
+                    playerController.ResetTrigger();
+                    
+                    playerController.OnFocusing();
+                }
+                NextVocab();
+           
             }
+            
+
+        }
+        private void OnCharCorrect()
+        {
+          CurrentEnemy.NextAttack();
+          if(playerController.currentState == ActorState.Focusing) playerController.OnFocus();
+          else playerController.DoParry();
+          CurrentEnemy.ResetFuelGauge();
+        }
+
+        private void OnCharWrong()
+        {
+            CurrentEnemy.NextAttack();
+            playerController.DecreaseHealth();
+            CurrentEnemy.ResetFuelGauge();
+          DoCinematicShake();
+          GameManager.Instance.inputDisplayManager.SetIsWrongInWave();
+            
         }
 
         private void ExecuteWinFinisher()
@@ -308,49 +210,64 @@ namespace ControlManager
             Debug.Log("PERFECT FINISHER!");
             GameManager.Instance.inputDisplayManager.LockButton(true);
             CurrentEnemy.SetActiveFuelSlider(false);
-            GameManager.Instance.CutScenesManager.PlayFinisherSuccess(CurrentEnemy);
-            this.DelayAction(5f, KillEnemyAndNextWave);
-        }
-
-        private void ExecuteFailFinisher()
-        {
-            Debug.Log("FAILED FINISHER -> RESET FIGHT");
-            GameManager.Instance.inputDisplayManager.LockButton(true);
-            CurrentEnemy.SetActiveFuelSlider(false);
-            GameManager.Instance.CutScenesManager.PlayFinisherFail(CurrentEnemy,(() =>
+            GameManager.Instance.CutScenesManager.ScheduleTimelineAction(1.22f, () =>
             {
-                this.DelayAction(0.2f, StartCombatRound);
+                CurrentEnemy.Die();
+                CurrentEnemy.SetActiveHealth(false);
+            });
+            GameManager.Instance.CutScenesManager.PlayFinisherSuccess(0.5f,CurrentEnemy,(() =>
+            {   
+                playerController.ResetTrigger();
+                playerController.CancelNextAttack();
+                playerController.Idle();
+            
             }));
-
-            countVocabIsCorrect = 0;
-            foreach (VocabData vc in _currentWave.VocabList)
-            {
-                if (vc.isCorrect) vc.isCorrect = false;
-            }
-                HandlePlayerDefeated(false); // Phuong an tam thoi SOS
-            
-             playerController.DecreaseLife();
-            if (CurrentEnemy)
-            {
-                CurrentEnemy.BrokenStand(false);
-            }
-           
-            
+            this.DelayAction(5f,() =>KillEnemyAndNextWave(5f));
         }
 
-        private void OnEndGame()
+      
+        public void OnEndGame()
         {
             GameManager.Instance.inputDisplayManager.LockButton(true);
             CurrentEnemy.SetActiveFuelSlider(false);
-            GameManager.Instance.gameState = GameState.CompletedLevel;
+           combatState = CombatState.Ending;
+           CurrentEnemy.SetActiveHealth(false);
+         GameDataManager.Instance.OnWaveEnded();
         }
      
-        private void KillEnemyAndNextWave()
+        private void KillEnemyAndNextWave(float timeDestroy)
         {
-            if (CurrentEnemy) Destroy(CurrentEnemy.gameObject);
+            if (CurrentEnemy) Destroy(CurrentEnemy.gameObject,timeDestroy);
             _currentWaveIndex++;
             StartWave();
         }
 
+  
+        public void DoCinematicShake()
+        {
+            if (_myImpulse != null)
+            {
+                _myImpulse.GenerateImpulse(Vector3.right * 0.3f);
+            }
+        }
+        
+        public void ResetLevlel()
+        {
+            combatState = CombatState.Running;
+            // 1. Hủy Enemy hiện tại trên Scene (nếu có) để chuẩn bị spawn con mới
+            if (CurrentEnemy) 
+            {
+                Destroy(CurrentEnemy.gameObject);
+            }
+
+            // 2. Reset lại index của từ vựng về 0
+            _currentVocabIndex = 0;
+            _currentWaveIndex = 0;
+            
+            // 3. Bắt đầu lại wave hiện tại (StartWave đã bao gồm logic reset UI và Player)
+            StartWave();
+            playerController.ResetPlayer();
+        }
+      
     }
 }

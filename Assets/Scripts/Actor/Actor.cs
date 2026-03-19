@@ -1,4 +1,5 @@
 using System;
+using SmallHedge.AudioManager;
 using UnityEngine;
 
 /// <summary>
@@ -30,17 +31,7 @@ public class Actor : MonoBehaviour
     
 
     #region TriggerFlag
-    /// <summary>
-    /// Kích hoạt tấn công nếu cờ _hasNextAttack được bật.
-    /// </summary>
-    public virtual void Attack()
-    {
-        if (_hasNextAttack)
-        {
-            animator.SetTrigger(AnimID.Attacking);
-            _hasNextAttack = false;
-        }
-    }
+   
     /// <summary>
     /// Chuẩn bị cho đòn tấn công tiếp theo (Input buffer).
     /// </summary>
@@ -55,13 +46,24 @@ public class Actor : MonoBehaviour
     public virtual void CancelNextAttack()
     {
         _hasNextAttack = false;
+        animator.ResetTrigger(AnimID.Attacking);
     }
     
 
     #endregion
 
     #region Anim
-
+    /// <summary>
+    /// Kích hoạt tấn công nếu cờ _hasNextAttack được bật.
+    /// </summary>
+    public virtual void Attack()
+    {
+        if (_hasNextAttack)
+        {
+            animator.SetTrigger(AnimID.Attacking);
+            _hasNextAttack = false;
+        }
+    }
     public virtual void Idle()
     {
         animator.SetTrigger(AnimID.Idle);
@@ -69,6 +71,7 @@ public class Actor : MonoBehaviour
     }
     public virtual void TakeDamage()
     {
+        CancelNextAttack();
         animator.SetTrigger(AnimID.TakeDamage);
     }
 
@@ -98,13 +101,13 @@ public class Actor : MonoBehaviour
     {
         animator.SetTrigger(AnimID.Focusing);
         currentState = ActorState.Focusing;
-            Debug.Log(currentState);
     }
 
     public virtual void BrokenStand(bool isBroken)
     {
             animator.SetBool(AnimID.BrokenStand,isBroken);
             currentState = ActorState.BrokenStand;
+            
     }
     public virtual void Die()
     {
@@ -112,57 +115,26 @@ public class Actor : MonoBehaviour
         animator.SetTrigger(AnimID.Die);
         currentState = ActorState.Dead;
     }
-    
-    public virtual void OnFinisher()
+
+    public void ResetTrigger()
     {
-        animator.SetTrigger(AnimID.Finisher);
-        currentState = ActorState.Finisher;
+        animator.ResetTrigger(AnimID.FightStand);   
+        animator.ResetTrigger(AnimID.Stopping);
+        animator.ResetTrigger(AnimID.Idle);
+        animator.ResetTrigger(AnimID.Focusing);
+
     }
+    
 
     /// <summary>
     /// Animation Event: Gọi khi kết thúc animation tấn công.
     /// </summary>
     public virtual void OnAnimationFinishAttack()
     {
-        if(currentState == ActorState.Focusing) return;
-        animator.SetTrigger(AnimID.StopAttack);
-        currentState = ActorState.FightStand;
-    }
-    /// <summary>
-    /// Reset toàn bộ Trigger và Bool về mặc định (False).
-    /// Dùng khi nhân vật chết, respawn hoặc bị hủy trạng thái.
-    /// </summary>
-    public virtual void ResetAnimatorParameters()
-    {
-        if (animator == null) return;
-
-        // Duyệt qua tất cả các tham số có trong Animator Controller
-        foreach (var param in animator.parameters)
-        {
-            switch (param.type)
-            {
-                case AnimatorControllerParameterType.Trigger:
-                    animator.ResetTrigger(param.nameHash);
-                    break;
-                
-                case AnimatorControllerParameterType.Bool:
-                    animator.SetBool(param.nameHash, false);
-                    break;
-                
-                // Nếu muốn reset cả Float/Int về 0 thì mở comment đoạn dưới
-                /*
-                case AnimatorControllerParameterType.Float:
-                    animator.SetFloat(param.nameHash, 0f);
-                    break;
-                case AnimatorControllerParameterType.Int:
-                    animator.SetInteger(param.nameHash, 0);
-                    break;
-                */
-            }
-        }
         
-        // Reset luôn biến cờ logic trong code để đồng bộ
-        _hasNextAttack = false;
+        animator.SetTrigger(AnimID.StopAttack);
+        if(currentState == ActorState.Focusing) return;
+        currentState = ActorState.FightStand;
     }
   
     #endregion

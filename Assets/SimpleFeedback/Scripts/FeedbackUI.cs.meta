@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 794fc6428d855fe46a11ea09815927ed
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 289930
+  packageName: Simple Feedback Form
+  packageVersion: 1.0
+  assetPath: Assets/NarrowNet-Feedback/Scripts/FeedbackUI.cs
+  uploadId: 714322

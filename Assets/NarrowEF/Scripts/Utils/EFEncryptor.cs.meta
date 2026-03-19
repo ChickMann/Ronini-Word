@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: d9c5327e005ef4a4d8ab53bf4a24ba4c
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208355
+  packageName: Easy Integration Tool for Firebase
+  packageVersion: 2.0.0
+  assetPath: Assets/NarrowEF/Scripts/Utils/EFEncryptor.cs
+  uploadId: 774821

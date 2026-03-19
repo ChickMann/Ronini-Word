@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 93b02fa35bdabeb47bf4fb28e92fac20
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208355
+  packageName: Easy Integration Tool for Firebase
+  packageVersion: 2.0.0
+  assetPath: Assets/NarrowEF/Scripts/Editor/Auth/EF_SimpleAuthEditor.cs
+  uploadId: 774821

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 9348f46b356751d418512df655912041
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208355
+  packageName: Easy Integration Tool for Firebase
+  packageVersion: 2.0.0
+  assetPath: Assets/NarrowEF/Scripts/Editor/Data/EF_SettingsEditor.cs
+  uploadId: 774821

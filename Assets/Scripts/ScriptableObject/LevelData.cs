@@ -12,6 +12,6 @@ public class EnemyWaveData
 public class LevelData : ScriptableObject
 {
     public int LevelID;
-    public List<EnemyWaveData> Waves; // Thay thế cho 2 list rời rạc cũ
-    public AnswerMode Mode;
+    public int scoreRequirement;
+    public List<EnemyWaveData> Waves;
 }

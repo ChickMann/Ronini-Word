@@ -1,6 +1,8 @@
+using SmallHedge.AudioManager;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ControlManager
 {
@@ -8,7 +10,8 @@ namespace ControlManager
     {
         [Header("Player Stats")]
         [SerializeField] private int maxHealth=3;
-        [SerializeField] private int maxLife = 2;
+
+        [SerializeField] private bool hasShield;
 
         [Header("setting")]
         [SerializeField] private float delayTakeDamage;
@@ -18,63 +21,90 @@ namespace ControlManager
 
         [SerializeField] private ParticleSystem runParticle;
         [SerializeField] private ParticleSystem finisherParticle;
+        
+        [Header("UI/UX")]
+        [SerializeField] private GameObject uiContainer;
+        [SerializeField] private GameObject[] heartUI;
+        [SerializeField] private GameObject shieldUI;
+        [SerializeField] private Sprite heartBreak;
+        [SerializeField] private Sprite heartAdd;
+        [SerializeField] private Sprite shieldBreak;
+        [SerializeField] private Sprite shieldAdd;
+        
 
         [Header("Runtime Stats (Debug)")]
         [SerializeField] private int currentHealth;
-        [SerializeField] private int currentLife;
+        [SerializeField] private bool isBrokenStand;
+        [SerializeField] private bool isMoving;
+
+        private CombatManager _combatManager;
+       
         
-        private CinemachineImpulseSource _myImpulse;
+       
 
         public int CurrentHealth 
         { 
             get => currentHealth; 
             private set => currentHealth = value; 
         }
-    
-        public int CurrentLife 
-        { 
-            get => currentLife; 
-            private set => currentLife = value; 
-        }
-        
-        
-    
+
         protected override void Start()
         {
-            _myImpulse = GetComponent<CinemachineImpulseSource>();
             base.Start();
-            ResetLife();
-            ResetHealth();
-        }
-
-        private void OnEnable()
-        {
-            GameEvents.OnLevelStart += OnLevelStartHandler;
-
-        }
-
-        private void OnDisable()
-        {
-            GameEvents.OnLevelStart -= OnLevelStartHandler;
-        
+            currentHealth = maxHealth;
+            isMoving = false;
+            isBrokenStand = false;
+            _combatManager = GameManager.Instance.combatManager;
         }
 
         private void Update()
         {
-            Attack();
-        }
+            if (_combatManager.combatState == CombatState.Running)
+            { 
+                BrokenStand(false);
+                Moving(true);
+            }
+            else
+            {
+                if(isBrokenStand) BrokenStand(true);
+                Moving(false);
+                Attack();
+            }
 
-        private void OnLevelStartHandler(LevelData data)
-        {
-            StartLevel();
-        }
-
-        public void StartLevel()
-        {
-            Running();
+            if (_combatManager.combatState == CombatState.Ending) SetActiveUI(false);
+            else SetActiveUI(true);
         }
 
         #region Action
+
+
+        private void ActiveBrokenStand()
+        {
+            ResetTrigger();
+            isBrokenStand = true;
+            BrokenStand(true);
+           AudioManager.PlaySound(SoundType.BrokenStand);
+        }
+
+        private void DeactiveBrokenStand()
+        {
+            isBrokenStand = false;
+            BrokenStand(false);
+        }
+
+        private void Moving(bool isMoving)
+        {
+            if(this.isMoving == isMoving) return;
+            if (isMoving)
+            {
+                Running();
+            }
+            else
+            {
+                Stopping();
+            }
+            this.isMoving = isMoving;
+        }
         public override void Running()
         {
             base.Running();
@@ -87,106 +117,152 @@ namespace ControlManager
             ToggleFootStepEffect(false);
         }
 
-        public void ReadyToFight(float timeDelayReady)
+        public void ReadyToFight()
         {
             Stopping();
-            this.DelayAction(timeDelayReady, () => FightStand());
+           FightStand();
         }
 
         public void DoParry()
         {
             base.NextAttack();
-            PlayerEffectSword();
+            PlayEffectSword();
         }
-        public void DoFinisher()
+
+        public override void OnFocus()
         {
-
-            base.OnFinisher();
-            if(finisherParticle) finisherParticle.Play();
+            base.OnFocus();
+            PlayEffectSword();
         }
 
 
-    
         #endregion
     
         #region Sound Effect And Particle
 
-        public void PlayerEffectSword()
+        public void PlayEffectSword()
         {
             if (attackParticle) 
                 attackParticle.Play();
-          
-            PlaySwordSound();
-        }
-        private void PlaySwordSound()
-        {
-            GameManager.Instance.PlayerSwordEffect();
-        }
+            
+            AudioManager.PlaySound(SoundType.Parry);
 
+        }
+        
         private void ToggleFootStepEffect(bool isPlay)
         {
-            GameManager.Instance.PlayerFootStepEffect(isPlay);
+            
             if(runParticle && isPlay) runParticle.Play();
+        }
+
+        public void PlaySoundFootStep()
+        {
+            AudioManager.PlaySound(SoundType.Footstep);
         }
 
 
         #endregion
     
-        #region Health and life
+        #region Health
         public void DecreaseHealth()
         {
-            LockAttack(delayTakeDamage);
-            this.DelayAction( delayTakeDamage, TakeDamage);
+            if (hasShield)
+            {
+                OnFocus();
+                hasShield = false;
+                return;
+            }
+            TakeDamage();
             CurrentHealth--;
-        
+            AudioManager.PlaySound(SoundType.Hurt);
+            UpdateHealthUI(false);
+            if(currentHealth==1) ActiveBrokenStand();
             if (CurrentHealth <= 0)
             {
-              
-                DecreaseLife();
-                ResetHealth();
-            
-                GameEvents.OnPlayerBroken?.Invoke(true);
-            }
-        }
-        public void ResetHealth()
-        {
-            CurrentHealth = maxHealth;
-        }
-
-        public void ResetLife()
-        {
-            CurrentLife = maxLife;
-            ResetHealth(); 
-        }
-
-        public void DecreaseLife()
-        {
-            CurrentLife--;
-            if (CurrentLife <= 0)  this.DelayAction( delayTakeDamage,()=>
-            {
-                CancelNextAttack();
+                ResetTrigger();
+                DeactiveBrokenStand();
                 Die();
-                GameEvents.OnEndGame?.Invoke();
-            });
+                GameManager.Instance.EndLevel();
+            }
+            if(currentState == ActorState.Focusing) OnFocusing();
+            
+        }
       
+
+        public void AddHealth()
+        {
+            if (currentHealth < maxHealth)
+            {
+                PixelTextController.Instance.HealthTextAnimation();
+                UpdateHealthUI(true);
+                currentHealth++;
+            }
+            else SetShield(true);
+            DeactiveBrokenStand();
         }
 
-        public void LockAttack(float time)
+        public void SetShield(bool isShield)
         {
-            CancelNextAttack();
-            if (CurrentLife <= 0)  this.DelayAction( time+0.1f,()=>
-            {
-                if(currentState == ActorState.BrokenStand || currentState == ActorState.Dead) return;
-                NextAttack();
-            });
+            if (isShield)  PixelTextController.Instance.ShieldTextAnimation();
+            AudioManager.PlaySound(SoundType.Shield);
+            hasShield = isShield;
+            UpdateShieldUI(isShield);
         }
-        
-        public void DoCinematicShake()
+
+        private void UpdateHealthUI(bool isIncrease)
         {
-            if (_myImpulse != null)
+            if(currentHealth <0) return;
+            Image heart = heartUI[currentHealth].GetComponent<Image>();
+            if (!isIncrease) heart.sprite = heartBreak;
+            else heart.sprite = heartAdd;
+        }
+
+        private void UpdateShieldUI(bool isIncrease)
+        {
+            Image shield = shieldUI.GetComponent<Image>();
+            if (!isIncrease) shield.sprite = shieldBreak;
+            else shield.sprite = shieldAdd;
+        }
+
+        public void SetActiveUI(bool isActive)
+        {
+            uiContainer.SetActive(isActive);
+        }
+
+        public void ResetPlayer()
+        {
+            // 1. Reset dữ liệu số
+            currentHealth = maxHealth;
+            hasShield = false;
+
+            // 2. Reset toàn bộ UI Tim (Phải dùng vòng lặp để đảm bảo TẤT CẢ đều sáng lại)
+            if (heartUI != null)
             {
-                _myImpulse.GenerateImpulse(Vector3.one * 0.1f);
+                foreach (var heartObj in heartUI)
+                {
+                    if (heartObj != null)
+                    {
+                        // Gán trực tiếp sprite đầy máu
+                        var img = heartObj.GetComponent<Image>();
+                        if (img != null) img.sprite = heartAdd; 
+                    }
+                }
             }
+
+            // 3. Reset UI Khiên (Về trạng thái tắt/vỡ)
+            if (shieldUI != null)
+            {
+                var shieldImg = shieldUI.GetComponent<Image>();
+                if (shieldImg != null) shieldImg.sprite = shieldBreak;
+            }
+
+            // 4. Reset trạng thái Animation & Logic
+            ResetTrigger();         // Xóa các trigger tấn công/bị thương còn tồn đọng
+            DeactiveBrokenStand();  // Tắt trạng thái thở dốc
+            Idle();                 // Về trạng thái đứng chờ
+    
+            // 5. Bật lại UI (đề phòng trường hợp game over bị tắt đi)
+            SetActiveUI(true);
         }
         #endregion
     

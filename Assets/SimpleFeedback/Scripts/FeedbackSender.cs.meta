@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 2ddb86186fbe4f0a971a0918e3a6ee2f
+timeCreated: 1730050942
+AssetOrigin:
+  serializedVersion: 1
+  productId: 289930
+  packageName: Simple Feedback Form
+  packageVersion: 1.0
+  assetPath: Assets/NarrowNet-Feedback/Scripts/FeedbackSender.cs
+  uploadId: 714322

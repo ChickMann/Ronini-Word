@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12474803abf796b40be7c39c2f5959e1, type: 3}
+  m_Name: Sounds SO
+  m_EditorClassIdentifier: Assembly-CSharp::SmallHedge.SoundManager.SoundsSO
+  mixer: {fileID: 6930581471468085676, guid: cadcfa0694c302746bc522106844a48f, type: 2}
+  sounds:
+  - name: Footstep
+    volume: 1
+    sounds:
+    - {fileID: 8300000, guid: f28730ea59bce494ea6cf491a24b2bf1, type: 3}
+    - {fileID: 8300000, guid: fe2149c00a913584c9652114ecf96e8f, type: 3}
+    - {fileID: 8300000, guid: ed5eff30f5ada2641a643c6b80c96f8c, type: 3}
+    - {fileID: 8300000, guid: 20226e3827458a84b942f134531c323b, type: 3}
+  - name: Parry
+    volume: 1
+    sounds:
+    - {fileID: 8300000, guid: 4eb3c0ed0deea5540894deccf1dbcfd4, type: 3}
+    - {fileID: 8300000, guid: 25d220f7bae4ff3469376b81ce4a1912, type: 3}
+    - {fileID: 8300000, guid: 91d6640e3a49a93429aa833223370ce5, type: 3}
+  - name: Hurt
+    volume: 1
+    sounds:
+    - {fileID: 8300000, guid: 1bed5ab4e44bba543a2aac2d72917997, type: 3}
+  - name: BrokenStand
+    volume: 0.7
+    sounds:
+    - {fileID: 8300000, guid: 7e143caa0168d36498430dc631571c9f, type: 3}
+  - name: Shield
+    volume: 1
+    sounds:
+    - {fileID: 8300000, guid: 7a9de5c4d998126449cf964a6b27a8b0, type: 3}
+  - name: PickUp
+    volume: 1
+    sounds: []
+  - name: Health
+    volume: 1
+    sounds:
+    - {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  - name: ButtonMenu
+    volume: 1
+    sounds:
+    - {fileID: 8300000, guid: 90b3d674ee6cb4a488506ba8f9724c90, type: 3}

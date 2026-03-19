@@ -1,31 +1,30 @@
+using System;
+using System.Collections.Generic;
 using ControlManager;
+using SmallHedge.AudioManager;
 using UnityEngine;
 
-/// <summary>
-/// Singleton quản lý vòng đời game (Game Loop), chuyển cảnh và khởi tạo.
-/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
     [Header("Game State")]
     public GameState gameState;
-    public bool isStartLevel;
-    public bool isCompletedLevel;
 
     [Header("Data")]
+    public List<LevelData> levelDataList;
     public LevelData currentLevelData;
-    // Đã chuyển CurrentVocabIndex sang CombatManager quản lý
 
     [Header("Managers")]
     public BackGroundManager backGroundManager;
     public InputDisplayManager inputDisplayManager;
-    public CombatManager combatManager; // Renamed to PascalCase
-    public AudioManager audioManager;
+    public CombatManager combatManager; 
     public CutScenesManager CutScenesManager;
+    public LoginWithGoogle loginWithGoogle;
     
     private void Awake()
     {
+       
         // Singleton Implementation
         if (Instance != null && Instance != this) 
         {
@@ -36,65 +35,55 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         
-        gameState = GameState.Menu;
+     
     }
 
     private void Start()
     {
-        // Khởi động vocab đầu tiên nếu cần thiết hoặc đợi lệnh từ UI Menu
-        if (currentLevelData != null)
+        AudioManager.PlayMusic(MusicType.MusicMenu);
+        gameState = GameState.Menu;
+    }
+
+    [ContextMenu("Start Level")]
+    public void StartLevel()
+    {
+       
+        AudioManager.PlayMusic(MusicType.MusicFight);
+        this.DelayAction(2f, () =>
         {
-            // CombatManager sẽ tự StartLevel qua sự kiện OnLevelStart
-        }
-    }
-
-    private void OnEnable()
-    {
-        // Không còn nghe OnSubmitAnswer ở đây nữa, CombatManager sẽ xử lý
-    }
-
-    private void OnDisable()
-    {
+            gameState = GameState.Playing;
+            combatManager.SetUpStartLevel(currentLevelData);
+            
+        });
         
     }
 
-    private void Update()
+    public void SetCurrentLevel(LevelData data)
     {
-        if(gameState == GameState.Playing && !isStartLevel) 
-        {
-            StartLevel();
-        }
-    }
-    
-    public void StartLevel()
-    {
-        if (currentLevelData != null)
-        {}
-            GameEvents.OnLevelStart?.Invoke(currentLevelData);
-            isStartLevel = true;
-        }
-    public void LoadLevel(int levelID)
-    {
-        // Logic load scene hoặc load data level mới
+        currentLevelData = data;
     }
 
-    public void CompletedLevel()
+    public void EndLevel()
     {
-        isCompletedLevel = true;
-        GameEvents.OnLevelComplete?.Invoke(true);
+        this.DelayAction(2f,() => UIManager.Instance.SetActiveCompletedPanel(true));
+        gameState = GameState.CompletedLevel;
+        combatManager.OnEndGame();
+    }
+    
+    
+    [ContextMenu("Restart Level")]
+    public void RestartLevel()
+    {
+        AudioManager.PlayMusic(MusicType.MusicFight);
+        gameState = GameState.Playing;
+         combatManager.ResetLevlel();
     }
 
-    // --- Audio Proxies ---
-    public void PlayerSwordEffect()
+    [ContextMenu("Back To Menu")]
+    public void BackToMenu()
     {
-        if(audioManager) audioManager.PlaySwordSound();
+        AudioManager.PlayMusic(MusicType.MusicMenu);
+        combatManager.ResetAll();
     }
-    
-    public void PlayerFootStepEffect(bool isPlay)
-    {
-        if(audioManager) audioManager.PlayFootStep(isPlay);
-    }
-    
-    
-   
+
 }

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 46ce0289dd106d6489a47b6d1ec0e7cf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 251944
+  packageName: "Commersion \u2013 All-in-One Commercial Screen Kit"
+  packageVersion: 1.0
+  assetPath: Assets/Commersion/Scripts/Editor/CommersionStartup.cs
+  uploadId: 780207

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum CombatState
 {
-    Waiting,
+    Running,
     Readying,
     Fighting,
     Ending 

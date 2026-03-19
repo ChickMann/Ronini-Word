@@ -1,0 +1,84 @@
+/* =========================================================
+   1. SỬA LỖI LAYOUT & ELASTIC (QUAN TRỌNG NHẤT)
+   ========================================================= */
+
+/* Sửa lỗi ScrollView không tính toán đúng chiều cao */
+#ScrollContainer {
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Cắt bỏ phần thừa */
+}
+
+/* Đây là container chứa các dòng (Row) bên trong */
+/* Phải set flex-grow: 1 để nó lấp đầy khoảng trống, giúp tính năng Elastic hoạt động */
+#ScrollContainer .unity-scroll-view__content-container {
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: auto; /* Cho phép co giãn tự do */
+    padding-bottom: 30px; /* Khoảng hở dưới cùng để dòng cuối không bị che */
+    padding-top: 5px;
+}
+
+/* =========================================================
+   2. TÙY CHỈNH THANH CUỘN (SCROLLBAR)
+   ========================================================= */
+
+/* Tắt hoàn toàn thanh cuộn NGANG */
+.unity-scroller--horizontal {
+    display: none;
+    opacity: 0;
+    height: 0;
+}
+
+/* Chỉnh thanh cuộn DỌC to ra và bỏ viền */
+.unity-scroller--vertical {
+    width: 12px; /* Độ rộng thanh cuộn */
+    border-width: 0;
+    background-color: transparent;
+    margin-left: 2px; /* Cách lề một chút cho đẹp */
+}
+
+/* =========================================================
+   3. TRANG TRÍ THANH TRƯỢT (SLIDER)
+   ========================================================= */
+
+/* Phần Rãnh trượt (Tracker - Background mờ phía sau) */
+.unity-base-slider__tracker {
+    background-color: rgba(0, 0, 0, 0.2); /* Màu đen mờ */
+    border-radius: 6px;
+    border-width: 0;
+    width: 10px; /* Nhỏ hơn thanh cuộn 1 xíu để căn giữa */
+    margin-left: 1px;
+}
+
+/* Phần Tay nắm (Dragger - Cái cục màu vàng để kéo) */
+.unity-base-slider__dragger {
+    background-color: rgb(255, 193, 7); /* Màu vàng (Gold) */
+    border-radius: 6px;
+    width: 10px; /* Bằng kích thước rãnh */
+    min-height: 30px; /* Chiều cao tối thiểu để dễ bấm trên điện thoại */
+    border-width: 0;
+}
+
+/* Hiệu ứng khi rê chuột vào tay nắm */
+.unity-base-slider__dragger:hover {
+    background-color: rgb(255, 213, 79); /* Sáng hơn chút */
+}
+
+/* Hiệu ứng khi đang nắm kéo */
+.unity-base-slider__dragger:active {
+    background-color: rgb(255, 235, 59); /* Sáng rực */
+}
+
+/* =========================================================
+   4. ẨN CÁC NÚT THỪA
+   ========================================================= */
+
+/* Ẩn 2 nút mũi tên Lên/Xuống mặc định của Unity */
+.unity-scroller__low-button,
+.unity-scroller__high-button {
+    display: none;
+    width: 0;
+    height: 0;
+}

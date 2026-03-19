@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c66065567510a429c9f82b4b348102, type: 3}
+  m_Name: CommersionSettings
+  m_EditorClassIdentifier: 
+  saveLegalsLocally: 1
+  preLoaderSettings:
+    useCopyRightText: 1
+    useLegalDisclaimer: 1
+    _backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+    _textColor: {r: 0, g: 0, b: 0, a: 1}
+    copyrightText: "\xA9 {YEAR} {COMPANY}. All rights reserved."
+    legalDisclaimer: 'All trademarks, logos, and brand names are the property of
+      {COMPANY} or their respective owners.
+
+      Unauthorized use, reproduction,
+      or distribution of any content is strictly prohibited.'
+    logo: {fileID: 5814388252903870294, guid: ad99a2c07ef19c84cb88eec23e4331c7, type: 3}
+    logoHeight: 512
+    logoWidth: 512
+    useTimer: 1
+    timer: 1
+    nextScene: 0
+  legals:
+    TOSText: {fileID: 4900000, guid: bb6bd410ff37315479d1c9340e525981, type: 3}
+    PrivacyText: {fileID: 4900000, guid: 1952c1c0e87ef3a4eb8d59b8cd24357a, type: 3}
