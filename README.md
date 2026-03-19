@@ -51,23 +51,30 @@ Instead of tapping a regular attack button, every sword strike is powered by **c
 ## 🕹️ Core Gameplay Loop
 
 ```
-[Encounter Enemy] → [Question Appears] → [Select correct characters in order]
-        ↓                                           ↓
-[Enemy Tension fills over time]            [Correct] → Parry + Knockback + Reset gauge
-                                           [Wrong]  → Take damage + Red screen flash
-                                                    ↓
-                                       [Word complete] → Enemy weakened (BrokenStand)
-                                                    ↓
-                                         [FOCUS MODE — Finisher Vocab]
-                                         ↓ Perfect ↓               ↓ Fail ↓
-                                   Killing Blow ✅           Enemy recovers, fight continues ❌
+[Encounter Enemy] → [Vocab question appears] → [Select correct characters in order]
+        ↓                                                   ↓
+[Tension Gauge drains in real-time]             [Correct] → Parry + Enemy Knockback + Gauge reset
+[Gauge hits 0 = enemy attacks!]                 [Wrong]  → Player takes damage + Screen flash
+                                                            ↓
+                                        [All words spelled] → Enemy BrokenStand (stunned)
+                                                            ↓
+                                              [FOCUS MODE — Final Vocab]
+                                                            ↓
+                                              [Spell it out to finish the fight]
+                                                            ↓
+                                               ⚔️ Cinematic Killing Blow → Enemy is DEAD
+                                                            ↓
+                                                    [Next enemy spawns]
 ```
 
-### 🗡️ Three Combat States
+> ❌ **Enemies never recover.** Every enemy is destroyed the moment the finisher lands.
+> If the player runs out of HP before finishing — it's **Game Over**.
 
-- **🟢 Healthy (≤1 mistake)** → Unlocks Big Knockback + a glorious Perfect Finisher
-- **🟡 Critical (2 mistakes)** → Wounded stance; must fight through to recover
-- **🔴 Death (≥3 mistakes)** → Game Over
+### 🗡️ Player Combat States
+
+- **🟢 Healthy (HP ≥ 2)** → Normal stance — parries and fights at full strength
+- **🟡 Critical (HP = 1)** → BrokenStand — wounded posture, still fighting but one hit away from death
+- **🔴 Dead (HP = 0)** → Game Over — the enemy lands the finishing blow
 
 ---
 
