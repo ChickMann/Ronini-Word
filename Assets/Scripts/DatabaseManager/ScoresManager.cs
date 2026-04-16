@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using EF.Database; // Tool SimpleData
-using EF.Generic;  // Tool EFManager
+using EF.Database; 
+using EF.Generic; 
 using UnityEngine;
 
 public class ScoresManager : MonoBehaviour
@@ -17,7 +17,7 @@ public class ScoresManager : MonoBehaviour
     [Header("Runtime Data")]
     public int LocalTotalScore = 0;    
     
-    // Đổi thành Property để public get cho UIManager đọc, nhưng private set
+
     public int CurrentWaveScore { get; private set; } = 0; 
 
     private void Awake()
@@ -38,7 +38,7 @@ public class ScoresManager : MonoBehaviour
         }
     }
 
-    // --- 1. LOGIC TÍNH ĐIỂM ---
+    //  LOGIC TÍNH ĐIỂM 
 
     public int ProcessAnswer(int vocabID, bool isPerfect)
     {
@@ -78,7 +78,7 @@ public class ScoresManager : MonoBehaviour
         NotifyUIUpdate();
     }
 
-    // --- 2. LOGIC CLOUD ---
+    //LOGIC CLOUD 
 
     public async Task LoadScoreFromCloudAsync()
     {
@@ -92,7 +92,7 @@ public class ScoresManager : MonoBehaviour
             int? savedScore = await _scoreDataChannel.GetData<int?>();
             LocalTotalScore = savedScore ?? 0;
         
-            NotifyUIUpdate(); // [CHANGED] Cập nhật UI sau khi tải
+            NotifyUIUpdate(); // Cập nhật UI sau khi tải
             Debug.Log($"[CLOUD] Tải thành công. Total Score: {LocalTotalScore}");
         }
         catch (Exception ex)
@@ -102,19 +102,19 @@ public class ScoresManager : MonoBehaviour
         }
     }
 
-// --- 2. LOGIC CLOUD (ĐÃ SỬA) ---
+
 
     public async Task SaveScoreToCloudAsync()
     {
-        // 1. Kiểm tra điều kiện
+       
         if (CurrentWaveScore <= 0) return; 
 
-        // 2. Tính toán tổng điểm đích ngay lập tức
+        // Tính toán tổng điểm 
         int targetTotalScore = LocalTotalScore + CurrentWaveScore;
 
         Debug.Log($"[CLOUD] Bắt đầu lưu điểm: {targetTotalScore} (Cũ: {LocalTotalScore} + Mới: {CurrentWaveScore})");
 
-        // 3. LƯU LÊN FIREBASE NGAY LẬP TỨC (Không chờ hiệu ứng)
+        // LƯU LÊN FIREBASE 
         InitDataChannel();
         try 
         {
@@ -125,12 +125,10 @@ public class ScoresManager : MonoBehaviour
         catch (Exception ex)
         {
             Debug.LogError($"[CLOUD] ❌ Lỗi upload điểm: {ex.Message}");
-            // Tùy chọn: Có thể return luôn nếu muốn fail-safe, nhưng vẫn nên cho chạy hiệu ứng UI cho đẹp
+            
         }
 
-        // 4. Chạy hiệu ứng chuyển điểm (Visual Only)
-        // Không dùng DelayAction stringy nữa, dùng Task.Delay chuẩn async
-        await Task.Delay(3000); // Đợi 3s như logic cũ của bạn
+        await Task.Delay(3000); /
         
         await PlayScoreTransferEffectAsync(targetTotalScore, 0.5f);
     }
@@ -156,7 +154,7 @@ public class ScoresManager : MonoBehaviour
             await Task.Yield(); 
         }
 
-        // Chốt giá trị cuối cùng để đảm bảo chính xác
+
         LocalTotalScore = targetTotalScore;
         CurrentWaveScore = 0;
         NotifyUIUpdate(); 
@@ -166,11 +164,11 @@ public class ScoresManager : MonoBehaviour
     {
         LocalTotalScore = 0;
         CurrentWaveScore = 0;
-        NotifyUIUpdate(); // [CHANGED]
+        NotifyUIUpdate(); 
         Debug.Log("[ScoresManager] Đã reset điểm về 0.");
     }
 
-    // --- HELPER ĐỂ GỌI SANG UIMANAGER ---
+
     private void NotifyUIUpdate()
     {
         if (UIManager.Instance != null)
