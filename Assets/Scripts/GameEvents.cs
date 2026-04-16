@@ -6,7 +6,7 @@ public static class GameEvents
 
     
     /// <summary>
-    /// Bắn ra khi kết thúc màn chơi.
+    /// khi kết thúc màn chơi.
     /// Payload (bool): True = Thắng, False = Thua.
     /// </summary>
     public static Action<bool> OnLevelComplete;
@@ -18,21 +18,18 @@ public static class GameEvents
     /// </summary>
     public static Action<bool> OnSubmitAnswer;
 
-
-    // ========================================================================
     // 4. FEEDBACK (Hiệu ứng Âm thanh/Hình ảnh)
-    // ========================================================================
 
     /// <summary>
     /// Trả lời ĐÚNG (CombatManager báo về).
-    /// Dùng để phát âm thanh 'Ding', hiện hiệu ứng xanh, chém quái.
+    /// Dùng để phát âm thanh , hiện hiệu ứng xanh, chém quái.
     /// Payload (bool): True nếu là ký tự cuối cùng của từ (Finish Blow).
     /// </summary>
     public static Action OnCharCorrect;
     
     
     /// <summary>
-    /// Trả lời SAI (CombatManager báo về).
+    /// Trả lời SAI 
     /// Dùng để rung màn hình, hiện màu đỏ, trừ máu.
     /// </summary>
     public static Action OnCharWrong;
