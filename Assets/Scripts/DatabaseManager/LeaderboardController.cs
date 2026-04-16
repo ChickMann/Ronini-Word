@@ -60,7 +60,7 @@ public class LeaderboardController : MonoBehaviour
         }
     }
 
-    // --- PHẦN 1: TẢI BẢNG XẾP HẠNG ---
+    // TẢI BẢNG XẾP HẠNG 
 
     public void LoadLeaderboard()
     {
@@ -73,7 +73,7 @@ public class LeaderboardController : MonoBehaviour
         else
             queryRef = FirebaseDatabase.DefaultInstance.GetReference(dataRoot);
 
-        Debug.Log($"🚀 [Leaderboard] Đang tải từ: {(string.IsNullOrEmpty(dataRoot) ? "ROOT" : dataRoot)}");
+        Debug.Log($"[Leaderboard] Đang tải từ: {(string.IsNullOrEmpty(dataRoot) ? "ROOT" : dataRoot)}");
 
         queryRef.OrderByChild("TotalScore")
             .LimitToLast(maxPlayers)
@@ -81,7 +81,7 @@ public class LeaderboardController : MonoBehaviour
         {
             if (task.IsFaulted)
             {
-                Debug.LogError("❌ Lỗi mạng: " + task.Exception);
+                Debug.LogError(" Lỗi mạng: " + task.Exception);
                 return;
             }
 
@@ -94,12 +94,9 @@ public class LeaderboardController : MonoBehaviour
                 {
                     try 
                     {
-                        // [QUAN TRỌNG - FIX LỖI UNKNOWN]
                         // Chỉ lấy những node có chứa Username.
-                        // Nếu không có Username -> Đây là node rác/folder hệ thống -> Bỏ qua ngay
                         if (!child.HasChild("Username")) 
                         {
-                            // Debug.LogWarning($"⚠️ Bỏ qua node rác: {child.Key}");
                             continue;
                         }
 
@@ -111,9 +108,9 @@ public class LeaderboardController : MonoBehaviour
 
                         tempList.Add(new LeaderboardItem { UserId = child.Key, Name = uName, Score = uScore });
                     }
-                    catch { /* Bỏ qua */ }
+                    catch { }
                 }
-                tempList.Reverse(); // Cao -> Thấp
+                tempList.Reverse(); // sắp xếp cao đến thấp
             }
 
             _dataToRender = tempList;
@@ -127,7 +124,7 @@ public class LeaderboardController : MonoBehaviour
         string myId = Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser?.UserId;
         bool foundMe = false;
 
-        Debug.Log($"🎨 Vẽ {items.Count} người chơi lên bảng.");
+        Debug.Log($"Vẽ {items.Count} người chơi lên bảng.");
 
         for (int i = 0; i < items.Count; i++)
         {
@@ -165,7 +162,7 @@ public class LeaderboardController : MonoBehaviour
         }
     }
 
-    // --- Hàm tải riêng cho bản thân nếu nằm ngoài top ---
+    // Hàm tải riêng cho bản thân nếu nằm ngoài top 
     private async void FetchMyDataFallback(string uid)
     {
         try 
@@ -187,7 +184,7 @@ public class LeaderboardController : MonoBehaviour
                 UpdateMyRankUI("---", "Chưa có hạng", 0);
             }
         }
-        catch { /* Ignore */ }
+        catch {}
     }
 
     private void UpdateMyRankUI(string rank, string name, long score)
@@ -197,7 +194,7 @@ public class LeaderboardController : MonoBehaviour
         if (_lblMyScore != null) _lblMyScore.text = score.ToString();
     }
 
-    // --- PHẦN 2: TẢI ẢNH GOOGLE AVATAR ---
+    //  TẢI ẢNH GOOGLE AVATAR 
 
     private async void LoadCurrentUserAvatar()
     {
@@ -224,7 +221,7 @@ public class LeaderboardController : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError("❌ Lỗi Avatar: " + ex.Message);
+            Debug.LogError("Lỗi Avatar: " + ex.Message);
         }
     }
 }
