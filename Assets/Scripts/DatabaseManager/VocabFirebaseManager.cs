@@ -12,15 +12,12 @@ public class VocabFirebaseManager : MonoBehaviour
     public static VocabFirebaseManager Instance { get; private set; }
 
     [Header("Cloud Config")]
-    [SerializeField] private string autoPrefix = "Player"; // Tự động lấy UserID
+    [SerializeField] private string autoPrefix = "Player"; 
     
-    // Channel lưu danh sách từ (JSON String)
     private SimpleData _vocabDataChannel;
 
-    // Cache dữ liệu (Key: VocabID, Value: State [0:None, 1:NotPerfect, 2:Perfect])
     public Dictionary<string, int> VocabDict = new Dictionary<string, int>();
 
-    // Danh sách "Bẩn" (Những từ vừa thay đổi cần lưu lên mây)
     private HashSet<string> _dirtyVocabIDs = new HashSet<string>();
 
     private void Awake()
@@ -32,19 +29,18 @@ public class VocabFirebaseManager : MonoBehaviour
 
     private void Start()
     {
-        // Khởi tạo SimpleData
         _vocabDataChannel = new SimpleData("Vocabs", DataType.String, autoPrefix);
     }
 
-    // --- 1. API CHO SCORES MANAGER GỌI ---
+    // API CHO SCORES MANAGER GỌI
 
       private string GetSafeKey(int vocabID)
       {
-          return "id_" + vocabID; // Biến số 1 thành "id_1"
+          return "id_" + vocabID; 
       }
   
       public int GetVocabState(int vocabID)    {
-        string key = GetSafeKey(vocabID); // Dùng Key an toàn
+        string key = GetSafeKey(vocabID); 
         if (VocabDict.TryGetValue(key, out int state)) return state;
         return 0;
     }
@@ -65,11 +61,10 @@ public class VocabFirebaseManager : MonoBehaviour
     public async Task LoadVocabsFromCloudAsync()
     {
         string path = EFManager.Instance.RePlacePrefix(autoPrefix);
-        Debug.Log($"🔍 Đang mò dữ liệu tại đường dẫn: {path}/Vocabs");
+        Debug.Log($"Đang mò dữ liệu tại đường dẫn: {path}/Vocabs");
         try
         {
-            // Bây giờ Firebase sẽ trả về Object {"id_1": 2, "id_2": 1}...
-            // Nên Dictionary sẽ deserialize thành công!
+     
             var savedData = await _vocabDataChannel.GetJsonValue<Dictionary<string, int>>();
 
             if (savedData != null)
@@ -87,19 +82,19 @@ public class VocabFirebaseManager : MonoBehaviour
 
     public async Task SaveDirtyVocabsToCloudAsync()
     {
-        // Bước 1: Check snapshot xem data gốc đã có chưa
+        // Check snapshot xem data gốc đã có chưa
         var snapshot = await _vocabDataChannel.GetSnapshot();
 
         if (!snapshot.Exists)
         {
-            // Nếu chưa có gì -> Lưu toàn bộ (Full Save)
+            // Nếu chưa có gì Lưu toàn bộ 
             Debug.Log("[VocabManager] Cloud rỗng -> Upload toàn bộ.");
             await _vocabDataChannel.SetData(VocabDict);
             _dirtyVocabIDs.Clear();
         }
         else if (_dirtyVocabIDs.Count > 0)
         {
-            // Nếu đã có -> Chỉ lưu cái mới (Partial Update)
+            // Nếu đã có Chỉ lưu cái mới 
             Dictionary<string, object> updates = new Dictionary<string, object>();
             
             foreach (string id in _dirtyVocabIDs)
