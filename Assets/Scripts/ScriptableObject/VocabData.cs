@@ -5,7 +5,7 @@ using UnityEditor;
 using System.Linq; 
 #endif
 
-public enum StateVocab // Đã sửa lỗi chính tả từ StateVobcab
+public enum StateVocab 
 {
     None,
     NotPerfect,
@@ -26,7 +26,7 @@ public class VocabData : ScriptableObject
     private void Reset()
     {
 #if UNITY_EDITOR
-        // Tự động: Chỉ chạy khi ID = 0 (tạo mới)
+        //  chạy khi ID = 0 tạo mới
         if (_vocabID == 0) AssignSmartID(forceFill: false);
 #endif
     }
@@ -34,14 +34,13 @@ public class VocabData : ScriptableObject
     private void OnValidate()
     {
 #if UNITY_EDITOR
-        // Tự động: Chỉ chạy khi ID = 0
+        // chạy khi ID = 0
         if (_vocabID == 0) AssignSmartID(forceFill: false);
 #endif
     }
 
 #if UNITY_EDITOR
-    // Nút bấm thủ công: Bắt buộc lấp lỗ trống (Force = true)
-    [ContextMenu("🔢 Force Smart ID (Fill Gaps)")]
+    [ContextMenu("Force Smart ID (Fill Gaps)")]
     private void AssignSmartID_Manual()
     {
         AssignSmartID(forceFill: true);
@@ -49,7 +48,7 @@ public class VocabData : ScriptableObject
 
     private void AssignSmartID(bool forceFill)
     {
-        // 1. Chuẩn bị danh sách ID đã dùng
+        // Chuẩn bị danh sách ID đã dùng
         string myPath = AssetDatabase.GetAssetPath(this);
         string[] guids = AssetDatabase.FindAssets("t:VocabData");
         HashSet<int> usedIDs = new HashSet<int>();
@@ -57,7 +56,7 @@ public class VocabData : ScriptableObject
         foreach (string guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            if (path == myPath) continue; // Bỏ qua chính mình
+            if (path == myPath) continue; 
 
             VocabData other = AssetDatabase.LoadAssetAtPath<VocabData>(path);
             if (other != null && other.VocabID > 0)
@@ -66,21 +65,20 @@ public class VocabData : ScriptableObject
             }
         }
 
-        // 2. Logic Bảo vệ (Chỉ chạy khi KHÔNG Force)
-        // Nếu không ép buộc, và ID hiện tại đang ổn (duy nhất, >0) -> Giữ nguyên
+
         if (!forceFill && _vocabID > 0 && !usedIDs.Contains(_vocabID))
         {
             return;
         }
 
-        // 3. Tìm lỗ trống nhỏ nhất bắt đầu từ 1
+        // Tìm lỗ trống nhỏ nhất bắt đầu từ 1
         int candidateID = 1;
         while (usedIDs.Contains(candidateID))
         {
             candidateID++;
         }
 
-        // 4. Cập nhật nếu có thay đổi
+
         // Nếu forceFill = true, nó sẽ so sánh candidateID (ví dụ 3) với _vocabID hiện tại (ví dụ 5)
         if (_vocabID != candidateID)
         {
