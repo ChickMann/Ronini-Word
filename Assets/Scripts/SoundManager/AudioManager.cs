@@ -43,7 +43,7 @@ namespace SmallHedge.AudioManager
             }
             else
             {
-                // [FIX 2] Dùng sfxSource độc lập, không đụng chạm đến nhạc nền
+    
                 instance.sfxSource.outputAudioMixerGroup = instance.soundsSO.mixer;
                 instance.sfxSource.PlayOneShot(randomClip, volume * soundList.volume);
             }
@@ -52,7 +52,7 @@ namespace SmallHedge.AudioManager
         public static void PlayMusic(MusicType music, AudioSource source = null, float volume = 1,
             float fadeDuration = 1.0f)
         {
-            // [FIX 3] Mặc định dùng musicSource
+        
             var targetSource = source ? source : instance.musicSource;
 
             if (targetSource == instance.musicSource)
@@ -75,7 +75,7 @@ namespace SmallHedge.AudioManager
         private IEnumerator PlayMusicRandomInList(MusicType type, AudioSource source, float maxVolume, float fadeTime,
             int lastIndex)
         {
-            // --- BƯỚC 1: FADE OUT ---
+            // FADE OUT 
             if (source.isPlaying && source.volume > 0)
             {
                 float startVol = source.volume;
@@ -91,7 +91,7 @@ namespace SmallHedge.AudioManager
                 source.Stop();
             }
 
-            // --- BƯỚC 2: CHỌN BÀI MỚI ---
+            // CHỌN BÀI MỚI 
             int typeIndex = (int)type;
             if (typeIndex < 0 || typeIndex >= musicsSO.musics.Length) yield break;
 
@@ -111,12 +111,11 @@ namespace SmallHedge.AudioManager
                 } while (nextIndex == lastIndex && attempts > 0);
             }
 
-            // --- BƯỚC 3: PLAY & FADE IN ---
+            //  PLAY & FADE IN
             AudioClip nextClip = clips[nextIndex];
             float finalVolume = maxVolume * musicData.volume;
 
             source.clip = nextClip;
-            // [FIX 4] Trực tiếp gọi instance để code tường minh, tránh lỗi luồng ngầm của Coroutine
             source.outputAudioMixerGroup = instance.musicsSO.mixer; 
             source.Play();
 
@@ -130,14 +129,14 @@ namespace SmallHedge.AudioManager
 
             source.volume = finalVolume;
 
-            // --- BƯỚC 4: CHỜ HẾT BÀI ---
+            //  CHỜ HẾT BÀI 
             float exitTime = nextClip.length - fadeTime;
             while (source.isPlaying && source.time < exitTime)
             {
                 yield return null;
             }
 
-            // --- BƯỚC 5: ĐỆ QUY GỌI TIẾP ---
+            // ĐỆ QUY GỌI TIẾP
             instance._musicCoroutine = instance.StartCoroutine(
                 instance.PlayMusicRandomInList(type, source, maxVolume, fadeTime, nextIndex)
             );
@@ -150,10 +149,9 @@ namespace SmallHedge.AudioManager
            
         }
 
-        [ContextMenu("🐛 Debug: Skip To End")]
+        [ContextMenu(" Debug: Skip To End")]
         public void DebugSkipToEnd()
         {
-            // Sửa lại thành kiểm tra musicSource
             if (musicSource != null && musicSource.clip != null && musicSource.isPlaying)
             {
                 float debugTime = musicSource.clip.length - 3.0f;
