@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using EF.Database; // Tool SimpleData
+using EF.Database; 
 using EF.Generic;
 using Firebase.Auth;
 using Firebase.Extensions;
@@ -75,18 +75,18 @@ public class LoginWithGoogle : MonoBehaviour
         bool isRemembered = PlayerPrefs.GetInt(PREF_REMEMBER_ME, 0) == 1;
         if (rememberMeToggle != null) rememberMeToggle.isOn = isRemembered;
 
-        // Logic Tự động đăng nhập
+        //  Tự động đăng nhập
         if (_auth.CurrentUser != null && isRemembered)
         {
             Debug.Log("⏳ Phát hiện phiên cũ. Đang đợi hệ thống ổn định...");
         
-            // [FIX QUAN TRỌNG] Đợi 1 giây để EFManager và Firebase đồng bộ xong ID
+            //  Đợi 1 giây để EFManager và Firebase đồng bộ xong ID
             await Task.Delay(1000); 
 
-            // Kiểm tra lại lần nữa cho chắc
+           
             if (_auth.CurrentUser != null)
             {
-                Debug.Log($"🔄 Bắt đầu Auto-login cho User: {_auth.CurrentUser.UserId}");
+                Debug.Log($" Bắt đầu Auto-login cho User: {_auth.CurrentUser.UserId}");
                 HandlePostLogin(_auth.CurrentUser);
             }
             else
@@ -127,37 +127,32 @@ public class LoginWithGoogle : MonoBehaviour
         }
     }
 
-    // --- [FIX] LOGIC TẢI TÊN ---
-
+    //TẢI TÊN 
     private async void HandlePostLogin(FirebaseUser user)
     {
         loginPanel.SetActive(false);
-        Debug.Log("🔍 Đang kiểm tra Username...");
+        Debug.Log("Đang kiểm tra Username...");
 
         try
         {
-            // 1. Tạo kênh dữ liệu
+            //  Tạo kênh dữ liệu
             SimpleData freshChannel = new SimpleData("Username", DataType.String, "Player");
 
-            // [DEBUG] In ra đường dẫn thực tế để kiểm tra
-            // EFManager sẽ thay thế chữ "Player" bằng UserID thực tế
             string debugPath = EFManager.Instance.RePlacePrefix("Player");
             Debug.Log($"---> [CHECK PATH] Code đang đọc tại: {debugPath}/Username");
 
-            // Nếu debugPath in ra là "Player/" mà không có ID phía sau -> Lỗi do chưa lấy được ID
+            // Kiểm tra lỗi chưa lấy được ID
             if (debugPath == "Player/" || debugPath == "Player")
             {
-                Debug.LogError("❌ LỖI: Chưa lấy được UserID. Đang thử đợi thêm...");
+                Debug.LogError("LỖI: Chưa lấy được UserID. Đang thử đợi thêm...");
                 await Task.Delay(500); // Đợi thêm chút nữa
             }
 
-            // 2. Lấy dữ liệu
             string savedName = await freshChannel.GetData<string>();
 
-            // 3. Kiểm tra
             if (string.IsNullOrEmpty(savedName) || savedName == "null")
             {
-                Debug.Log("⚠️ Không tìm thấy tên (hoặc tên rỗng) -> Mở bảng nhập.");
+                Debug.Log("Không tìm thấy tên (hoặc tên rỗng) -> Mở bảng nhập.");
             
                 if (usernameInputField != null) 
                     usernameInputField.text = user.DisplayName; 
@@ -167,7 +162,7 @@ public class LoginWithGoogle : MonoBehaviour
             }
             else
             {
-                Debug.Log($"✅ Đã tìm thấy tên: {savedName}");
+                Debug.Log($" Đã tìm thấy tên: {savedName}");
                 _currentCustomName = savedName;
 
                 if (GameDataManager.Instance != null)
@@ -180,14 +175,13 @@ public class LoginWithGoogle : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError($"❌ Lỗi HandlePostLogin: {ex.Message}");
-            // Fallback
+            Debug.LogError($" Lỗi HandlePostLogin: {ex.Message}");
             if (usernameInputField != null) usernameInputField.text = user.DisplayName;
             UIManager.Instance.SetEnterNamePanel(true);
         }
     }
 
-    // --- [FIX] LOGIC LƯU TÊN ---
+    // LƯU TÊN 
 
     private async void OnSubmitUsernameClicked()
     {
@@ -198,10 +192,10 @@ public class LoginWithGoogle : MonoBehaviour
 
         try 
         {
-            // Lưu đúng vào chỗ đã Tải ở trên ("Username", "Player")
+
             SimpleData freshChannel = new SimpleData("Username", DataType.String, "Player");
             
-            Debug.Log($"---> Đang LƯU vào: {EFManager.Instance.RePlacePrefix("Player")}/Username");
+            Debug.Log($"Đang LƯU vào: {EFManager.Instance.RePlacePrefix("Player")}/Username");
 
             await freshChannel.SetData(inputName);
             
